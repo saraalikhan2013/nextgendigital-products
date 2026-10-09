@@ -1541,10 +1541,10 @@
 
         <div class="footer-links">
           <a href="/about-us" class="footer-link-btn">About Us</a>
-          <a href="/privacy-policy" class="footer-link-btn" data-modal-target="modal-privacy">Privacy Policy</a>
-          <a href="/terms-and-conditions" class="footer-link-btn" data-modal-target="modal-terms">Terms &amp; Conditions</a>
-          <a href="/refund-policy" class="footer-link-btn" data-modal-target="modal-refund">Refund Policy</a>
-          <button class="footer-link-btn" data-modal-target="modal-disclaimer">Risk Disclaimer</button>
+          <button type="button" class="footer-link-btn" data-modal-target="modal-privacy" aria-haspopup="dialog">Privacy Policy</button>
+          <button type="button" class="footer-link-btn" data-modal-target="modal-terms" aria-haspopup="dialog">Terms &amp; Conditions</button>
+          <button type="button" class="footer-link-btn" data-modal-target="modal-refund" aria-haspopup="dialog">Refund Policy</button>
+          <button type="button" class="footer-link-btn" data-modal-target="modal-disclaimer" aria-haspopup="dialog">Risk Disclaimer</button>
         </div>
       </div>
 
@@ -1580,29 +1580,48 @@
        ======================================================================== -->
   <!-- Privacy Modal -->
   <div class="modal-overlay" id="modal-privacy" role="dialog" aria-modal="true" aria-labelledby="privacy-heading">
-    <div class="modal-dialog">
+    <div class="modal-dialog" tabindex="-1">
       <div class="modal-header">
         <h3 class="modal-title" id="privacy-heading">Privacy Policy</h3>
-        <button class="modal-close-btn" aria-label="Close Modal">&times;</button>
+        <button type="button" class="modal-close-btn" aria-label="Close Modal">&times;</button>
       </div>
       <div class="modal-body">
         <h4>1. Information We Collect</h4>
         <p>When purchasing Confluenc Quant Indicator [v6.1.12], payment processing and personal information (such as name, email, and phone number) are handled securely through our checkout provider Superprofile. We receive your TradingView username and contact details strictly for granting invite-only script access and providing installation support.</p>
+        <ul>
+          <li><strong>Customer Contact Details:</strong> Name, email address, and phone number provided during checkout to communicate order confirmations and activation updates.</li>
+          <li><strong>TradingView Username:</strong> Your public TradingView account username, collected solely to grant your private invite-only script authorization directly on TradingView.</li>
+          <li><strong>Order &amp; Transaction Metadata:</strong> Payment reference ID, order timestamp, license version, and billing amount. All payment instruments (cards, UPI, net banking) are handled exclusively by PCI-DSS compliant checkout provider Superprofile. We never store or view your payment instruments.</li>
+          <li><strong>Technical Interaction Data:</strong> IP address, device type, operating system, browser version, and aggregated usage metrics collected via standard server logs and analytical cookies.</li>
+        </ul>
+
         <h4>2. Use of Information</h4>
         <p>We use your information exclusively to deliver script permissions on TradingView, provide setup support, and communicate essential indicator updates. We never sell, rent, or lease your personal information to third parties.</p>
+        <ul>
+          <li><strong>Script Access Provisioning:</strong> Authorizing your verified TradingView username on our private PineScript repository so the indicator appears in your TradingView "Invite-Only Scripts" tab.</li>
+          <li><strong>Installation &amp; Technical Support:</strong> Providing step-by-step setup assistance, answering configuration inquiries, and resolving technical activation issues.</li>
+          <li><strong>Product Updates &amp; Alerts:</strong> Notifying active license holders of critical algorithm updates, version releases, or platform compatibility announcements.</li>
+          <li><strong>License Integrity:</strong> Verifying order authenticity and preventing unauthorized reselling, sharing, or misuse of private script authorizations.</li>
+        </ul>
+
         <h4>3. Analytics &amp; Cookies</h4>
         <p>We may use anonymous analytics tools and Meta Pixel to measure general website interactions and ad campaign performance. No personal financial data is stored on our landing page servers.</p>
-        <a href="/privacy-policy" class="modal-expand-link">View Full Standalone Policy Page &rarr;</a>
+
+        <h4>4. Data Protection &amp; Security</h4>
+        <p>We deploy robust organizational and technological safeguards to protect your personal information against unauthorized access, loss, misuse, or alteration. All communications between your browser and our servers are encrypted using modern 256-bit TLS/SSL encryption.</p>
+
+        <h4>5. Contact &amp; Support</h4>
+        <p>For any privacy inquiries or assistance regarding your script license, please contact our support team at <a href="mailto:support@confluencquant.com" style="color: var(--neon-green); text-decoration: underline;">support@confluencquant.com</a>.</p>
       </div>
     </div>
   </div>
 
   <!-- Terms Modal -->
   <div class="modal-overlay" id="modal-terms" role="dialog" aria-modal="true" aria-labelledby="terms-heading">
-    <div class="modal-dialog">
+    <div class="modal-dialog" tabindex="-1">
       <div class="modal-header">
         <h3 class="modal-title" id="terms-heading">Terms &amp; Conditions</h3>
-        <button class="modal-close-btn" aria-label="Close Modal">&times;</button>
+        <button type="button" class="modal-close-btn" aria-label="Close Modal">&times;</button>
       </div>
       <div class="modal-body">
         <h4>1. Digital Product License</h4>
@@ -1611,34 +1630,38 @@
         <p>All PineScript code, algorithms, visual styles, and documentation remain the exclusive intellectual property of Confluenc Quant. Reverse engineering, redistribution, reselling, or public sharing of the script is strictly prohibited.</p>
         <h4>3. Platform Dependencies</h4>
         <p>The indicator operates on the TradingView platform. Access requires an active TradingView account. We are not affiliated with or endorsed by TradingView, Inc.</p>
-        <a href="/terms-and-conditions" class="modal-expand-link">View Full Standalone Terms &rarr;</a>
+        <h4>4. Pricing &amp; Payments</h4>
+        <p>The standard regular price of Confluenc Quant Indicator [v6.1.12] is ₹2,900, offered at a promotional price of ₹399 as a one-time payment with no mandatory recurring monthly subscriptions.</p>
+        <h4>5. Risk Disclosure &amp; Liability</h4>
+        <p>Trading in financial markets carries substantial risk of loss. The indicator is an analytical tool and does not constitute financial advice. In no event shall Confluenc Quant be liable for any trading losses incurred.</p>
       </div>
     </div>
   </div>
 
   <!-- Refund Modal -->
   <div class="modal-overlay" id="modal-refund" role="dialog" aria-modal="true" aria-labelledby="refund-heading">
-    <div class="modal-dialog">
+    <div class="modal-dialog" tabindex="-1">
       <div class="modal-header">
         <h3 class="modal-title" id="refund-heading">Refund Policy</h3>
-        <button class="modal-close-btn" aria-label="Close Modal">&times;</button>
+        <button type="button" class="modal-close-btn" aria-label="Close Modal">&times;</button>
       </div>
       <div class="modal-body">
         <h4>Digital Product Nature</h4>
         <p>Confluenc Quant Indicator [v6.1.12] is an intangible digital product delivered via private invite-only script authorization and digital setup resources. Because instant script access and proprietary code are provisioned immediately upon purchase confirmation, purchases are generally non-refundable once access has been granted.</p>
         <h4>Installation Support Guarantee</h4>
         <p>If you experience any technical difficulties activating the indicator on your TradingView account, our installation support team is available to assist you step-by-step until your indicator is properly configured and operational.</p>
-        <a href="/refund-policy" class="modal-expand-link">View Full Standalone Refund Policy &rarr;</a>
+        <h4>Resolution &amp; Assistance</h4>
+        <p>Before requesting a payment inquiry, please contact our support team at <a href="mailto:support@confluencquant.com" style="color: var(--neon-green); text-decoration: underline;">support@confluencquant.com</a> with your order reference ID so our technical desk can promptly resolve any setup barriers.</p>
       </div>
     </div>
   </div>
 
   <!-- Disclaimer Modal -->
   <div class="modal-overlay" id="modal-disclaimer" role="dialog" aria-modal="true" aria-labelledby="disclaimer-heading">
-    <div class="modal-dialog">
+    <div class="modal-dialog" tabindex="-1">
       <div class="modal-header">
         <h3 class="modal-title" id="disclaimer-heading">Risk Disclaimer</h3>
-        <button class="modal-close-btn" aria-label="Close Modal">&times;</button>
+        <button type="button" class="modal-close-btn" aria-label="Close Modal">&times;</button>
       </div>
       <div class="modal-body">
         <h4>Educational Tool Notice</h4>

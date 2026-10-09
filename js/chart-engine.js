@@ -457,7 +457,7 @@ class QuantChartEngine {
       if (c.volume > maxVol) maxVol = c.volume;
     });
 
-    const pad = (maxP - minP) * 0.12;
+    const pad = (maxP - minP) * 0.16;
     minP -= pad;
     maxP += pad;
     const priceRange = maxP - minP || 1;
@@ -830,6 +830,28 @@ class QuantChartEngine {
     ctx.textAlign = 'left';
     ctx.textBaseline = 'middle';
     ctx.fillText(priceAtY.toFixed(this.decimals), rightX + 5, y);
+
+    // Time badge on bottom axis
+    if (this.crosshair.candle && this.crosshair.candle.time) {
+      const d = new Date(this.crosshair.candle.time);
+      const timeStr = d.getHours().toString().padStart(2, '0') + ':' + d.getMinutes().toString().padStart(2, '0');
+      ctx.fillStyle = 'rgba(16, 28, 20, 0.95)';
+      ctx.strokeStyle = 'rgba(0, 245, 155, 0.5)';
+      ctx.lineWidth = 1;
+      const timeTagW = 44;
+      const timeTagH = 16;
+      const timeTagX = Math.max(left, Math.min(left + w - timeTagW, x - timeTagW / 2));
+      const timeTagY = top + h + 8;
+      this.roundRect(ctx, timeTagX, timeTagY, timeTagW, timeTagH, 3);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = '#00F59B';
+      ctx.font = 'bold 9px "JetBrains Mono", monospace';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(timeStr, timeTagX + timeTagW / 2, timeTagY + timeTagH / 2);
+    }
   }
 }
 

@@ -94,6 +94,7 @@
   function initGallery() {
     const tabBtns = document.querySelectorAll('.gallery-tab-btn');
     const tabPanels = document.querySelectorAll('.gallery-view-panel');
+    const tabsBar = document.querySelector('.gallery-tabs-bar');
 
     tabBtns.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -114,6 +115,17 @@
         }
       });
     });
+
+    // Smooth horizontal mouse scroll support for desktop/laptop
+    if (tabsBar) {
+      tabsBar.addEventListener('wheel', (e) => {
+        if (Math.abs(e.deltaX) > 0) return; // Native horizontal scroll handled by OS
+        if (tabsBar.scrollWidth > tabsBar.clientWidth) {
+          e.preventDefault();
+          tabsBar.scrollLeft += e.deltaY;
+        }
+      }, { passive: false });
+    }
   }
 
   /* --------------------------------------------------------------------------
@@ -188,8 +200,8 @@
   function initModals() {
     const modalTriggers = document.querySelectorAll('[data-modal-target]');
     const overlays = document.querySelectorAll('.modal-overlay');
-
     const stickyBar = document.getElementById('sticky-mobile-cta');
+    let lastActiveElement = null;
 
     modalTriggers.forEach(btn => {
       btn.addEventListener('click', (e) => {
@@ -197,35 +209,70 @@
         const targetId = btn.getAttribute('data-modal-target');
         const modal = document.getElementById(targetId);
         if (modal) {
+          lastActiveElement = document.activeElement;
           modal.classList.add('active');
           document.body.style.overflow = 'hidden';
           if (stickyBar) stickyBar.classList.remove('visible');
+
+          // Reset modal body scroll position to top
+          const modalBody = modal.querySelector('.modal-body');
+          if (modalBody) modalBody.scrollTop = 0;
+
+          // Focus close button for keyboard accessibility
+          const closeBtn = modal.querySelector('.modal-close-btn');
+          if (closeBtn) closeBtn.focus();
         }
       });
     });
 
     const closeModal = () => {
-      overlays.forEach(overlay => overlay.classList.remove('active'));
-      document.body.style.overflow = '';
-      // Trigger small scroll check to restore sticky CTA if scrolled past hero
-      const heroSection = document.getElementById('hero');
-      if (stickyBar && heroSection) {
-        const heroBottom = heroSection.getBoundingClientRect().bottom;
-        if (heroBottom < 100) stickyBar.classList.add('visible');
+      let closedAny = false;
+      overlays.forEach(overlay => {
+        if (overlay.classList.contains('active')) {
+          overlay.classList.remove('active');
+          closedAny = true;
+        }
+      });
+      if (closedAny) {
+        document.body.style.overflow = '';
+        if (lastActiveElement && typeof lastActiveElement.focus === 'function') {
+          lastActiveElement.focus();
+        }
+        // Restore sticky CTA if scrolled past hero
+        const heroSection = document.getElementById('hero');
+        if (stickyBar && heroSection) {
+          const heroBottom = heroSection.getBoundingClientRect().bottom;
+          if (heroBottom < 100) stickyBar.classList.add('visible');
+        }
       }
     };
 
     overlays.forEach(overlay => {
+      // Backdrop click closes modal
       overlay.addEventListener('click', (e) => {
         if (e.target === overlay || e.target.closest('.modal-close-btn')) {
           closeModal();
         }
       });
+
+      // Prevent accidental clicks inside the dialog content from closing the modal
+      const dialog = overlay.querySelector('.modal-dialog');
+      if (dialog) {
+        dialog.addEventListener('click', (e) => {
+          if (!e.target.closest('.modal-close-btn')) {
+            e.stopPropagation();
+          }
+        });
+      }
     });
 
+    // Close on Escape key press
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
-        closeModal();
+        const activeModal = document.querySelector('.modal-overlay.active');
+        if (activeModal) {
+          closeModal();
+        }
       }
     });
   }

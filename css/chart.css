@@ -56,8 +56,20 @@
   color: var(--text-white);
 }
 
-.chart-tf-pills {
+.chart-status-live {
   order: 2;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--neon-green);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.chart-tf-pills {
+  order: 3;
   display: flex;
   align-items: center;
   gap: 4px;
@@ -85,18 +97,6 @@
   color: var(--neon-green);
   background: rgba(0, 245, 155, 0.12);
   border-color: rgba(0, 245, 155, 0.3);
-}
-
-.chart-status-live {
-  order: 3;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--neon-green);
-  font-weight: 600;
-  flex-shrink: 0;
 }
 
 .live-pulse-dot {

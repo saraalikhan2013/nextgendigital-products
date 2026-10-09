@@ -504,27 +504,53 @@
 .gallery-tabs-bar {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 14px 20px;
+  gap: 6px;
+  padding: 10px 14px;
   background: #0B130E;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 245, 155, 0.25) transparent;
+  -webkit-overflow-scrolling: touch;
+}
+
+.gallery-tabs-bar::-webkit-scrollbar {
+  height: 4px;
+}
+
+.gallery-tabs-bar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.gallery-tabs-bar::-webkit-scrollbar-thumb {
+  background: rgba(0, 245, 155, 0.25);
+  border-radius: 4px;
+}
+
+.gallery-tabs-bar::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-green);
+}
+
+.gallery-tabs-bar.grabbing {
+  cursor: grabbing;
 }
 
 .gallery-tab-btn {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 18px;
+  gap: 6px;
+  padding: 7px 12px;
   border-radius: var(--radius-pill);
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
   color: var(--text-secondary);
   font-family: var(--font-display);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 600;
   white-space: nowrap;
   transition: all var(--trans-fast);
+  cursor: pointer;
+  flex-shrink: 0;
 }
 
 .gallery-tab-btn:hover {
@@ -1156,13 +1182,14 @@
   background: #0B130E;
   border: 1px solid rgba(0, 245, 155, 0.3);
   border-radius: var(--radius-lg);
-  max-width: 650px;
+  max-width: 680px;
   width: 100%;
   max-height: 85vh;
   display: flex;
   flex-direction: column;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 50px rgba(0, 245, 155, 0.15);
   animation: modalEnter 0.25s ease-out;
+  outline: none;
 }
 
 @keyframes modalEnter {
@@ -1212,6 +1239,25 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 245, 155, 0.25) transparent;
+}
+
+.modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+  background: rgba(0, 245, 155, 0.25);
+  border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-green);
 }
 
 .modal-body h4 {
