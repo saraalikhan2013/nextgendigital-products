@@ -1,0 +1,335 @@
+/* ==========================================================================
+   CONFLUENC QUANT INDICATOR [v6.1.12] — CHART SIMULATOR & HUD DASHBOARD
+   TradingView-style High Precision UI Styling
+   ========================================================================== */
+
+.chart-widget-container {
+  display: flex;
+  flex-direction: column;
+  background: #080D0A;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(0, 245, 155, 0.22);
+}
+
+/* 1. Chart Top Toolbar */
+.chart-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: #0B130E;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chart-symbol-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.chart-symbol-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-white);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.chart-symbol-select {
+  background: transparent;
+  border: none;
+  color: var(--text-white);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+}
+
+.chart-symbol-select option {
+  background: #0B130E;
+  color: var(--text-white);
+}
+
+.chart-tf-pills {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.chart-tf-btn {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: transparent;
+  transition: all var(--trans-fast);
+}
+
+.chart-tf-btn:hover {
+  color: var(--text-white);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.chart-tf-btn.active {
+  color: var(--neon-green);
+  background: rgba(0, 245, 155, 0.12);
+}
+
+.chart-status-live {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--neon-green);
+  font-weight: 600;
+}
+
+.live-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--neon-green);
+  box-shadow: 0 0 8px var(--neon-green);
+  animation: liveBlink 1.8s infinite;
+}
+
+@keyframes liveBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+/* 2. Chart Indicator Legend Bar */
+.chart-legend-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background: rgba(11, 19, 14, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chart-script-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-white);
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.chart-script-badge {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  background: rgba(0, 245, 155, 0.15);
+  color: var(--neon-green);
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+.chart-hud-ohlc {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  display: flex;
+  gap: 10px;
+  color: var(--text-muted);
+}
+
+.chart-hud-ohlc span {
+  color: var(--text-secondary);
+}
+
+/* 3. Canvas Container & HUD Overlay */
+.chart-canvas-wrapper {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  background: #080D0A;
+}
+
+.chart-canvas-wrapper canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Overlay Smart Quant HUD Dashboard */
+.quant-hud-widget {
+  position: absolute;
+  top: 14px;
+  right: 76px;
+  width: 210px;
+  background: rgba(9, 15, 12, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(0, 245, 155, 0.28);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 10;
+}
+
+.hud-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 6px;
+}
+
+.hud-title {
+  font-family: var(--font-display);
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-white);
+}
+
+.hud-status-chip {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--neon-green);
+  background: rgba(0, 245, 155, 0.12);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.hud-metrics-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.hud-metric-box {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 6px 8px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hud-label {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+}
+
+.hud-val {
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-white);
+}
+
+.hud-meter-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.hud-meter-fill {
+  height: 100%;
+  width: 82%;
+  background: linear-gradient(90deg, #10B981, #00F59B);
+  border-radius: 2px;
+}
+
+.hud-badge {
+  font-size: 0.72rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.badge-green {
+  background: rgba(0, 245, 155, 0.15);
+  color: var(--neon-green);
+}
+
+.badge-red {
+  background: rgba(255, 77, 90, 0.15);
+  color: var(--bearish-red);
+}
+
+/* 4. Layer Control Switches Bar */
+.chart-controls-bar {
+  padding: 10px 16px;
+  background: #090F0C;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chart-controls-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.layer-toggles-list {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.layer-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all var(--trans-fast);
+}
+
+.layer-toggle-btn.active {
+  color: var(--neon-green);
+  background: rgba(0, 245, 155, 0.12);
+  border-color: rgba(0, 245, 155, 0.35);
+}
+
+.toggle-indicator-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}

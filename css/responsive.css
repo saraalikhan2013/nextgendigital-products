@@ -1,0 +1,399 @@
+/* ==========================================================================
+   CONFLUENC QUANT INDICATOR [v6.1.12] — RESPONSIVE & MOBILE-FIRST DESIGN
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   STICKY MOBILE CTA BAR (Targeted exclusively to mobile & tablet viewports)
+   -------------------------------------------------------------------------- */
+@media (min-width: 851px) {
+  .sticky-mobile-cta {
+    display: none !important;
+  }
+}
+
+@media (max-width: 850px) {
+  .sticky-mobile-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(8, 14, 10, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(0, 245, 155, 0.3);
+    box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.85), 0 0 35px rgba(0, 245, 155, 0.12);
+    padding: 12px 18px;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    z-index: 998;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    transform: translateY(120%);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .sticky-mobile-cta.visible {
+    transform: translateY(0);
+  }
+
+  .sticky-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    flex-shrink: 1;
+  }
+
+  .sticky-product-name {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-white);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .sticky-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+
+  .sticky-price-reg {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-decoration: line-through;
+  }
+
+  .sticky-price-cur {
+    font-family: var(--font-mono);
+    font-size: 1.12rem;
+    font-weight: 800;
+    color: var(--neon-green);
+  }
+
+  .sticky-cta-btn {
+    padding: 10px 18px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-height: 44px; /* Accessible touch target */
+  }
+
+  body {
+    padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE BREAKPOINTS
+   -------------------------------------------------------------------------- */
+
+/* Large Tablets & Small Laptops (<= 1100px) */
+@media (max-width: 1100px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .hero-content {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
+  }
+
+  .hero-price-block {
+    margin: 0 auto;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-benefits-list {
+    align-items: center;
+  }
+
+  .cta-subtext {
+    justify-content: center;
+  }
+
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .inclusions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .compat-grid-markets {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .compat-grid-devices {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-view-panel.active {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* Tablets (<= 850px) */
+@media (max-width: 850px) {
+  .nav-dock .nav-links {
+    display: none;
+  }
+
+  .nav-dock {
+    width: 100%;
+    max-width: 560px;
+    justify-content: space-between;
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .compat-grid-markets {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .pricing-checklist {
+    grid-template-columns: 1fr;
+  }
+
+  .section-spacing {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .pricing-card {
+    padding: 34px 22px;
+  }
+
+  .quant-hud-widget {
+    display: none; /* Hide HUD overlay on smaller screens so chart canvas is 100% visible */
+  }
+}
+
+/* Standard Mobile Devices (<= 640px) */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .navbar-wrapper {
+    top: 8px;
+    padding: 0 10px;
+  }
+
+  .nav-dock {
+    padding: 6px 10px;
+  }
+
+  .brand-name {
+    font-size: 0.84rem;
+  }
+
+  .brand-version {
+    font-size: 0.68rem;
+  }
+
+  .hero-section {
+    padding-top: 86px;
+    padding-bottom: 40px;
+  }
+
+  .hero-headline {
+    font-size: clamp(1.8rem, 6.5vw, 2.4rem);
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .hero-subtitle {
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
+
+  .hero-price-block {
+    width: 100%;
+    max-width: 360px;
+    justify-content: center;
+    padding: 12px 16px;
+  }
+
+  .price-offer-value {
+    font-size: 1.85rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-primary, .btn-secondary {
+    width: 100%;
+    min-height: 48px;
+    text-align: center;
+    padding: 14px 18px;
+  }
+
+  .benefits-grid, .features-grid, .inclusions-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .compat-grid-markets {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .compat-grid-devices {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .compatibility-box {
+    padding: 22px 14px;
+    gap: 24px;
+  }
+
+  .gallery-tabs-bar {
+    padding: 8px 10px;
+    gap: 6px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .gallery-tab-btn {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+
+  .gallery-display-stage {
+    padding: 14px;
+  }
+
+  .chart-canvas-wrapper {
+    height: 300px;
+  }
+
+  .chart-controls-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px 12px;
+  }
+
+  .layer-toggles-list {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .layer-toggle-btn {
+    white-space: nowrap;
+    padding: 4px 8px;
+  }
+
+  .pricing-badge-corner {
+    position: static;
+    margin-bottom: 12px;
+    display: inline-block;
+  }
+
+  .pricing-numbers-row {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .disclaimer-card {
+    flex-direction: column;
+    padding: 20px 16px;
+    gap: 12px;
+  }
+
+  .final-cta-card {
+    padding: 34px 18px;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .footer-links {
+    gap: 14px;
+  }
+
+  .footer-link-btn {
+    min-height: 38px;
+  }
+}
+
+/* Small Screens & Foldable Phones (<= 380px) */
+@media (max-width: 380px) {
+  .brand-version {
+    display: none;
+  }
+
+  .brand-name {
+    font-size: 0.78rem;
+  }
+
+  .nav-dock .btn-primary-sm {
+    padding: 8px 12px;
+    font-size: 0.76rem;
+  }
+
+  .hero-headline {
+    font-size: 1.65rem;
+  }
+
+  .hero-product-pill {
+    font-size: 0.76rem;
+    padding: 4px 10px;
+  }
+
+  .price-offer-value {
+    font-size: 1.65rem;
+  }
+
+  .compat-grid-markets {
+    grid-template-columns: 1fr;
+  }
+
+  .compat-grid-devices {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-top-bar {
+    padding: 8px 10px;
+  }
+
+  .chart-symbol-badge {
+    padding: 4px 6px;
+  }
+
+  .chart-tf-btn {
+    padding: 4px 6px;
+    font-size: 0.72rem;
+  }
+
+  .faq-question-btn {
+    padding: 16px 18px;
+    font-size: 0.98rem;
+  }
+}
