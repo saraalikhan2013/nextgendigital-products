@@ -157,6 +157,10 @@ img, svg {
   max-width: 100%;
 }
 
+section[id] {
+  scroll-margin-top: 86px;
+}
+
 button {
   font-family: inherit;
   cursor: pointer;

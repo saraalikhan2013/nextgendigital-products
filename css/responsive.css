@@ -92,6 +92,39 @@
    RESPONSIVE BREAKPOINTS
    -------------------------------------------------------------------------- */
 
+/* Laptops & Mid-size Desktops (851px - 1180px) */
+@media (max-width: 1180px) and (min-width: 851px) {
+  .nav-dock {
+    gap: 4px;
+    padding: 5px 8px 5px 12px;
+  }
+  .nav-brand {
+    gap: 6px;
+    padding-right: 10px;
+  }
+  .brand-name {
+    font-size: 0.88rem;
+  }
+  .nav-links {
+    gap: 2px;
+  }
+  .nav-link {
+    font-size: 0.8rem;
+    padding: 6px 8px;
+  }
+  .nav-cta .btn-primary {
+    padding: 8px 14px;
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 1020px) and (min-width: 851px) {
+  .nav-links a[href="#gallery"],
+  .nav-links a[href="#how-it-works"] {
+    display: none;
+  }
+}
+
 /* Large Tablets & Small Laptops (<= 1100px) */
 @media (max-width: 1100px) {
   .hero-grid {

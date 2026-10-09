@@ -34,6 +34,9 @@ class QuantChartEngine {
       currentTimeframe: '15m'
     }, options);
 
+    this.symbol = this.options.currentMarket;
+    this.timeframe = this.options.currentTimeframe;
+
     this.candles = [];
     this.signals = [];
     this.srLevels = [];
@@ -45,7 +48,7 @@ class QuantChartEngine {
 
   init() {
     this.resizeCanvas();
-    this.generateMarketData(this.options.currentMarket, this.options.currentTimeframe);
+    this.generateMarketData(this.symbol, this.timeframe);
     this.setupResizeListener();
     this.setupInteractivity();
     this.render();
@@ -63,7 +66,9 @@ class QuantChartEngine {
         this.resizeCanvas();
         // If container width changed meaningfully (orientation change or device resize), regenerate appropriate candle count
         if (Math.abs((this.width || 0) - (prevWidth || 0)) > 30) {
-          this.generateMarketData(this.symbol, this.timeframe);
+          const sym = this.symbol || this.options.currentMarket || 'BTC/USDT';
+          const tf = this.timeframe || this.options.currentTimeframe || '15m';
+          this.generateMarketData(sym, tf);
         }
         this.render();
       });
@@ -382,6 +387,7 @@ class QuantChartEngine {
 
   setMarket(symbol) {
     this.options.currentMarket = symbol;
+    this.symbol = symbol;
     this.generateMarketData(symbol, this.options.currentTimeframe);
     this.requestRender();
     this.resetHudInfo();
@@ -389,6 +395,7 @@ class QuantChartEngine {
 
   setTimeframe(tf) {
     this.options.currentTimeframe = tf;
+    this.timeframe = tf;
     this.generateMarketData(this.options.currentMarket, tf);
     this.requestRender();
     this.resetHudInfo();
@@ -699,16 +706,37 @@ class QuantChartEngine {
   }
 
   drawSignals(ctx, getX, getY) {
+    if (!this.plotArea) return;
+    const { top: plotTop, height: plotHeight } = this.plotArea;
+    const badgeW = 58;
+    const badgeH = 20;
+
     this.signals.forEach(s => {
+      if (!this.candles[s.index]) return;
       const x = getX(s.index);
       const isBuy = s.type === 'buy';
-      // Buy signal positioned below candle low; Sell signal positioned above candle high
-      const y = isBuy ? getY(s.price) + 24 : getY(s.price) - 24;
+      const candlePriceY = getY(s.price);
 
-      const badgeW = 58;
-      const badgeH = 20;
+      // Compute ideal badge position with safety margins
+      let badgeY;
+      if (isBuy) {
+        // Position below candle low
+        badgeY = candlePriceY + 16;
+        // Clamp so it never spills below the plotArea bottom
+        if (badgeY + badgeH > plotTop + plotHeight - 2) {
+          badgeY = plotTop + plotHeight - badgeH - 2;
+        }
+      } else {
+        // Position above candle high
+        badgeY = candlePriceY - badgeH - 16;
+        // Clamp so it never spills above the plotArea top
+        if (badgeY < plotTop + 4) {
+          badgeY = plotTop + 4;
+        }
+      }
+
       const badgeX = x - badgeW / 2;
-      const badgeY = y - badgeH / 2;
+      const centerY = badgeY + badgeH / 2;
 
       // Glow effect for signal badges
       ctx.save();
@@ -734,19 +762,21 @@ class QuantChartEngine {
       ctx.font = 'bold 10px "Plus Jakarta Sans", sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText(s.text, x, y);
+      ctx.fillText(s.text, x, centerY);
 
-      // Clean arrow pointing directly at candlestick
+      // Clean arrow pointing directly at candlestick coordinates
       ctx.fillStyle = isBuy ? '#00F59B' : '#FF4D5A';
       ctx.beginPath();
       if (isBuy) {
-        // Points UP towards the candle low
-        ctx.moveTo(x, badgeY - 6);
+        // Points UP towards candle low
+        const targetTipY = Math.min(candlePriceY + 2, badgeY - 2);
+        ctx.moveTo(x, targetTipY);
         ctx.lineTo(x - 5, badgeY);
         ctx.lineTo(x + 5, badgeY);
       } else {
-        // Points DOWN towards the candle high
-        ctx.moveTo(x, badgeY + badgeH + 6);
+        // Points DOWN towards candle high
+        const targetTipY = Math.max(candlePriceY - 2, badgeY + badgeH + 2);
+        ctx.moveTo(x, targetTipY);
         ctx.lineTo(x - 5, badgeY + badgeH);
         ctx.lineTo(x + 5, badgeY + badgeH);
       }
