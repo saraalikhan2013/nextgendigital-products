@@ -6,6 +6,8 @@
 (function () {
   'use strict';
 
+  var chartInstance = null;
+
   function bootstrap() {
     initProductData();
     initChart();
@@ -41,8 +43,6 @@
   /* --------------------------------------------------------------------------
      2. INITIALIZE CHART SIMULATOR & CONTROLS
      -------------------------------------------------------------------------- */
-  let chartInstance = null;
-
   function initChart() {
     const canvas = document.getElementById('cq-candlestick-canvas');
     if (!canvas) return;

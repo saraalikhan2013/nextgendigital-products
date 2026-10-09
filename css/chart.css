@@ -21,28 +21,23 @@
   padding: 10px 16px;
   background: #0B130E;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.chart-symbol-group {
-  display: flex;
-  align-items: center;
   gap: 12px;
 }
 
 .chart-symbol-badge {
+  order: 1;
   display: inline-flex;
   align-items: center;
   gap: 6px;
   background: rgba(255, 255, 255, 0.06);
-  padding: 5px 10px;
+  padding: 6px 12px;
   border-radius: 6px;
   font-family: var(--font-mono);
   font-size: 0.82rem;
   font-weight: 700;
   color: var(--text-white);
   border: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
 }
 
 .chart-symbol-select {
@@ -62,6 +57,7 @@
 }
 
 .chart-tf-pills {
+  order: 2;
   display: flex;
   align-items: center;
   gap: 4px;
@@ -72,10 +68,12 @@
   font-size: 0.76rem;
   font-weight: 600;
   color: var(--text-secondary);
-  padding: 4px 8px;
+  padding: 5px 10px;
   border-radius: 4px;
   background: transparent;
   transition: all var(--trans-fast);
+  cursor: pointer;
+  border: 1px solid transparent;
 }
 
 .chart-tf-btn:hover {
@@ -86,9 +84,11 @@
 .chart-tf-btn.active {
   color: var(--neon-green);
   background: rgba(0, 245, 155, 0.12);
+  border-color: rgba(0, 245, 155, 0.3);
 }
 
 .chart-status-live {
+  order: 3;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -96,6 +96,7 @@
   font-size: 0.72rem;
   color: var(--neon-green);
   font-weight: 600;
+  flex-shrink: 0;
 }
 
 .live-pulse-dot {
@@ -160,7 +161,7 @@
 .chart-canvas-wrapper {
   position: relative;
   width: 100%;
-  height: 420px;
+  height: 440px;
   background: #080D0A;
 }
 
@@ -170,23 +171,23 @@
   display: block;
 }
 
-/* Overlay Smart Quant HUD Dashboard */
+/* Overlay Smart Quant HUD Dashboard (Positioned top-left to never cover latest candles) */
 .quant-hud-widget {
   position: absolute;
-  top: 14px;
-  right: 76px;
-  width: 210px;
+  top: 12px;
+  left: 14px;
+  width: 180px;
   background: rgba(9, 15, 12, 0.88);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(0, 245, 155, 0.28);
   border-radius: var(--radius-md);
-  padding: 12px 14px;
+  padding: 8px 10px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
   pointer-events: none;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
   z-index: 10;
 }
 

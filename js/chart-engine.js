@@ -3,16 +3,16 @@
  * Confluenc Quant Indicator [v6.1.12]
  * 
  * Features:
- * - High-DPI Canvas Rendering
- * - Realistic Japanese Candlesticks with Wicks
- * - Multi-EMA Ribbon (Dynamic trend smoothing)
+ * - High-DPI Canvas Rendering with DPR auto-scaling
+ * - Realistic Japanese Candlesticks with Wicks & Dynamic Sizing
+ * - Multi-EMA Ribbon (Dynamic trend smoothing: 9, 21, 50)
  * - Automatic Support & Resistance Price Zones
- * - VWAP (Volume Weighted Average Price) Curve
+ * - Cumulative VWAP (Volume Weighted Average Price) Curve
  * - CPR (Central Pivot Range: TC, P, BC)
- * - Algorithmic Buy/Sell Signal Callout Markers
+ * - Algorithmic Buy/Sell Signal Callout Markers (Corrected position mapping)
  * - Volume Histogram
- * - Interactive Crosshair with Price/Time labels
- * - Toggles for Indicator Layers and Multiple Markets/Timeframes
+ * - Interactive Crosshair with Price/Time labels (Touch & Mouse)
+ * - Dynamic HUD Sync & Indicator Layer Toggles
  */
 
 class QuantChartEngine {
@@ -44,34 +44,46 @@ class QuantChartEngine {
   }
 
   init() {
+    this.resizeCanvas();
     this.generateMarketData(this.options.currentMarket, this.options.currentTimeframe);
     this.setupResizeListener();
     this.setupInteractivity();
     this.render();
+    this.resetHudInfo();
   }
 
   setupResizeListener() {
     this.resizePending = false;
-    const resizeObserver = new ResizeObserver(() => {
+    const handleResize = () => {
       if (this.resizePending) return;
       this.resizePending = true;
       requestAnimationFrame(() => {
         this.resizePending = false;
+        const prevWidth = this.width;
         this.resizeCanvas();
-        this.requestRender();
+        // If container width changed meaningfully (orientation change or device resize), regenerate appropriate candle count
+        if (Math.abs((this.width || 0) - (prevWidth || 0)) > 30) {
+          this.generateMarketData(this.symbol, this.timeframe);
+        }
+        this.render();
       });
-    });
-    resizeObserver.observe(this.container);
-    this.resizeCanvas();
+    };
+
+    if (window.ResizeObserver && this.container) {
+      this.resizeObserver = new ResizeObserver(handleResize);
+      this.resizeObserver.observe(this.container);
+    }
+    window.addEventListener('resize', handleResize, { passive: true });
+    window.addEventListener('orientationchange', handleResize, { passive: true });
   }
 
   resizeCanvas() {
+    if (!this.container || !this.canvas) return;
     const rect = this.container.getBoundingClientRect();
-    // Cap DPR at 2 for performance efficiency on high-density mobile displays
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    this.width = rect.width;
-    // Adapt dynamically to container height without forcing desktop 380px minimum on mobile
-    this.height = rect.height || (window.innerWidth < 640 ? 320 : 420);
+    
+    this.width = rect.width || (this.container.clientWidth || 360);
+    this.height = rect.height || (window.innerWidth < 640 ? 350 : 440);
 
     this.canvas.width = Math.round(this.width * dpr);
     this.canvas.height = Math.round(this.height * dpr);
@@ -92,57 +104,115 @@ class QuantChartEngine {
   }
 
   generateMarketData(symbol, tf) {
-    let basePrice = 67200;
-    let volatility = 120;
+    let basePrice = 67250;
+    let volatility = 105;
     let decimals = 2;
 
     if (symbol.includes('NIFTY')) {
       basePrice = 24850;
-      volatility = 45;
+      volatility = 42;
     } else if (symbol.includes('BANKNIFTY')) {
       basePrice = 51400;
-      volatility = 110;
+      volatility = 95;
     } else if (symbol.includes('EUR')) {
       basePrice = 1.0850;
-      volatility = 0.0015;
+      volatility = 0.0014;
       decimals = 4;
     } else if (symbol.includes('GOLD')) {
       basePrice = 2650;
-      volatility = 8;
+      volatility = 8.5;
     }
 
     this.symbol = symbol;
     this.timeframe = tf;
     this.decimals = decimals;
 
-    const count = Math.max(35, Math.min(55, Math.floor(this.width ? this.width / 18 : 45)));
+    // Responsive candle density: fewer candles on narrow mobile screens for maximum readability
+    const width = this.width || 360;
+    let count = 46;
+    if (width < 450) {
+      count = 32;
+    } else if (width < 768) {
+      count = 38;
+    } else if (width < 1100) {
+      count = 46;
+    } else {
+      count = 54;
+    }
+
     this.candles = [];
-    let current = basePrice;
     const now = Date.now();
     const intervalMs = tf === '1m' ? 60000 : tf === '5m' ? 300000 : tf === '15m' ? 900000 : tf === '1h' ? 3600000 : 86400000;
 
-    // Generate trending swing wave pattern
+    // Define key structural wave pivot points
+    // Position 1: earlier swing high resistance test (SELL signal position)
+    const sellIdx = Math.round(count * 0.40);
+    // Position 2: confluence support bounce launchpad (BUY signal position)
+    const buyIdx = Math.round(count * 0.62);
+
+    let current = basePrice;
+
     for (let i = 0; i < count; i++) {
       const time = now - (count - i) * intervalMs;
-      // Controlled rhythmic trend with waves
-      const wave = Math.sin(i * 0.28) * volatility * 1.8 + Math.cos(i * 0.12) * volatility;
-      const noise = (Math.random() - 0.48) * volatility * 0.8;
-      
-      const open = current;
-      const close = current + (i > count * 0.65 ? (volatility * 0.45 + noise) : noise);
-      const high = Math.max(open, close) + Math.random() * volatility * 0.6;
-      const low = Math.min(open, close) - Math.random() * volatility * 0.6;
-      const volume = Math.floor(Math.random() * 850 + (Math.abs(close - open) > volatility * 0.5 ? 1200 : 350));
+      let target;
 
-      this.candles.push({ time, open, high, low, close, volume });
-      current = close;
+      if (i <= sellIdx) {
+        // Wave 1: Initial upward swing to local resistance
+        const progress = i / (sellIdx || 1);
+        target = basePrice + progress * volatility * 2.2;
+      } else if (i <= buyIdx) {
+        // Wave 2: Orderly pullback to dynamic support / CPR range
+        const progress = (i - sellIdx) / (buyIdx - sellIdx || 1);
+        target = (basePrice + volatility * 2.2) - progress * volatility * 2.3;
+      } else {
+        // Wave 3: Strong expansion bull run breaking to new highs
+        const progress = (i - buyIdx) / (count - 1 - buyIdx || 1);
+        target = (basePrice + volatility * 0.3) + Math.pow(progress, 0.82) * volatility * 8.6;
+      }
+
+      const noise = (Math.random() - 0.45) * volatility * 0.32;
+      let openP = current;
+      let closeP = target + noise;
+
+      // Ensure the candle at buyIdx forms a definitive bullish reversal bounce
+      if (i === buyIdx) {
+        openP = target - volatility * 0.35;
+        closeP = target + volatility * 0.45;
+      }
+
+      // Ensure the candle at sellIdx forms an upper rejection wick
+      if (i === sellIdx) {
+        closeP = openP - volatility * 0.2;
+      }
+
+      const highP = Math.max(openP, closeP) + Math.random() * volatility * (i === sellIdx ? 0.75 : 0.45);
+      const lowP = Math.min(openP, closeP) - Math.random() * volatility * (i === buyIdx ? 0.65 : 0.4);
+
+      // Volume surge on breakout & expansion
+      let volume = Math.floor(Math.random() * 500 + 400);
+      if (i >= buyIdx) {
+        volume = Math.floor(800 + (i - buyIdx) * 120 + Math.random() * 600);
+      } else if (i === sellIdx) {
+        volume = Math.floor(950 + Math.random() * 400);
+      }
+
+      this.candles.push({
+        time,
+        open: openP,
+        high: highP,
+        low: lowP,
+        close: closeP,
+        volume
+      });
+
+      current = closeP;
     }
 
-    // Calculate moving averages for EMA Ribbon
-    this.calculateIndicators();
+    // Calculate indicator overlays and signal positions
+    this.calculateIndicators(sellIdx, buyIdx);
   }
 
-  calculateIndicators() {
+  calculateIndicators(sellIdx, buyIdx) {
     const closes = this.candles.map(c => c.close);
     
     // EMA calculations
@@ -159,7 +229,7 @@ class QuantChartEngine {
       const typical = (c.high + c.low + c.close) / 3;
       cumVol += c.volume;
       cumVolPrice += typical * c.volume;
-      vwap.push(cumVolPrice / cumVol);
+      vwap.push(cumVolPrice / (cumVol || 1));
       
       c.ema9 = ema9[idx];
       c.ema21 = ema21[idx];
@@ -168,9 +238,11 @@ class QuantChartEngine {
     });
 
     // CPR Pivot Levels (Pivot = (H+L+C)/3, BC = (H+L)/2, TC = (Pivot - BC) + Pivot)
-    const recentHigh = Math.max(...this.candles.slice(0, 20).map(c => c.high));
-    const recentLow = Math.min(...this.candles.slice(0, 20).map(c => c.low));
-    const recentClose = this.candles[19].close;
+    const len = this.candles.length;
+    const sampleLen = Math.min(18, len);
+    const recentHigh = Math.max(...this.candles.slice(0, sampleLen).map(c => c.high));
+    const recentLow = Math.min(...this.candles.slice(0, sampleLen).map(c => c.low));
+    const recentClose = this.candles[sampleLen - 1].close;
 
     const pivot = (recentHigh + recentLow + recentClose) / 3;
     const bc = (recentHigh + recentLow) / 2;
@@ -192,23 +264,27 @@ class QuantChartEngine {
       { type: 'support', price: this.cpr.s1, label: 'Sup 1 (Dynamic)' }
     ];
 
-    // Algorithmic Buy/Sell Signals
-    this.signals = [];
-    const len = this.candles.length;
-    if (len > 12) {
-      // Find bullish crossover
-      for (let i = 10; i < len - 3; i++) {
-        if (this.candles[i].close > this.candles[i].ema9 && this.candles[i - 1].close <= this.candles[i - 1].ema9 && !this.signals.some(s => s.type === 'buy')) {
-          this.signals.push({ index: i, type: 'buy', price: this.candles[i].low, text: 'BUY ▲' });
-        }
+    // Algorithmic Buy/Sell Signals:
+    // Position 1 (earlier swing high, where BUY was incorrectly shown): SWAPPED TO SELL ▼
+    // Position 2 (confluence breakout, where SELL was incorrectly shown): SWAPPED TO BUY ▲
+    this.signals = [
+      {
+        index: sellIdx,
+        type: 'sell',
+        price: this.candles[sellIdx].high,
+        text: 'SELL ▼'
+      },
+      {
+        index: buyIdx,
+        type: 'buy',
+        price: this.candles[buyIdx].low,
+        text: 'BUY ▲'
       }
-      // Sell marker
-      const sellIdx = Math.floor(len * 0.52);
-      this.signals.push({ index: sellIdx, type: 'sell', price: this.candles[sellIdx].high, text: 'SELL ▼' });
-    }
+    ];
   }
 
   calcEMA(data, period) {
+    if (!data.length) return [];
     const k = 2 / (period + 1);
     const emaArray = [data[0]];
     for (let i = 1; i < data.length; i++) {
@@ -218,47 +294,40 @@ class QuantChartEngine {
   }
 
   setupInteractivity() {
-    this.canvas.addEventListener('mousemove', (e) => {
+    const getPos = (e) => {
       const rect = this.canvas.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
+      const clientX = e.touches && e.touches.length > 0 ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches && e.touches.length > 0 ? e.touches[0].clientY : e.clientY;
+      return {
+        x: clientX - rect.left,
+        y: clientY - rect.top
+      };
+    };
+
+    const handleMove = (e) => {
+      const pos = getPos(e);
       this.crosshair.active = true;
-      this.crosshair.x = x;
-      this.crosshair.y = y;
-      this.updateCrosshairCandle(x);
+      this.crosshair.x = pos.x;
+      this.crosshair.y = pos.y;
+      this.updateCrosshairCandle(pos.x);
       this.requestRender();
-    }, { passive: true });
+    };
 
-    this.canvas.addEventListener('mouseleave', () => {
+    const handleEnd = () => {
       this.crosshair.active = false;
       this.requestRender();
       this.resetHudInfo();
-    }, { passive: true });
+    };
 
-    // Touch support for mobile charts
-    this.canvas.addEventListener('touchmove', (e) => {
-      if (e.touches.length > 0) {
-        const rect = this.canvas.getBoundingClientRect();
-        const touch = e.touches[0];
-        const x = touch.clientX - rect.left;
-        const y = touch.clientY - rect.top;
-        this.crosshair.active = true;
-        this.crosshair.x = x;
-        this.crosshair.y = y;
-        this.updateCrosshairCandle(x);
-        this.requestRender();
-      }
-    }, { passive: true });
-
-    this.canvas.addEventListener('touchend', () => {
-      this.crosshair.active = false;
-      this.requestRender();
-      this.resetHudInfo();
-    }, { passive: true });
+    this.canvas.addEventListener('mousemove', handleMove, { passive: true });
+    this.canvas.addEventListener('mouseleave', handleEnd, { passive: true });
+    this.canvas.addEventListener('touchstart', handleMove, { passive: true });
+    this.canvas.addEventListener('touchmove', handleMove, { passive: true });
+    this.canvas.addEventListener('touchend', handleEnd, { passive: true });
   }
 
   updateCrosshairCandle(x) {
-    if (!this.plotArea) return;
+    if (!this.plotArea || !this.candles.length) return;
     const { left, width } = this.plotArea;
     if (x < left || x > left + width) return;
 
@@ -272,6 +341,7 @@ class QuantChartEngine {
   }
 
   updateHudInfo(candle) {
+    if (!candle) return;
     const hudPrice = document.getElementById('cq-hud-price');
     const hudChange = document.getElementById('cq-hud-change');
     const hudOhlc = document.getElementById('cq-hud-ohlc');
@@ -284,7 +354,7 @@ class QuantChartEngine {
 
     if (hudChange) {
       const diff = candle.close - candle.open;
-      const pct = (diff / candle.open) * 100;
+      const pct = (diff / (candle.open || 1)) * 100;
       hudChange.textContent = `${diff >= 0 ? '+' : ''}${pct.toFixed(2)}%`;
       hudChange.className = `hud-badge ${diff >= 0 ? 'badge-green' : 'badge-red'}`;
     }
@@ -324,6 +394,25 @@ class QuantChartEngine {
     this.resetHudInfo();
   }
 
+  roundRect(ctx, x, y, w, h, r = 4) {
+    if (typeof ctx.roundRect === 'function') {
+      ctx.beginPath();
+      ctx.roundRect(x, y, w, h, r);
+    } else {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y);
+      ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+      ctx.lineTo(x + w, y + h - r);
+      ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+      ctx.lineTo(x + r, y + h);
+      ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+      ctx.lineTo(x, y + r);
+      ctx.quadraticCurveTo(x, y, x + r, y);
+      ctx.closePath();
+    }
+  }
+
   render() {
     if (!this.ctx || !this.width || !this.height) return;
     const ctx = this.ctx;
@@ -334,20 +423,23 @@ class QuantChartEngine {
     ctx.fillStyle = '#080D0A';
     ctx.fillRect(0, 0, w, h);
 
-    // Margins
-    const marginTop = 30;
-    const marginBottom = 50;
-    const marginLeft = 15;
-    const marginRight = 65;
+    // Responsive margins tailored to mobile and desktop
+    const isMobile = w < 500;
+    const marginTop = isMobile ? 18 : 26;
+    const marginBottom = isMobile ? 32 : 44;
+    const marginLeft = isMobile ? 8 : 16;
+    const marginRight = isMobile ? 54 : 68;
 
-    const plotW = w - marginLeft - marginRight;
-    const plotH = h - marginTop - marginBottom;
-    const volumeH = plotH * 0.22;
+    const plotW = Math.max(100, w - marginLeft - marginRight);
+    const plotH = Math.max(100, h - marginTop - marginBottom);
+    const volumeH = plotH * 0.20;
     const candleAreaH = plotH - volumeH;
 
     this.plotArea = { left: marginLeft, top: marginTop, width: plotW, height: candleAreaH };
 
-    // Find min and max price
+    if (!this.candles.length) return;
+
+    // Find min and max price with balanced vertical breathing room
     let minP = Infinity;
     let maxP = -Infinity;
     let maxVol = 0;
@@ -358,7 +450,7 @@ class QuantChartEngine {
       if (c.volume > maxVol) maxVol = c.volume;
     });
 
-    const pad = (maxP - minP) * 0.08;
+    const pad = (maxP - minP) * 0.12;
     minP -= pad;
     maxP += pad;
     const priceRange = maxP - minP || 1;
@@ -371,7 +463,7 @@ class QuantChartEngine {
     this.drawGrid(ctx, marginLeft, marginTop, plotW, candleAreaH, minP, maxP, marginRight);
 
     // 2. CPR Zones
-    if (this.options.showCpr && this.cpr) {
+    if (this.options.showCpr && this.cpr && this.cpr.p) {
       this.drawCPR(ctx, marginLeft, plotW, getY);
     }
 
@@ -398,7 +490,7 @@ class QuantChartEngine {
     // 7. Candlesticks
     this.drawCandlesticks(ctx, getX, getY, candleW);
 
-    // 8. Signals (Buy/Sell)
+    // 8. Buy/Sell Signals (Corrected swapped positions)
     if (this.options.showSignals) {
       this.drawSignals(ctx, getX, getY);
     }
@@ -432,21 +524,22 @@ class QuantChartEngine {
       const lineX = x + (w / vSteps) * j;
       ctx.beginPath();
       ctx.moveTo(lineX, y);
-      ctx.lineTo(lineX, y + h + 35);
+      ctx.lineTo(lineX, y + h + 24);
       ctx.stroke();
     }
   }
 
   drawCPR(ctx, x, w, getY) {
+    if (!this.cpr || !this.cpr.p) return;
     const yTC = getY(this.cpr.tc);
     const yP = getY(this.cpr.p);
     const yBC = getY(this.cpr.bc);
 
     // Shaded CPR band
     ctx.fillStyle = 'rgba(0, 245, 155, 0.05)';
-    ctx.fillRect(x, Math.min(yTC, yBC), w, Math.abs(yBC - yTC));
+    ctx.fillRect(x, Math.min(yTC, yBC), w, Math.max(2, Math.abs(yBC - yTC)));
 
-    // CPR Central Pivot
+    // CPR Central Pivot line
     ctx.strokeStyle = '#00F59B';
     ctx.lineWidth = 1.2;
     ctx.setLineDash([4, 4]);
@@ -455,8 +548,8 @@ class QuantChartEngine {
     ctx.lineTo(x + w, yP);
     ctx.stroke();
 
-    // CPR TC & BC
-    ctx.strokeStyle = 'rgba(0, 245, 155, 0.45)';
+    // CPR TC & BC boundary lines
+    ctx.strokeStyle = 'rgba(0, 245, 155, 0.4)';
     ctx.beginPath();
     ctx.moveTo(x, yTC);
     ctx.lineTo(x + w, yTC);
@@ -465,46 +558,82 @@ class QuantChartEngine {
     ctx.stroke();
     ctx.setLineDash([]);
 
-    // CPR Tag
-    ctx.fillStyle = 'rgba(0, 245, 155, 0.9)';
-    ctx.font = '10px "Plus Jakarta Sans", sans-serif';
-    ctx.fillText('CPR Range (P: ' + this.cpr.p.toFixed(this.decimals) + ')', x + 10, yP - 5);
+    // CPR Tag (clean badge with dark backdrop, anchored on left edge to avoid center collisions)
+    const text = 'CPR Range (P: ' + this.cpr.p.toFixed(this.decimals) + ')';
+    ctx.font = 'bold 9px "JetBrains Mono", monospace';
+    const tw = ctx.measureText(text).width;
+    const badgeW = tw + 10;
+    const badgeH = 16;
+    const badgeX = x + 8;
+    const badgeY = Math.max(8, yP - 18);
+
+    ctx.fillStyle = 'rgba(8, 14, 10, 0.9)';
+    ctx.strokeStyle = 'rgba(0, 245, 155, 0.5)';
+    ctx.lineWidth = 1;
+    this.roundRect(ctx, badgeX, badgeY, badgeW, badgeH, 3);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.fillStyle = '#00F59B';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(text, badgeX + 5, badgeY + badgeH / 2);
+    ctx.textBaseline = 'alphabetic';
   }
 
   drawSR(ctx, x, w, getY) {
+    if (!this.srLevels || !this.srLevels.length) return;
     this.srLevels.forEach(sr => {
       const y = getY(sr.price);
       const isRes = sr.type === 'resistance';
 
       // Shaded buffer box
-      ctx.fillStyle = isRes ? 'rgba(255, 77, 90, 0.07)' : 'rgba(0, 245, 155, 0.07)';
-      ctx.fillRect(x, y - 8, w, 16);
+      ctx.fillStyle = isRes ? 'rgba(255, 77, 90, 0.06)' : 'rgba(0, 245, 155, 0.06)';
+      ctx.fillRect(x, y - 6, w, 12);
 
-      // Line
+      // Dashed level line
       ctx.strokeStyle = isRes ? '#FF4D5A' : '#00F59B';
       ctx.lineWidth = 1.2;
-      ctx.setLineDash([5, 5]);
+      ctx.setLineDash([5, 4]);
       ctx.beginPath();
       ctx.moveTo(x, y);
       ctx.lineTo(x + w, y);
       ctx.stroke();
       ctx.setLineDash([]);
 
-      // Label
+      // Clean label badge anchored on left margin to never obscure breakout candles
+      const text = sr.label + ' [' + sr.price.toFixed(this.decimals) + ']';
+      ctx.font = 'bold 9px "JetBrains Mono", monospace';
+      const tw = ctx.measureText(text).width;
+      const badgeW = tw + 8;
+      const badgeH = 15;
+      const badgeX = x + 8;
+      // Stagger: above resistance line, below support line
+      const badgeY = Math.max(8, isRes ? y - 16 : y + 3);
+
+      ctx.fillStyle = 'rgba(8, 14, 10, 0.9)';
+      ctx.strokeStyle = isRes ? 'rgba(255, 77, 90, 0.6)' : 'rgba(0, 245, 155, 0.6)';
+      ctx.lineWidth = 1;
+      this.roundRect(ctx, badgeX, badgeY, badgeW, badgeH, 3);
+      ctx.fill();
+      ctx.stroke();
+
       ctx.fillStyle = isRes ? '#FF4D5A' : '#00F59B';
-      ctx.font = '10px "Plus Jakarta Sans", sans-serif';
-      ctx.fillText(sr.label + ' [' + sr.price.toFixed(this.decimals) + ']', x + w - 150, y - 4);
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(text, badgeX + 4, badgeY + badgeH / 2);
+      ctx.textBaseline = 'alphabetic';
     });
   }
 
   drawVolume(ctx, x, startY, w, h, maxVol) {
-    const barW = Math.max(2, (w / this.candles.length) * 0.6);
+    const barW = Math.max(2, (w / this.candles.length) * 0.65);
     this.candles.forEach((c, i) => {
       const barX = x + (i + 0.5) * (w / this.candles.length) - barW / 2;
       const barH = (c.volume / (maxVol || 1)) * h;
       const isUp = c.close >= c.open;
 
-      ctx.fillStyle = isUp ? 'rgba(0, 245, 155, 0.22)' : 'rgba(255, 77, 90, 0.22)';
+      ctx.fillStyle = isUp ? 'rgba(0, 245, 155, 0.25)' : 'rgba(255, 77, 90, 0.25)';
       ctx.fillRect(barX, startY + h - barH, barW, barH);
     });
   }
@@ -514,7 +643,7 @@ class QuantChartEngine {
     this.drawLine(ctx, this.candles.map((c, i) => ({ x: getX(i), y: getY(c.ema9) })), '#00F59B', 1.8);
     // 21 EMA (medium, emerald)
     this.drawLine(ctx, this.candles.map((c, i) => ({ x: getX(i), y: getY(c.ema21) })), '#10B981', 1.4);
-    // 50 EMA (slow, teal)
+    // 50 EMA (slow, teal dashed)
     this.drawLine(ctx, this.candles.map((c, i) => ({ x: getX(i), y: getY(c.ema50) })), '#06B6D4', 1.2, [3, 3]);
   }
 
@@ -562,7 +691,7 @@ class QuantChartEngine {
       ctx.fillStyle = color;
       ctx.fillRect(x - candleW / 2, bodyTop, candleW, bodyH);
 
-      // Subtle border for high contrast
+      // Subtle border for high-definition clarity
       ctx.strokeStyle = isUp ? '#00D685' : '#E03E4B';
       ctx.lineWidth = 0.8;
       ctx.strokeRect(x - candleW / 2, bodyTop, candleW, bodyH);
@@ -573,17 +702,32 @@ class QuantChartEngine {
     this.signals.forEach(s => {
       const x = getX(s.index);
       const isBuy = s.type === 'buy';
+      // Buy signal positioned below candle low; Sell signal positioned above candle high
       const y = isBuy ? getY(s.price) + 24 : getY(s.price) - 24;
+
+      const badgeW = 58;
+      const badgeH = 20;
+      const badgeX = x - badgeW / 2;
+      const badgeY = y - badgeH / 2;
+
+      // Glow effect for signal badges
+      ctx.save();
+      ctx.shadowColor = isBuy ? 'rgba(0, 245, 155, 0.5)' : 'rgba(255, 77, 90, 0.5)';
+      ctx.shadowBlur = 10;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = isBuy ? 2 : -2;
 
       // Tag background
       ctx.fillStyle = isBuy ? '#00F59B' : '#FF4D5A';
-      ctx.beginPath();
-      if (typeof ctx.roundRect === 'function') {
-        ctx.roundRect(x - 28, y - 10, 56, 20, 4);
-      } else {
-        ctx.rect(x - 28, y - 10, 56, 20);
-      }
+      this.roundRect(ctx, badgeX, badgeY, badgeW, badgeH, 4);
       ctx.fill();
+      ctx.restore();
+
+      // Contrast border
+      ctx.strokeStyle = isBuy ? '#00C87E' : '#E03E4B';
+      ctx.lineWidth = 1;
+      this.roundRect(ctx, badgeX, badgeY, badgeW, badgeH, 4);
+      ctx.stroke();
 
       // Signal text
       ctx.fillStyle = '#060B08';
@@ -592,18 +736,21 @@ class QuantChartEngine {
       ctx.textBaseline = 'middle';
       ctx.fillText(s.text, x, y);
 
-      // Arrow pointing to candlestick
+      // Clean arrow pointing directly at candlestick
       ctx.fillStyle = isBuy ? '#00F59B' : '#FF4D5A';
       ctx.beginPath();
       if (isBuy) {
-        ctx.moveTo(x, y - 10);
-        ctx.lineTo(x - 5, y - 6);
-        ctx.lineTo(x + 5, y - 6);
+        // Points UP towards the candle low
+        ctx.moveTo(x, badgeY - 6);
+        ctx.lineTo(x - 5, badgeY);
+        ctx.lineTo(x + 5, badgeY);
       } else {
-        ctx.moveTo(x, y + 10);
-        ctx.lineTo(x - 5, y + 6);
-        ctx.lineTo(x + 5, y + 6);
+        // Points DOWN towards the candle high
+        ctx.moveTo(x, badgeY + badgeH + 6);
+        ctx.lineTo(x - 5, badgeY + badgeH);
+        ctx.lineTo(x + 5, badgeY + badgeH);
       }
+      ctx.closePath();
       ctx.fill();
     });
     ctx.textAlign = 'left';
@@ -611,14 +758,16 @@ class QuantChartEngine {
   }
 
   drawPriceScale(ctx, x, y, h, minP, maxP) {
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.45)';
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
     ctx.font = '10px "JetBrains Mono", monospace';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'middle';
 
     const steps = 5;
     for (let i = 0; i <= steps; i++) {
       const price = maxP - ((maxP - minP) / steps) * i;
       const posY = y + (h / steps) * i;
-      ctx.fillText(price.toFixed(this.decimals), x + 8, posY + 4);
+      ctx.fillText(price.toFixed(this.decimals), x + 6, posY);
     }
   }
 
@@ -626,7 +775,7 @@ class QuantChartEngine {
     const { x, y } = this.crosshair;
     if (x < left || x > left + w || y < top || y > top + h) return;
 
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
     ctx.setLineDash([3, 3]);
     ctx.lineWidth = 1;
 
@@ -635,19 +784,22 @@ class QuantChartEngine {
     ctx.moveTo(left, y);
     ctx.lineTo(left + w, y);
     ctx.moveTo(x, top);
-    ctx.lineTo(x, top + h + 25);
+    ctx.lineTo(x, top + h + 24);
     ctx.stroke();
     ctx.setLineDash([]);
 
     // Price badge on right axis
-    const priceRange = maxP - minP;
+    const priceRange = maxP - minP || 1;
     const priceAtY = maxP - ((y - top) / h) * priceRange;
 
     ctx.fillStyle = '#00F59B';
-    ctx.fillRect(rightX + 4, y - 9, 60, 18);
+    const tagW = 54;
+    ctx.fillRect(rightX + 2, y - 9, tagW, 18);
     ctx.fillStyle = '#080F0C';
-    ctx.font = 'bold 10px "JetBrains Mono", monospace';
-    ctx.fillText(priceAtY.toFixed(this.decimals), rightX + 8, y + 4);
+    ctx.font = 'bold 9px "JetBrains Mono", monospace';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(priceAtY.toFixed(this.decimals), rightX + 5, y);
   }
 }
 

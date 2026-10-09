@@ -285,26 +285,86 @@
     padding: 14px;
   }
 
+  .chart-top-bar {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px 8px;
+    padding: 10px 12px;
+    align-items: center;
+  }
+
+  .chart-symbol-badge {
+    order: 1;
+    grid-column: 1;
+    justify-self: start;
+    padding: 5px 8px;
+    font-size: 0.78rem;
+  }
+
+  .chart-symbol-select {
+    font-size: 0.78rem;
+  }
+
+  .chart-status-live {
+    order: 2;
+    grid-column: 2;
+    justify-self: end;
+    font-size: 0.70rem;
+  }
+
+  .chart-tf-pills {
+    order: 3;
+    grid-column: 1 / -1;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 4px;
+  }
+
+  .chart-tf-btn {
+    flex: 1;
+    text-align: center;
+    padding: 6px 2px;
+    font-size: 0.74rem;
+    min-height: 32px;
+  }
+
+  .chart-legend-bar {
+    padding: 6px 12px;
+    gap: 6px;
+  }
+
+  .chart-script-title {
+    font-size: 0.76rem;
+  }
+
+  .chart-hud-ohlc {
+    font-size: 0.68rem;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
   .chart-canvas-wrapper {
-    height: 300px;
+    height: 350px;
   }
 
   .chart-controls-bar {
     flex-direction: column;
     align-items: flex-start;
     padding: 8px 12px;
+    gap: 8px;
   }
 
   .layer-toggles-list {
     width: 100%;
-    overflow-x: auto;
-    padding-bottom: 4px;
-    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
   }
 
   .layer-toggle-btn {
-    white-space: nowrap;
     padding: 4px 8px;
+    font-size: 0.68rem;
   }
 
   .pricing-badge-corner {
@@ -381,15 +441,35 @@
 
   .chart-top-bar {
     padding: 8px 10px;
+    gap: 8px 6px;
   }
 
   .chart-symbol-badge {
     padding: 4px 6px;
+    font-size: 0.72rem;
+  }
+
+  .chart-symbol-select {
+    font-size: 0.72rem;
+  }
+
+  .chart-status-live {
+    font-size: 0.66rem;
   }
 
   .chart-tf-btn {
-    padding: 4px 6px;
-    font-size: 0.72rem;
+    padding: 5px 1px;
+    font-size: 0.70rem;
+    min-height: 28px;
+  }
+
+  .chart-hud-ohlc {
+    font-size: 0.64rem;
+    gap: 5px;
+  }
+
+  .chart-canvas-wrapper {
+    height: 330px;
   }
 
   .faq-question-btn {
