@@ -443,6 +443,13 @@
         toggleBtn.focus();
       }
     });
+
+    // Auto-close if screen resized above mobile breakpoint (e.g. tablet to laptop orientation)
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 850 && drawer.classList.contains('active')) {
+        closeMobileMenu();
+      }
+    }, { passive: true });
   }
 
 })();

@@ -13,6 +13,7 @@
   z-index: 999;
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 0 16px;
   pointer-events: none;
 }
@@ -24,6 +25,9 @@
   flex-wrap: nowrap;
   gap: 8px;
   padding: 6px 10px 6px 14px;
+  height: 52px;
+  max-height: 52px;
+  box-sizing: border-box;
   background: rgba(9, 15, 11, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -165,6 +169,7 @@
 
 /* Mobile Navigation Backdrop & Drawer */
 .mobile-nav-backdrop {
+  display: none;
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.72);
@@ -184,6 +189,7 @@
 }
 
 .mobile-nav-drawer {
+  display: none;
   position: fixed;
   top: 74px;
   left: 14px;
@@ -198,7 +204,6 @@
   padding: 16px 18px 20px 18px;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.92), 0 0 40px rgba(0, 245, 155, 0.16);
   z-index: 9999;
-  display: flex;
   flex-direction: column;
   gap: 12px;
   opacity: 0;
@@ -429,15 +434,17 @@
   left: 50%;
   transform: translateX(-50%);
   font-family: var(--font-display);
-  font-size: clamp(4.5rem, 13vw, 12rem);
+  font-size: clamp(2.5rem, 6.5vw, 6.5rem);
   font-weight: 900;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.08em;
   color: rgba(255, 255, 255, 0.015);
   -webkit-text-stroke: 1.5px rgba(0, 245, 155, 0.045);
   text-transform: uppercase;
   white-space: nowrap;
   user-select: none;
   pointer-events: none;
+  max-width: 100vw;
+  text-align: center;
 }
 
 .hero-waveform-svg {

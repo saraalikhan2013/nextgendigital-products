@@ -92,11 +92,28 @@
    RESPONSIVE BREAKPOINTS
    -------------------------------------------------------------------------- */
 
+/* --------------------------------------------------------------------------
+   DESKTOP & LAPTOP GUARDS (> 850px)
+   Mobile drawer, backdrop, and hamburger toggle button MUST NEVER render
+   -------------------------------------------------------------------------- */
+@media (min-width: 851px) {
+  .mobile-nav-drawer,
+  .mobile-nav-backdrop,
+  .nav-toggle-btn {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    opacity: 0 !important;
+  }
+}
+
 /* Laptops & Mid-size Desktops (851px - 1180px) */
 @media (max-width: 1180px) and (min-width: 851px) {
   .nav-dock {
     gap: 4px;
     padding: 5px 8px 5px 12px;
+    height: 48px;
+    max-height: 48px;
   }
   .nav-brand {
     gap: 6px;
@@ -192,9 +209,19 @@
     max-width: 560px;
     justify-content: space-between;
     gap: 8px;
+    height: 48px;
+    max-height: 48px;
   }
 
   .nav-toggle-btn {
+    display: flex;
+  }
+
+  .mobile-nav-backdrop {
+    display: block;
+  }
+
+  .mobile-nav-drawer {
     display: flex;
   }
 
