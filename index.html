@@ -180,6 +180,28 @@
          2. HERO SECTION
          ======================================================================== -->
     <section class="hero-section" id="hero" aria-labelledby="hero-title">
+      <!-- Quadency-Style Ambient Waveform & Watermark Background -->
+      <div class="hero-bg-visual" aria-hidden="true">
+        <div class="hero-watermark-text">CONFLUENC QUANT</div>
+        <svg class="hero-waveform-svg" viewBox="0 0 1440 340" fill="none" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="heroWaveGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#00F59B" stop-opacity="0.14" />
+              <stop offset="60%" stop-color="#064E3B" stop-opacity="0.04" />
+              <stop offset="100%" stop-color="#050807" stop-opacity="0" />
+            </linearGradient>
+            <linearGradient id="heroLineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#00F59B" stop-opacity="0.05" />
+              <stop offset="25%" stop-color="#00F59B" stop-opacity="0.75" />
+              <stop offset="65%" stop-color="#00F59B" stop-opacity="0.95" />
+              <stop offset="100%" stop-color="#00F59B" stop-opacity="0.15" />
+            </linearGradient>
+          </defs>
+          <path d="M0,280 L110,265 L220,290 L330,220 L440,245 L550,180 L660,210 L770,140 L880,185 L990,110 L1100,165 L1210,95 L1320,135 L1440,80 L1440,340 L0,340 Z" fill="url(#heroWaveGrad)" />
+          <polyline points="0,280 110,265 220,290 330,220 440,245 550,180 660,210 770,140 880,185 990,110 1100,165 1210,95 1320,135 1440,80" stroke="url(#heroLineGrad)" stroke-width="2.5" fill="none" stroke-linejoin="round" />
+        </svg>
+      </div>
+
       <div class="container">
         <div class="hero-grid">
           
@@ -187,11 +209,7 @@
           <div class="hero-content">
             <div class="hero-badge-row">
               <span class="hero-product-pill">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                  <polyline points="2 17 12 22 22 17"></polyline>
-                  <polyline points="2 12 12 17 22 12"></polyline>
-                </svg>
+                <span class="badge-dot-glow"></span>
                 Confluenc Quant Indicator [v6.1.12]
               </span>
             </div>

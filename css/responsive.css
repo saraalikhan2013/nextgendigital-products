@@ -258,6 +258,16 @@
     padding-bottom: 40px;
   }
 
+  .hero-watermark-text {
+    font-size: clamp(2.6rem, 11vw, 4.5rem);
+    top: 8px;
+    letter-spacing: 0.08em;
+  }
+
+  .hero-waveform-svg {
+    height: 180px;
+  }
+
   .hero-headline {
     font-size: clamp(1.8rem, 6.5vw, 2.4rem);
     overflow-wrap: break-word;

@@ -50,11 +50,17 @@
   width: 32px;
   height: 32px;
   border-radius: 9px;
-  background: rgba(0, 245, 155, 0.12);
-  border: 1px solid rgba(0, 245, 155, 0.3);
+  background: var(--neon-green);
+  border: 1px solid rgba(0, 245, 155, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: 0 0 16px rgba(0, 245, 155, 0.4);
+  transition: transform var(--trans-fast);
+}
+
+.brand-icon-wrapper svg {
+  stroke: #050807 !important;
 }
 
 .brand-name {
@@ -94,8 +100,9 @@
 }
 
 .nav-link:hover, .nav-link.active {
-  color: var(--text-white);
-  background: rgba(255, 255, 255, 0.06);
+  color: var(--neon-green);
+  background: rgba(0, 245, 155, 0.09);
+  border: 1px solid rgba(0, 245, 155, 0.22);
 }
 
 .nav-cta {
@@ -401,6 +408,47 @@
   padding-top: calc(var(--header-height) + 60px);
   padding-bottom: 70px;
   position: relative;
+  overflow: hidden;
+}
+
+/* Quadency-Style Ambient Waveform & Watermark Background */
+.hero-bg-visual {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero-watermark-text {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 13vw, 12rem);
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.015);
+  -webkit-text-stroke: 1.5px rgba(0, 245, 155, 0.045);
+  text-transform: uppercase;
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+}
+
+.hero-waveform-svg {
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 320px;
+  pointer-events: none;
+  opacity: 0.85;
+  filter: drop-shadow(0 -5px 25px rgba(0, 245, 155, 0.2));
 }
 
 .hero-grid {
@@ -408,6 +456,8 @@
   grid-template-columns: 1fr 1.05fr;
   gap: 48px;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-content {
@@ -436,6 +486,21 @@
   font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: -0.01em;
+  box-shadow: 0 0 15px rgba(0, 245, 155, 0.1);
+}
+
+.badge-dot-glow {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--neon-green);
+  box-shadow: 0 0 8px var(--neon-green);
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
 }
 
 .hero-headline {
