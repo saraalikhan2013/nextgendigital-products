@@ -16,7 +16,6 @@
     initStickyMobileCta();
     initModals();
     initSmoothScroll();
-    initMobileNav();
   }
 
   if (document.readyState === 'loading') {
@@ -227,10 +226,8 @@
     if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          // If modal or mobile drawer is active, do not force visible
           const hasOpenModal = document.querySelector('.modal-overlay.active');
-          const hasOpenNav = document.getElementById('mobile-nav-drawer')?.classList.contains('active');
-          if (!entry.isIntersecting && !hasOpenModal && !hasOpenNav) {
+          if (!entry.isIntersecting && !hasOpenModal) {
             stickyBar.classList.add('visible');
           } else {
             stickyBar.classList.remove('visible');
@@ -242,8 +239,7 @@
       window.addEventListener('scroll', () => {
         const heroBottom = heroSection.getBoundingClientRect().bottom;
         const hasOpenModal = document.querySelector('.modal-overlay.active');
-        const hasOpenNav = document.getElementById('mobile-nav-drawer')?.classList.contains('active');
-        if (heroBottom < 100 && !hasOpenModal && !hasOpenNav) {
+        if (heroBottom < 100 && !hasOpenModal) {
           stickyBar.classList.add('visible');
         } else {
           stickyBar.classList.remove('visible');
@@ -356,101 +352,7 @@
     });
   }
 
-  /* --------------------------------------------------------------------------
-     8. RESPONSIVE MOBILE NAVIGATION DRAWER
-     -------------------------------------------------------------------------- */
-  function initMobileNav() {
-    const toggleBtn = document.getElementById('nav-toggle-btn');
-    const drawer = document.getElementById('mobile-nav-drawer');
-    const backdrop = document.getElementById('mobile-nav-backdrop');
-    const closeBtn = document.getElementById('mobile-nav-close-btn');
-    const stickyBar = document.getElementById('sticky-mobile-cta');
-    const navLinks = drawer ? drawer.querySelectorAll('.mobile-nav-link, .mobile-drawer-cta') : [];
 
-    if (!toggleBtn || !drawer) return;
-
-    function openMobileMenu() {
-      drawer.classList.add('active');
-      drawer.setAttribute('aria-hidden', 'false');
-      if (backdrop) {
-        backdrop.classList.add('active');
-        backdrop.setAttribute('aria-hidden', 'false');
-      }
-      toggleBtn.classList.add('open');
-      toggleBtn.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-      if (stickyBar) stickyBar.classList.remove('visible');
-    }
-
-    function closeMobileMenu() {
-      drawer.classList.remove('active');
-      drawer.setAttribute('aria-hidden', 'true');
-      if (backdrop) {
-        backdrop.classList.remove('active');
-        backdrop.setAttribute('aria-hidden', 'true');
-      }
-      toggleBtn.classList.remove('open');
-      toggleBtn.setAttribute('aria-expanded', 'false');
-      // Only restore scroll if no modal is active
-      if (!document.querySelector('.modal-overlay.active')) {
-        document.body.style.overflow = '';
-      }
-      // Restore sticky mobile CTA if scrolled past hero
-      const heroSection = document.getElementById('hero') || document.querySelector('.page-hero');
-      if (stickyBar) {
-        if (!heroSection) {
-          stickyBar.classList.add('visible');
-        } else {
-          const heroBottom = heroSection.getBoundingClientRect().bottom;
-          if (heroBottom < 100) stickyBar.classList.add('visible');
-        }
-      }
-    }
-
-    toggleBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (drawer.classList.contains('active')) {
-        closeMobileMenu();
-      } else {
-        openMobileMenu();
-      }
-    });
-
-    if (closeBtn) {
-      closeBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        closeMobileMenu();
-      });
-    }
-
-    if (backdrop) {
-      backdrop.addEventListener('click', () => {
-        closeMobileMenu();
-      });
-    }
-
-    // Close on link click (smooth scroll or navigation proceeds)
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        closeMobileMenu();
-      });
-    });
-
-    // Close on Escape key press
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && drawer.classList.contains('active')) {
-        closeMobileMenu();
-        toggleBtn.focus();
-      }
-    });
-
-    // Auto-close if screen resized above mobile breakpoint (e.g. tablet to laptop orientation)
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 850 && drawer.classList.contains('active')) {
-        closeMobileMenu();
-      }
-    }, { passive: true });
-  }
 
 })();
 

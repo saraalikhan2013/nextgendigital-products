@@ -92,20 +92,7 @@
    RESPONSIVE BREAKPOINTS
    -------------------------------------------------------------------------- */
 
-/* --------------------------------------------------------------------------
-   DESKTOP & LAPTOP GUARDS (> 850px)
-   Mobile drawer, backdrop, and hamburger toggle button MUST NEVER render
-   -------------------------------------------------------------------------- */
-@media (min-width: 851px) {
-  .mobile-nav-drawer,
-  .mobile-nav-backdrop,
-  .nav-toggle-btn {
-    display: none !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-    opacity: 0 !important;
-  }
-}
+
 
 /* Laptops & Mid-size Desktops (851px - 1180px) */
 @media (max-width: 1180px) and (min-width: 851px) {
@@ -205,24 +192,13 @@
   }
 
   .nav-dock {
-    width: 100%;
-    max-width: 560px;
+    width: auto;
+    max-width: calc(100vw - 32px);
     justify-content: space-between;
-    gap: 8px;
+    gap: 12px;
     height: 48px;
     max-height: 48px;
-  }
-
-  .nav-toggle-btn {
-    display: flex;
-  }
-
-  .mobile-nav-backdrop {
-    display: block;
-  }
-
-  .mobile-nav-drawer {
-    display: flex;
+    padding: 6px 12px;
   }
 
   .steps-grid {
@@ -285,11 +261,7 @@
     padding-bottom: 40px;
   }
 
-  .hero-watermark-text {
-    font-size: clamp(2.6rem, 11vw, 4.5rem);
-    top: 8px;
-    letter-spacing: 0.08em;
-  }
+
 
   .hero-waveform-svg {
     height: 180px;
@@ -502,15 +474,7 @@
     font-size: 0.74rem;
   }
 
-  .nav-toggle-btn {
-    width: 34px;
-    height: 34px;
-  }
 
-  .hamburger-box {
-    width: 16px;
-    height: 12px;
-  }
 
   .hero-headline {
     font-size: 1.65rem;
