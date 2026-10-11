@@ -100,7 +100,67 @@
           </svg>
         </a>
       </div>
+
+      <button class="nav-toggle-btn" id="nav-toggle-btn" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer" type="button">
+        <span class="hamburger-box">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </span>
+      </button>
     </nav>
+
+    <!-- Mobile Navigation Drawer & Backdrop -->
+    <div class="mobile-nav-backdrop" id="mobile-nav-backdrop" aria-hidden="true"></div>
+    <div class="mobile-nav-drawer" id="mobile-nav-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation" aria-hidden="true">
+      <div class="mobile-nav-header">
+        <span class="mobile-nav-title">Navigation Menu</span>
+        <button type="button" class="mobile-nav-close-btn" id="mobile-nav-close-btn" aria-label="Close menu">&times;</button>
+      </div>
+      <nav class="mobile-nav-links" aria-label="Mobile Navigation Links">
+        <a href="#benefits" class="mobile-nav-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>Benefits</span>
+        </a>
+        <a href="#features" class="mobile-nav-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          <span>Features</span>
+        </a>
+        <a href="#gallery" class="mobile-nav-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+          <span>Chart Preview</span>
+        </a>
+        <a href="#how-it-works" class="mobile-nav-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+          <span>How It Works</span>
+        </a>
+        <a href="#pricing" class="mobile-nav-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          <span>Pricing &amp; Offer</span>
+        </a>
+        <a href="#faq" class="mobile-nav-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          <span>FAQ</span>
+        </a>
+        <a href="/about-us" class="mobile-nav-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <span>About Us</span>
+        </a>
+      </nav>
+      <div class="mobile-nav-footer">
+        <a href="https://superprofile.bio/vp/confluenc-quant-indicator--v6-1-12----smart-range---target-analysis-tool" 
+           class="btn-primary mobile-drawer-cta"
+           data-cta-checkout="true"
+           data-cta-location="mobile-drawer"
+           id="mobile-drawer-cta">
+          <span>GET ACCESS — ₹399</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
   </header>
 
   <main id="main-content">
@@ -241,6 +301,10 @@
                 <div class="chart-script-title">
                   <span>Confluenc Quant Indicator</span>
                   <span class="chart-script-badge">[v6.1.12]</span>
+                </div>
+                <div class="mobile-chart-live-price" id="mobile-chart-live-price" aria-label="Current market price">
+                  <span class="m-price text-neon" id="cq-mobile-price">67,985.00</span>
+                  <span class="m-change badge-green" id="cq-mobile-change">+1.85%</span>
                 </div>
                 <div class="chart-hud-ohlc" id="cq-hud-ohlc">
                   <span>O: 67,420.50</span>

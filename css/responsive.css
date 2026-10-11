@@ -191,6 +191,11 @@
     width: 100%;
     max-width: 560px;
     justify-content: space-between;
+    gap: 8px;
+  }
+
+  .nav-toggle-btn {
+    display: flex;
   }
 
   .steps-grid {
@@ -217,6 +222,10 @@
 
   .quant-hud-widget {
     display: none; /* Hide HUD overlay on smaller screens so chart canvas is 100% visible */
+  }
+
+  .mobile-chart-live-price {
+    display: flex;
   }
 }
 
@@ -438,6 +447,11 @@
 
 /* Small Screens & Foldable Phones (<= 380px) */
 @media (max-width: 380px) {
+  .nav-dock {
+    padding: 5px 8px;
+    gap: 6px;
+  }
+
   .brand-version {
     display: none;
   }
@@ -447,8 +461,18 @@
   }
 
   .nav-dock .btn-primary-sm {
-    padding: 8px 12px;
-    font-size: 0.76rem;
+    padding: 7px 10px;
+    font-size: 0.74rem;
+  }
+
+  .nav-toggle-btn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .hamburger-box {
+    width: 16px;
+    height: 12px;
   }
 
   .hero-headline {

@@ -20,16 +20,17 @@
     init: function () {
       const config = window.CONFLUENC_CONFIG?.tracking || {};
       const pixelId = config.metaPixelId || window.META_PIXEL_ID || '';
+      const isPlaceholder = !pixelId || pixelId.includes('YOUR_META_PIXEL_ID') || !/^\d+$/.test(pixelId.trim());
 
-      // Only initialize if a valid pixel ID is supplied
-      if (pixelId && typeof pixelId === 'string' && pixelId.trim() !== '') {
+      // Only initialize if tracking is enabled and a valid numeric pixel ID is supplied
+      if (config.enabled && !isPlaceholder) {
         this.injectMetaPixel(pixelId.trim());
         this.trackPageView();
         this.trackViewContent();
       } else {
         if (config.debug) {
           console.info(
-            '[Tracking] Meta Pixel ID is not configured. To enable tracking, add your Meta Pixel ID to CONFLUENC_CONFIG.tracking.metaPixelId in js/config.js.'
+            '[Tracking] Meta Pixel is disabled or ID is unconfigured. To enable tracking, add your Meta Pixel ID to CONFLUENC_CONFIG.tracking.metaPixelId in js/config.js and set enabled: true.'
           );
         }
       }

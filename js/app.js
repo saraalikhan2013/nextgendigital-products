@@ -16,6 +16,7 @@
     initStickyMobileCta();
     initModals();
     initSmoothScroll();
+    initMobileNav();
   }
 
   if (document.readyState === 'loading') {
@@ -74,14 +75,17 @@
     // Layer Toggle Buttons
     const layerButtons = document.querySelectorAll('.layer-toggle-btn');
     layerButtons.forEach(btn => {
+      btn.setAttribute('aria-pressed', btn.classList.contains('active') ? 'true' : 'false');
       btn.addEventListener('click', () => {
         const layer = btn.getAttribute('data-layer');
         const isActive = btn.classList.contains('active');
         if (isActive) {
           btn.classList.remove('active');
+          btn.setAttribute('aria-pressed', 'false');
           if (chartInstance) chartInstance.setLayer(layer, false);
         } else {
           btn.classList.add('active');
+          btn.setAttribute('aria-pressed', 'true');
           if (chartInstance) chartInstance.setLayer(layer, true);
         }
       });
@@ -113,11 +117,43 @@
         if (activePanel) {
           activePanel.classList.add('active');
         }
+
+        // Auto-center selected tab in scrollable tabs bar
+        btn.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
       });
     });
 
-    // Smooth horizontal mouse scroll support for desktop/laptop
+    // Mouse drag-to-scroll & wheel support for desktop / laptop
     if (tabsBar) {
+      let isDown = false;
+      let startX = 0;
+      let scrollLeft = 0;
+
+      tabsBar.addEventListener('mousedown', (e) => {
+        isDown = true;
+        tabsBar.classList.add('grabbing');
+        startX = e.pageX - tabsBar.offsetLeft;
+        scrollLeft = tabsBar.scrollLeft;
+      });
+
+      tabsBar.addEventListener('mouseleave', () => {
+        isDown = false;
+        tabsBar.classList.remove('grabbing');
+      });
+
+      tabsBar.addEventListener('mouseup', () => {
+        isDown = false;
+        tabsBar.classList.remove('grabbing');
+      });
+
+      tabsBar.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - tabsBar.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        tabsBar.scrollLeft = scrollLeft - walk;
+      });
+
       tabsBar.addEventListener('wheel', (e) => {
         if (Math.abs(e.deltaX) > 0) return; // Native horizontal scroll handled by OS
         if (tabsBar.scrollWidth > tabsBar.clientWidth) {
@@ -125,6 +161,22 @@
           tabsBar.scrollLeft += e.deltaY;
         }
       }, { passive: false });
+
+      // Keyboard arrow navigation for tabs accessibility
+      tabsBar.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+          const btns = Array.from(tabBtns);
+          const currentIndex = btns.indexOf(document.activeElement);
+          if (currentIndex !== -1) {
+            e.preventDefault();
+            const nextIndex = e.key === 'ArrowRight'
+              ? (currentIndex + 1) % btns.length
+              : (currentIndex - 1 + btns.length) % btns.length;
+            btns[nextIndex].focus();
+            btns[nextIndex].click();
+          }
+        }
+      });
     }
   }
 
@@ -294,4 +346,90 @@
     });
   }
 
+  /* --------------------------------------------------------------------------
+     8. RESPONSIVE MOBILE NAVIGATION DRAWER
+     -------------------------------------------------------------------------- */
+  function initMobileNav() {
+    const toggleBtn = document.getElementById('nav-toggle-btn');
+    const drawer = document.getElementById('mobile-nav-drawer');
+    const backdrop = document.getElementById('mobile-nav-backdrop');
+    const closeBtn = document.getElementById('mobile-nav-close-btn');
+    const stickyBar = document.getElementById('sticky-mobile-cta');
+    const navLinks = drawer ? drawer.querySelectorAll('.mobile-nav-link, .mobile-drawer-cta') : [];
+
+    if (!toggleBtn || !drawer) return;
+
+    function openMobileMenu() {
+      drawer.classList.add('active');
+      drawer.setAttribute('aria-hidden', 'false');
+      if (backdrop) {
+        backdrop.classList.add('active');
+        backdrop.setAttribute('aria-hidden', 'false');
+      }
+      toggleBtn.classList.add('open');
+      toggleBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      if (stickyBar) stickyBar.classList.remove('visible');
+    }
+
+    function closeMobileMenu() {
+      drawer.classList.remove('active');
+      drawer.setAttribute('aria-hidden', 'true');
+      if (backdrop) {
+        backdrop.classList.remove('active');
+        backdrop.setAttribute('aria-hidden', 'true');
+      }
+      toggleBtn.classList.remove('open');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      // Only restore scroll if no modal is active
+      if (!document.querySelector('.modal-overlay.active')) {
+        document.body.style.overflow = '';
+      }
+      // Restore sticky mobile CTA if scrolled past hero
+      const heroSection = document.getElementById('hero');
+      if (stickyBar && heroSection) {
+        const heroBottom = heroSection.getBoundingClientRect().bottom;
+        if (heroBottom < 100) stickyBar.classList.add('visible');
+      }
+    }
+
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (drawer.classList.contains('active')) {
+        closeMobileMenu();
+      } else {
+        openMobileMenu();
+      }
+    });
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeMobileMenu();
+      });
+    }
+
+    if (backdrop) {
+      backdrop.addEventListener('click', () => {
+        closeMobileMenu();
+      });
+    }
+
+    // Close on link click (smooth scroll or navigation proceeds)
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        closeMobileMenu();
+      });
+    });
+
+    // Close on Escape key press
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && drawer.classList.contains('active')) {
+        closeMobileMenu();
+        toggleBtn.focus();
+      }
+    });
+  }
+
 })();
+

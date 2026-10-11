@@ -157,6 +157,26 @@
   color: var(--text-secondary);
 }
 
+.mobile-chart-live-price {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.mobile-chart-live-price .m-price {
+  color: var(--neon-green);
+  font-weight: 800;
+}
+
+.mobile-chart-live-price .m-change {
+  font-size: 0.70rem;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
 /* 3. Canvas Container & HUD Overlay */
 .chart-canvas-wrapper {
   position: relative;
@@ -170,6 +190,7 @@
   height: 100%;
   display: block;
   cursor: crosshair;
+  touch-action: pan-y;
 }
 
 /* Overlay Smart Quant HUD Dashboard (Positioned top-left to never cover latest candles) */

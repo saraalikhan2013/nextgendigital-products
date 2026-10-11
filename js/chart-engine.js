@@ -299,6 +299,8 @@ class QuantChartEngine {
   }
 
   setupInteractivity() {
+    this.canvas.style.touchAction = 'pan-y';
+
     const getPos = (e) => {
       const rect = this.canvas.getBoundingClientRect();
       const clientX = e.touches && e.touches.length > 0 ? e.touches[0].clientX : e.clientX;
@@ -309,7 +311,13 @@ class QuantChartEngine {
       };
     };
 
+    let touchTimeout = null;
+
     const handleMove = (e) => {
+      if (touchTimeout) {
+        clearTimeout(touchTimeout);
+        touchTimeout = null;
+      }
       const pos = getPos(e);
       this.crosshair.active = true;
       this.crosshair.x = pos.x;
@@ -318,17 +326,28 @@ class QuantChartEngine {
       this.requestRender();
     };
 
-    const handleEnd = () => {
+    const handleMouseLeave = () => {
       this.crosshair.active = false;
       this.requestRender();
       this.resetHudInfo();
     };
 
+    const handleTouchEnd = () => {
+      // Keep crosshair visible on mobile so tapped candle details remain readable
+      if (touchTimeout) clearTimeout(touchTimeout);
+      touchTimeout = setTimeout(() => {
+        this.crosshair.active = false;
+        this.requestRender();
+        this.resetHudInfo();
+      }, 3500);
+    };
+
     this.canvas.addEventListener('mousemove', handleMove, { passive: true });
-    this.canvas.addEventListener('mouseleave', handleEnd, { passive: true });
+    this.canvas.addEventListener('mouseleave', handleMouseLeave, { passive: true });
     this.canvas.addEventListener('touchstart', handleMove, { passive: true });
     this.canvas.addEventListener('touchmove', handleMove, { passive: true });
-    this.canvas.addEventListener('touchend', handleEnd, { passive: true });
+    this.canvas.addEventListener('touchend', handleTouchEnd, { passive: true });
+    this.canvas.addEventListener('touchcancel', handleTouchEnd, { passive: true });
   }
 
   updateCrosshairCandle(x) {
@@ -350,6 +369,8 @@ class QuantChartEngine {
     const hudPrice = document.getElementById('cq-hud-price');
     const hudChange = document.getElementById('cq-hud-change');
     const hudOhlc = document.getElementById('cq-hud-ohlc');
+    const mPrice = document.getElementById('cq-mobile-price');
+    const mChange = document.getElementById('cq-mobile-change');
 
     if (hudPrice) {
       hudPrice.textContent = candle.close.toFixed(this.decimals);
@@ -357,11 +378,24 @@ class QuantChartEngine {
       hudPrice.className = `hud-val ${isUp ? 'text-neon' : 'text-red'}`;
     }
 
+    if (mPrice) {
+      mPrice.textContent = candle.close.toFixed(this.decimals);
+      const isUp = candle.close >= candle.open;
+      mPrice.className = `m-price ${isUp ? 'text-neon' : 'text-red'}`;
+    }
+
     if (hudChange) {
       const diff = candle.close - candle.open;
       const pct = (diff / (candle.open || 1)) * 100;
       hudChange.textContent = `${diff >= 0 ? '+' : ''}${pct.toFixed(2)}%`;
       hudChange.className = `hud-badge ${diff >= 0 ? 'badge-green' : 'badge-red'}`;
+    }
+
+    if (mChange) {
+      const diff = candle.close - candle.open;
+      const pct = (diff / (candle.open || 1)) * 100;
+      mChange.textContent = `${diff >= 0 ? '+' : ''}${pct.toFixed(2)}%`;
+      mChange.className = `m-change ${diff >= 0 ? 'badge-green' : 'badge-red'}`;
     }
 
     if (hudOhlc) {
