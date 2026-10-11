@@ -377,7 +377,7 @@
     text-align: center;
     padding: 6px 2px;
     font-size: 0.74rem;
-    min-height: 32px;
+    min-height: 36px;
   }
 
   .chart-legend-bar {
@@ -414,8 +414,9 @@
   }
 
   .layer-toggle-btn {
-    padding: 4px 8px;
-    font-size: 0.68rem;
+    padding: 6px 10px;
+    font-size: 0.70rem;
+    min-height: 36px;
   }
 
   .pricing-badge-corner {
@@ -450,7 +451,9 @@
   }
 
   .footer-link-btn {
-    min-height: 38px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
   }
 }
 
@@ -467,14 +470,13 @@
 
   .brand-name {
     font-size: 0.78rem;
+    white-space: nowrap;
   }
 
   .nav-dock .btn-primary-sm {
     padding: 7px 10px;
     font-size: 0.74rem;
   }
-
-
 
   .hero-headline {
     font-size: 1.65rem;
@@ -516,9 +518,15 @@
   }
 
   .chart-tf-btn {
-    padding: 5px 1px;
+    padding: 5px 2px;
     font-size: 0.70rem;
-    min-height: 28px;
+    min-height: 32px;
+  }
+
+  .layer-toggle-btn {
+    padding: 5px 8px;
+    font-size: 0.66rem;
+    min-height: 32px;
   }
 
   .chart-hud-ohlc {
@@ -533,6 +541,106 @@
   .faq-question-btn {
     padding: 16px 18px;
     font-size: 0.98rem;
+  }
+}
+
+/* Extra Small Mobile (320px - 340px, e.g. Small Mobile 320x568) */
+@media (max-width: 340px) {
+  .nav-dock {
+    max-width: calc(100vw - 12px);
+    padding: 4px 6px;
+    gap: 4px;
+    height: 44px;
+    max-height: 44px;
+  }
+
+  .nav-brand {
+    gap: 5px;
+    padding-right: 5px;
+  }
+
+  .brand-icon-wrapper {
+    width: 24px;
+    height: 24px;
+  }
+
+  .brand-icon-wrapper svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .brand-name {
+    font-size: 0.70rem;
+    white-space: nowrap;
+  }
+
+  .nav-dock .btn-primary-sm {
+    padding: 5px 8px;
+    font-size: 0.66rem;
+    min-height: 32px;
+  }
+
+  .hero-headline {
+    font-size: 1.45rem;
+  }
+
+  .hero-price-block {
+    padding: 10px 12px;
+  }
+
+  .price-offer-value {
+    font-size: 1.48rem;
+  }
+
+  .sticky-mobile-cta {
+    padding: 8px 10px;
+    gap: 6px;
+  }
+
+  .sticky-product-name {
+    font-size: 0.70rem;
+  }
+
+  .sticky-price-cur {
+    font-size: 0.95rem;
+  }
+
+  .sticky-cta-btn {
+    padding: 7px 10px;
+    font-size: 0.76rem;
+    min-height: 38px;
+  }
+
+  .chart-tf-btn {
+    padding: 4px 1px;
+    font-size: 0.64rem;
+    min-height: 30px;
+  }
+
+  .layer-toggle-btn {
+    padding: 4px 6px;
+    font-size: 0.64rem;
+    min-height: 30px;
+  }
+
+  .modal-dialog {
+    max-height: 90vh;
+    max-height: 90dvh;
+    margin: 6px;
+    width: calc(100% - 12px);
+  }
+
+  .modal-header {
+    padding: 12px 14px;
+  }
+
+  .modal-body {
+    padding: 14px 12px;
+    font-size: 0.86rem;
+  }
+
+  .modal-title {
+    font-size: 1.15rem;
   }
 }
 
