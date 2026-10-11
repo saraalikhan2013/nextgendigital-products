@@ -3,11 +3,13 @@
  * Confluenc Quant Indicator [v6.1.12]
  * 
  * Supports Meta Pixel tracking cleanly and safely:
- * - Reads Pixel ID from window.CONFLUENC_CONFIG.tracking.metaPixelId or window.META_PIXEL_ID
- * - Fires standard 'PageView' and 'ViewContent' once on initial page load
- * - Fires 'InitiateCheckout' when a verified purchase CTA is clicked
- * - Enforces duplicate event prevention via event deduplication keys
- * - NEVER fires 'Purchase' event on CTA click (Purchase should only be fired on official post-payment confirmation)
+ * - Reads Pixel ID from window.CONFLUENC_CONFIG.tracking.metaPixelId (4019058228397546)
+ * - Recognizes existing Pixel base code in <head> to prevent duplicate initialization
+ * - Standard PageView is fired once on initial page load (deduplicated)
+ * - Fires standard 'InitiateCheckout' when any purchase CTA button is clicked
+ * - Enforces event deduplication to prevent accidental double-click events
+ * - Uses non-blocking listeners so navigation is never hindered if ad-blockers are active
+ * - NEVER fires 'Purchase' event on CTA click (Purchase is handled exclusively by Superprofile after payment)
  */
 
 (function () {
@@ -16,30 +18,36 @@
   const Tracking = {
     initialized: false,
     firedEvents: new Set(),
+    lastCtaClick: 0,
 
     init: function () {
       const config = window.CONFLUENC_CONFIG?.tracking || {};
-      const pixelId = config.metaPixelId || window.META_PIXEL_ID || '';
-      const isPlaceholder = !pixelId || pixelId.includes('YOUR_META_PIXEL_ID') || !/^\d+$/.test(pixelId.trim());
+      const pixelId = (config.metaPixelId || window.META_PIXEL_ID || '4019058228397546').trim();
+      const isPlaceholder = !pixelId || pixelId.includes('YOUR_META_PIXEL_ID') || !/^\d+$/.test(pixelId);
 
-      // Only initialize if tracking is enabled and a valid numeric pixel ID is supplied
-      if (config.enabled && !isPlaceholder) {
-        this.injectMetaPixel(pixelId.trim());
-        this.trackPageView();
-        this.trackViewContent();
-      } else {
+      // 1. Check if Meta Pixel is already initialized (e.g. from the official <head> snippet)
+      if (typeof window.fbq === 'function') {
+        this.initialized = true;
+        // The <head> base code already fired PageView, mark it to prevent duplicate fire
+        this.firedEvents.add('PageView');
         if (config.debug) {
-          console.info(
-            '[Tracking] Meta Pixel is disabled or ID is unconfigured. To enable tracking, add your Meta Pixel ID to CONFLUENC_CONFIG.tracking.metaPixelId in js/config.js and set enabled: true.'
-          );
+          console.log(`[Tracking] Meta Pixel detected in document head (ID: ${pixelId}). Duplicate initialization prevented.`);
         }
+      } else if (config.enabled && !isPlaceholder) {
+        // Fallback: Inject Pixel if not already present in HTML
+        this.injectMetaPixel(pixelId);
+        this.trackPageView();
       }
 
+      // 2. Bind checkout button click listeners
       this.bindCtaListeners();
     },
 
     injectMetaPixel: function (pixelId) {
-      if (window.fbq) return;
+      if (typeof window.fbq === 'function') {
+        this.initialized = true;
+        return;
+      }
 
       /* Meta Pixel Base Code */
       !(function (f, b, e, v, n, t, s) {
@@ -68,72 +76,59 @@
     },
 
     trackPageView: function () {
-      if (!this.initialized || !window.fbq) return;
+      if (typeof window.fbq !== 'function') return;
       if (this.firedEvents.has('PageView')) return;
 
-      window.fbq('track', 'PageView');
-      this.firedEvents.add('PageView');
+      try {
+        window.fbq('track', 'PageView');
+        this.firedEvents.add('PageView');
 
-      if (window.CONFLUENC_CONFIG?.tracking?.debug) {
-        console.log('[Tracking] Fired PageView');
-      }
-    },
-
-    trackViewContent: function () {
-      if (!this.initialized || !window.fbq) return;
-      if (this.firedEvents.has('ViewContent')) return;
-
-      const product = window.CONFLUENC_CONFIG?.product || {};
-      window.fbq('track', 'ViewContent', {
-        content_name: product.name || 'Confluenc Quant Indicator [v6.1.12]',
-        content_category: 'TradingView Indicator / Software',
-        content_ids: ['cq-v6.1.12'],
-        content_type: 'product',
-        value: product.offerPriceNumber || 399,
-        currency: product.currency || 'INR',
-      });
-
-      this.firedEvents.add('ViewContent');
-
-      if (window.CONFLUENC_CONFIG?.tracking?.debug) {
-        console.log('[Tracking] Fired ViewContent');
+        if (window.CONFLUENC_CONFIG?.tracking?.debug) {
+          console.log('[Tracking] Fired PageView');
+        }
+      } catch (err) {
+        // Ignore tracking errors if script is blocked
       }
     },
 
     trackInitiateCheckout: function (ctaLocation) {
-      if (!this.initialized || !window.fbq) return;
+      if (typeof window.fbq !== 'function') return;
 
-      // Rate limit / deduplicate clicks within 2 seconds
+      // Rate limit / deduplicate clicks within 1.5 seconds from a single user click
       const now = Date.now();
-      if (this.lastCtaClick && now - this.lastCtaClick < 2000) {
+      if (this.lastCtaClick && now - this.lastCtaClick < 1500) {
         return;
       }
       this.lastCtaClick = now;
 
-      const product = window.CONFLUENC_CONFIG?.product || {};
-      window.fbq('track', 'InitiateCheckout', {
-        content_name: product.name || 'Confluenc Quant Indicator [v6.1.12]',
-        content_category: 'TradingView Indicator / Software',
-        content_ids: ['cq-v6.1.12'],
-        num_items: 1,
-        value: product.offerPriceNumber || 399,
-        currency: product.currency || 'INR',
-        cta_location: ctaLocation || 'unknown',
-      });
+      try {
+        const product = window.CONFLUENC_CONFIG?.product || {};
+        window.fbq('track', 'InitiateCheckout', {
+          content_name: product.name || 'Confluenc Quant Indicator [v6.1.12]',
+          content_category: 'TradingView Indicator / Software',
+          content_ids: ['cq-v6.1.12'],
+          num_items: 1,
+          value: product.offerPriceNumber || 399,
+          currency: product.currency || 'INR',
+          cta_location: ctaLocation || 'unknown',
+        });
 
-      if (window.CONFLUENC_CONFIG?.tracking?.debug) {
-        console.log(`[Tracking] Fired InitiateCheckout from: ${ctaLocation}`);
+        if (window.CONFLUENC_CONFIG?.tracking?.debug) {
+          console.log(`[Tracking] Fired InitiateCheckout from: ${ctaLocation}`);
+        }
+      } catch (err) {
+        // Never let tracking errors interfere with user navigation
       }
     },
 
     bindCtaListeners: function () {
       document.addEventListener('click', (e) => {
-        const ctaBtn = e.target.closest('[data-cta-checkout="true"]');
+        const ctaBtn = e.target.closest('[data-cta-checkout="true"], a[href*="superprofile.bio"]');
         if (ctaBtn) {
-          const location = ctaBtn.getAttribute('data-cta-location') || 'unknown';
+          const location = ctaBtn.getAttribute('data-cta-location') || 'checkout-button';
           this.trackInitiateCheckout(location);
         }
-      });
+      }, { passive: true });
     },
   };
 

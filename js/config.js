@@ -36,11 +36,10 @@ const CONFLUENC_CONFIG = {
   },
 
   // Meta Pixel Configuration
-  // Paste your Meta Pixel ID here (e.g. '123456789012345') when deploying
   tracking: {
-    metaPixelId: "", // Leave blank or add your real Meta Pixel ID
-    enabled: false,  // Set to true when metaPixelId is provided
-    debug: false,    // Set to true to see console logs for tracking events
+    metaPixelId: "4019058228397546",
+    enabled: true,
+    debug: false,
   },
 
   // Hero Key Benefits
