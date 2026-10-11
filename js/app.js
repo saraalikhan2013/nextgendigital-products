@@ -217,15 +217,20 @@
      -------------------------------------------------------------------------- */
   function initStickyMobileCta() {
     const stickyBar = document.getElementById('sticky-mobile-cta');
-    const heroSection = document.getElementById('hero');
-    if (!stickyBar || !heroSection) return;
+    const heroSection = document.getElementById('hero') || document.querySelector('.page-hero');
+    if (!stickyBar) return;
+    if (!heroSection) {
+      stickyBar.classList.add('visible');
+      return;
+    }
 
     if ('IntersectionObserver' in window) {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          // If modal is active, do not force visible
+          // If modal or mobile drawer is active, do not force visible
           const hasOpenModal = document.querySelector('.modal-overlay.active');
-          if (!entry.isIntersecting && !hasOpenModal) {
+          const hasOpenNav = document.getElementById('mobile-nav-drawer')?.classList.contains('active');
+          if (!entry.isIntersecting && !hasOpenModal && !hasOpenNav) {
             stickyBar.classList.add('visible');
           } else {
             stickyBar.classList.remove('visible');
@@ -237,7 +242,8 @@
       window.addEventListener('scroll', () => {
         const heroBottom = heroSection.getBoundingClientRect().bottom;
         const hasOpenModal = document.querySelector('.modal-overlay.active');
-        if (heroBottom < 100 && !hasOpenModal) {
+        const hasOpenNav = document.getElementById('mobile-nav-drawer')?.classList.contains('active');
+        if (heroBottom < 100 && !hasOpenModal && !hasOpenNav) {
           stickyBar.classList.add('visible');
         } else {
           stickyBar.classList.remove('visible');
@@ -257,10 +263,10 @@
 
     modalTriggers.forEach(btn => {
       btn.addEventListener('click', (e) => {
-        e.preventDefault();
         const targetId = btn.getAttribute('data-modal-target');
-        const modal = document.getElementById(targetId);
+        const modal = targetId ? document.getElementById(targetId) : null;
         if (modal) {
+          e.preventDefault();
           lastActiveElement = document.activeElement;
           modal.classList.add('active');
           document.body.style.overflow = 'hidden';
@@ -291,10 +297,14 @@
           lastActiveElement.focus();
         }
         // Restore sticky CTA if scrolled past hero
-        const heroSection = document.getElementById('hero');
-        if (stickyBar && heroSection) {
-          const heroBottom = heroSection.getBoundingClientRect().bottom;
-          if (heroBottom < 100) stickyBar.classList.add('visible');
+        const heroSection = document.getElementById('hero') || document.querySelector('.page-hero');
+        if (stickyBar) {
+          if (!heroSection) {
+            stickyBar.classList.add('visible');
+          } else {
+            const heroBottom = heroSection.getBoundingClientRect().bottom;
+            if (heroBottom < 100) stickyBar.classList.add('visible');
+          }
         }
       }
     };
@@ -386,10 +396,14 @@
         document.body.style.overflow = '';
       }
       // Restore sticky mobile CTA if scrolled past hero
-      const heroSection = document.getElementById('hero');
-      if (stickyBar && heroSection) {
-        const heroBottom = heroSection.getBoundingClientRect().bottom;
-        if (heroBottom < 100) stickyBar.classList.add('visible');
+      const heroSection = document.getElementById('hero') || document.querySelector('.page-hero');
+      if (stickyBar) {
+        if (!heroSection) {
+          stickyBar.classList.add('visible');
+        } else {
+          const heroBottom = heroSection.getBoundingClientRect().bottom;
+          if (heroBottom < 100) stickyBar.classList.add('visible');
+        }
       }
     }
 

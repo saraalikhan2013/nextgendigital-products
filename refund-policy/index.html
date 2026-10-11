@@ -218,6 +218,7 @@
           <a href="/privacy-policy" class="footer-link-btn">Privacy Policy</a>
           <a href="/terms-and-conditions" class="footer-link-btn">Terms &amp; Conditions</a>
           <a href="/refund-policy" class="footer-link-btn" style="color: var(--neon-green);">Refund Policy</a>
+          <button type="button" class="footer-link-btn" data-modal-target="modal-disclaimer" aria-haspopup="dialog">Risk Disclaimer</button>
         </div>
       </div>
 
@@ -247,6 +248,22 @@
       <span>GET ACCESS — ₹399</span>
     </a>
   </aside>
+
+  <!-- Risk Disclaimer Modal -->
+  <div class="modal-overlay" id="modal-disclaimer" role="dialog" aria-modal="true" aria-labelledby="disclaimer-heading">
+    <div class="modal-dialog" tabindex="-1">
+      <div class="modal-header">
+        <h3 class="modal-title" id="disclaimer-heading">Risk Disclaimer</h3>
+        <button type="button" class="modal-close-btn" aria-label="Close Modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h4>Educational Tool Notice</h4>
+        <p>Confluenc Quant Indicator [v6.1.12] is provided for educational and informational purposes only and does not constitute financial or investment advice. It does not guarantee profitable trades, signal accuracy, or financial returns.</p>
+        <h4>Market Risk Disclosure</h4>
+        <p>Trading in financial markets, equities, futures, options, forex, and cryptocurrencies involves significant financial risk and may not be suitable for all investors. Past performance does not guarantee future results. Users are responsible for their own trading decisions and should conduct independent research.</p>
+      </div>
+    </div>
+  </div>
 
   <!-- Scripts -->
   <script src="/js/config.js" defer></script>
