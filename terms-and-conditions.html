@@ -3,238 +3,635 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Terms and Conditions — Confluenc Quant Indicator [v6.1.12]</title>
-  
-  <!-- SEO & Meta Tags -->
-  <meta name="description" content="Terms and Conditions for Confluenc Quant Indicator [v6.1.12]. User license terms, pricing, digital delivery, intellectual property restrictions, and trading risk disclosures.">
+  <title>Terms &amp; Conditions — Confluenc Quant Indicator [v6.1.12]</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Terms &amp; Conditions for Confluenc Quant Indicator [v6.1.12]. Software license terms, external checkout, intellectual property, TradingView platform usage, and financial risk disclosures.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://superprofile.bio/vp/confluenc-quant-indicator--v6-1-12----smart-range---target-analysis-tool">
+  <link rel="canonical" href="https://nextgendigital.space/terms-and-conditions">
 
   <!-- Open Graph -->
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Terms and Conditions — Confluenc Quant Indicator [v6.1.12]">
-  <meta property="og:description" content="Official user agreement and license terms for Confluenc Quant Indicator [v6.1.12].">
+  <meta property="og:url" content="https://nextgendigital.space/terms-and-conditions">
+  <meta property="og:title" content="Terms &amp; Conditions — Confluenc Quant Indicator [v6.1.12]">
+  <meta property="og:description" content="Terms &amp; Conditions and software license agreement for Confluenc Quant Indicator [v6.1.12].">
+  <meta property="og:image" content="/assets/chart-overview.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Terms &amp; Conditions — Confluenc Quant Indicator [v6.1.12]">
+  <meta name="twitter:description" content="Terms &amp; Conditions for Confluenc Quant Indicator [v6.1.12].">
+  <meta name="twitter:image" content="/assets/chart-overview.jpg">
 
   <!-- Preconnect & Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="dns-prefetch" href="https://superprofile.bio">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
 
-  <!-- Core Stylesheets -->
-  <link rel="stylesheet" href="/css/index.css">
-  <link rel="stylesheet" href="/css/components.css">
-  <link rel="stylesheet" href="/css/responsive.css">
+  <style>
+    /* ================================================================
+       Confluenc Quant — Legal Policy Page Styles
+       Consistent with Obsidian Dark-Green & Black Visual Theme
+       ================================================================ */
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-deep: #050a08;
+      --bg-card: rgba(10, 17, 14, 0.92);
+      --bg-card-inner: rgba(14, 24, 20, 0.65);
+      --neon-green: #00F59B;
+      --neon-green-dim: #00c47d;
+      --green-glow: rgba(0, 245, 155, 0.15);
+      --green-glow-soft: rgba(0, 245, 155, 0.06);
+      --border-green: rgba(0, 245, 155, 0.18);
+      --border-subtle: rgba(0, 245, 155, 0.08);
+      --text-primary: #f0f6f3;
+      --text-secondary: rgba(240, 246, 243, 0.78);
+      --text-muted: rgba(240, 246, 243, 0.52);
+      --text-label: rgba(0, 245, 155, 0.9);
+      --font-display: 'Outfit', system-ui, -apple-system, sans-serif;
+      --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    }
+
+    html {
+      height: 100%;
+      -webkit-text-size-adjust: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      font-family: var(--font-body);
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      position: relative;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.7;
+    }
+
+    /* ---- Background Grid & Radial Glow ---- */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0, 245, 155, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 245, 155, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      top: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 600px;
+      background: radial-gradient(ellipse at center, rgba(0, 245, 155, 0.05) 0%, rgba(0, 200, 120, 0.02) 40%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ---- Header Navigation ---- */
+    .policy-header {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px 24px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: opacity 0.2s ease;
+    }
+
+    .brand-link:hover {
+      opacity: 0.88;
+    }
+
+    .brand-icon {
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 245, 155, 0.08);
+      border: 1px solid var(--border-green);
+      border-radius: 6px;
+    }
+
+    .brand-name {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-version {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--neon-green);
+      background: rgba(0, 245, 155, 0.08);
+      border: 1px solid var(--border-green);
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    .back-home-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--neon-green);
+      text-decoration: none;
+      padding: 7px 14px;
+      background: rgba(0, 245, 155, 0.06);
+      border: 1px solid var(--border-green);
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .back-home-link:hover {
+      background: rgba(0, 245, 155, 0.14);
+      transform: translateX(-2px);
+    }
+
+    /* ---- Policy Switcher Tabs ---- */
+    .policy-tabs-nav {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px 20px;
+    }
+
+    .policy-tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      list-style: none;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 14px;
+    }
+
+    .policy-tabs a {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 6px;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .policy-tabs a:hover {
+      color: var(--text-primary);
+      border-color: var(--border-subtle);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .policy-tabs a.active {
+      color: var(--neon-green);
+      background: rgba(0, 245, 155, 0.08);
+      border-color: var(--border-green);
+    }
+
+    /* ---- Main Policy Article Container ---- */
+    .policy-main {
+      position: relative;
+      z-index: 5;
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 8px 24px 48px;
+      flex: 1;
+    }
+
+    .policy-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-green);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6), 0 0 40px var(--green-glow-soft);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .policy-card-header {
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .policy-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--neon-green);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .policy-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .policy-meta {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .policy-meta-pill {
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 3px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--border-subtle);
+    }
+
+    /* ---- Policy Typography & Sections ---- */
+    .policy-section {
+      margin-bottom: 32px;
+    }
+
+    .policy-section:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .policy-section h2 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .policy-section h2::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 14px;
+      background: var(--neon-green);
+      border-radius: 2px;
+      align-self: center;
+    }
+
+    .policy-section p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    .policy-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .policy-section ul {
+      list-style: none;
+      margin: 14px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .policy-section li {
+      position: relative;
+      padding-left: 20px;
+      color: var(--text-secondary);
+      font-size: 0.94rem;
+      line-height: 1.65;
+    }
+
+    .policy-section li::before {
+      content: '';
+      position: absolute;
+      left: 4px;
+      top: 10px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--neon-green);
+      box-shadow: 0 0 6px var(--neon-green);
+    }
+
+    .policy-section strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* ---- Notice / Highlight Callout ---- */
+    .policy-callout {
+      background: var(--bg-card-inner);
+      border-left: 3px solid var(--neon-green);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 18px 0;
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .policy-callout--risk {
+      border-left-color: #ffb84d;
+      background: rgba(30, 24, 12, 0.7);
+    }
+
+    .policy-callout--risk strong {
+      color: #ffb84d;
+    }
+
+    .policy-callout strong {
+      color: var(--neon-green);
+    }
+
+    .policy-link {
+      color: var(--neon-green);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: opacity 0.2s ease;
+    }
+
+    .policy-link:hover {
+      opacity: 0.85;
+    }
+
+    /* ---- Footer ---- */
+    .landing-footer {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: 24px 20px 28px;
+      text-align: center;
+      border-top: 1px solid var(--border-subtle);
+      margin-top: auto;
+    }
+
+    .landing-footer-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+
+    .landing-footer-links li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .landing-footer-links a {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s ease;
+    }
+
+    .landing-footer-links a:hover,
+    .landing-footer-links a.active {
+      color: var(--neon-green);
+    }
+
+    .landing-footer-links a:focus-visible {
+      outline: 2px solid rgba(0, 245, 155, 0.5);
+      outline-offset: 3px;
+      border-radius: 3px;
+    }
+
+    .landing-footer-sep {
+      color: var(--border-green);
+      font-size: 0.65rem;
+      user-select: none;
+    }
+
+    .landing-footer-copy {
+      margin-top: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: rgba(240, 246, 243, 0.3);
+      letter-spacing: 0.03em;
+    }
+
+    /* ---- Responsive Design ---- */
+    @media (max-width: 768px) {
+      .policy-header {
+        padding: 20px 16px 12px;
+      }
+      .policy-tabs-nav {
+        padding: 0 16px 16px;
+      }
+      .policy-main {
+        padding: 4px 16px 36px;
+      }
+      .policy-card {
+        padding: 24px 20px;
+        border-radius: 12px;
+      }
+      .policy-title {
+        font-size: 1.65rem;
+      }
+      .policy-section h2 {
+        font-size: 1.15rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ========================================================================
-       1. FLOATING NAVIGATION DOCK
-       ======================================================================== -->
-  <header class="navbar-wrapper" role="banner">
-    <nav class="nav-dock" aria-label="Main Navigation">
-      <a href="/" class="nav-brand" style="text-decoration: none;">
-        <div class="brand-icon-wrapper" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00F59B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
-            <polyline points="16 7 22 7 22 13"></polyline>
-          </svg>
-        </div>
-        <span class="brand-name">CONFLUENC QUANT</span>
-        <span class="brand-version">v6.1.12</span>
-      </a>
-
-      <div class="nav-links">
-        <a href="/" class="nav-link">Home</a>
-        <a href="/about-us" class="nav-link">About Us</a>
-        <a href="/privacy-policy" class="nav-link">Privacy</a>
-        <a href="/terms-and-conditions" class="nav-link active">Terms</a>
-        <a href="/refund-policy" class="nav-link">Refunds</a>
+  <!-- Header -->
+  <header class="policy-header" role="banner">
+    <a href="/" class="brand-link" aria-label="Confluenc Quant Home">
+      <div class="brand-icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00F59B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+          <polyline points="16 7 22 7 22 13"></polyline>
+        </svg>
       </div>
+      <span class="brand-name">CONFLUENC QUANT</span>
+      <span class="brand-version">v6.1.12</span>
+    </a>
 
-      <div class="nav-cta">
-        <a href="https://superprofile.bio/vp/confluenc-quant-indicator--v6-1-12----smart-range---target-analysis-tool" 
-           class="btn-primary btn-primary-sm" 
-           data-cta-checkout="true"
-           data-cta-location="terms-nav"
-           id="nav-cta-button">
-          <span>GET ACCESS — ₹399</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </a>
-      </div>
-    </nav>
+    <a href="/" class="back-home-link" aria-label="Back to indicator landing page">
+      <span aria-hidden="true">←</span> Back to Home
+    </a>
   </header>
 
-  <main id="main-content">
-    <!-- ========================================================================
-         2. PAGE HERO
-         ======================================================================== -->
-    <section class="page-hero">
-      <div class="container">
-        <div class="page-breadcrumb">
-          <a href="/">Home</a>
-          <span>/</span>
-          <span>Legal</span>
-          <span>/</span>
-          <span>Terms &amp; Conditions</span>
+  <!-- Policy Switcher Tabs -->
+  <nav class="policy-tabs-nav" aria-label="Legal Policies Navigation">
+    <ul class="policy-tabs">
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><a href="/refund-policy">Refund Policy</a></li>
+      <li><a href="/terms-and-conditions" class="active" aria-current="page">Terms &amp; Conditions</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content Card -->
+  <main class="policy-main" role="main">
+    <article class="policy-card">
+
+      <header class="policy-card-header">
+        <span class="policy-tag">Legal Documentation</span>
+        <h1 class="policy-title">Terms &amp; Conditions</h1>
+        <div class="policy-meta">
+          <span class="policy-meta-pill">Confluenc Quant Indicator [v6.1.12]</span>
+          <span>Effective: October 2026</span>
         </div>
-        <h1 class="page-title">Terms &amp; Conditions</h1>
-        <p class="page-subtitle">Product license agreement, usage terms, digital access provisions, and risk disclosures.</p>
-        <div class="page-meta">
-          <span class="page-meta-badge">Confluenc Quant [v6.1.12]</span>
-          <span>Effective Date: October 9, 2026</span>
-          <span>Last Updated: October 2026</span>
+      </header>
+
+      <!-- 1. Agreement & Product Overview -->
+      <section class="policy-section">
+        <h2>1. Agreement to Terms &amp; Product Overview</h2>
+        <p>These Terms &amp; Conditions govern your access to and use of this website and the Confluenc Quant Indicator [v6.1.12]. By visiting this website, clicking the DOWNLOAD button, or purchasing and accessing the indicator, you acknowledge that you have read, understood, and agreed to be bound by these Terms.</p>
+        <p>Confluenc Quant Indicator [v6.1.12] is a technical analysis software tool designed to run within the TradingView charting platform, combining multi-EMA trend ribbon visualization, automated support and resistance zones, VWAP, Central Pivot Range (CPR), and visual market telemetry into a unified chart script.</p>
+      </section>
+
+      <!-- 2. License Grant & Permitted Use -->
+      <section class="policy-section">
+        <h2>2. License Grant &amp; Permitted Use</h2>
+        <p>Upon completing your purchase through the verified external checkout and submitting a valid TradingView username, you are granted a revocable, non-exclusive, non-transferable, single-user license to access and use the indicator on TradingView for your personal, non-commercial technical analysis and educational review.</p>
+        <ul>
+          <li><strong>Single-User License:</strong> Each license authorizes script access for one individual TradingView username. Access credentials may not be shared, rented, or distributed across multiple users or organizations.</li>
+          <li><strong>Delivery Method:</strong> Delivery is provided exclusively through TradingView's native "Invite-Only Scripts" authorization mechanism. No executable binary file is distributed.</li>
+        </ul>
+      </section>
+
+      <!-- 3. External Payment & Checkout -->
+      <section class="policy-section">
+        <h2>3. Payment &amp; External Checkout</h2>
+        <p>All purchases and payment transactions for Confluenc Quant Indicator [v6.1.12] are conducted through our designated third-party checkout provider, SuperProfile (<a href="https://superprofile.bio/vp/confluenc-quant-indicator--v6-1-12----smart-range---target-analysis-tool-38" class="policy-link" target="_blank" rel="noopener noreferrer">SuperProfile Official Checkout</a>). By completing a purchase, you agree to comply with SuperProfile's checkout terms and payment processing conditions.</p>
+        <p>You agree to provide accurate, complete, and current billing information, contact details, and a valid TradingView username during or immediately following checkout so that script authorization can be completed.</p>
+      </section>
+
+      <!-- 4. Intellectual Property & Restrictions -->
+      <section class="policy-section">
+        <h2>4. Intellectual Property &amp; Restrictions Against Redistribution</h2>
+        <p>All algorithms, formulas, visual designs, PineScript source code, and documentation associated with Confluenc Quant Indicator [v6.1.12] remain the exclusive intellectual property of Confluenc Quant and its creators.</p>
+        <p>You expressly agree that you shall NOT:</p>
+        <ul>
+          <li>Decompile, disassemble, reverse engineer, or attempt to extract the underlying source code of the indicator script.</li>
+          <li>Resell, sublicense, distribute, broadcast, publish, rent, lease, or publicly display the indicator or its signals.</li>
+          <li>Create derivative commercial indicators, software packages, or trading alert systems based on the proprietary algorithms of Confluenc Quant.</li>
+          <li>Share or transfer script access permissions to unauthorized third-party TradingView accounts.</li>
+        </ul>
+      </section>
+
+      <!-- 5. Product Updates & Technical Support -->
+      <section class="policy-section">
+        <h2>5. Product Updates &amp; Technical Support</h2>
+        <p>License access includes setup guidance and any maintenance patches, optimizations, or algorithmic updates released for version 6.1.12 at the creator's discretion. Technical support is provided to assist customers with onboarding, indicator activation, and configuration questions.</p>
+        <p>We do not guarantee or make binding commitments regarding speculative features, permanent future platform enhancements, or additions beyond the current functional release of the indicator.</p>
+      </section>
+
+      <!-- 6. Third-Party Platform Availability & Compatibility -->
+      <section class="policy-section">
+        <h2>6. Third-Party Platform Availability &amp; Limitations</h2>
+        <p>Confluenc Quant Indicator [v6.1.12] runs exclusively on the TradingView platform (TradingView, Inc.). Access requires an active, registered account with TradingView.</p>
+        <ul>
+          <li><strong>Independent Provider:</strong> Confluenc Quant is an independent tool developer and is not affiliated with, endorsed by, or sponsored by TradingView, Inc. or SuperProfile.</li>
+          <li><strong>Platform Dependencies:</strong> We do not control and cannot be held responsible for TradingView's platform uptime, data feed latencies, scheduled maintenance, system outages, interface modifications, or third-party policy changes.</li>
+        </ul>
+      </section>
+
+      <!-- 7. Trading Risks & Disclaimer of Financial Advice -->
+      <section class="policy-section">
+        <h2>7. Trading Risks &amp; Financial Disclaimer</h2>
+        <div class="policy-callout policy-callout--risk">
+          <strong>IMPORTANT RISK NOTICE:</strong> Confluenc Quant Indicator [v6.1.12] is an analytical charting tool and educational software utility only. It is <strong>NOT personalized financial advice, investment advice, or trading advice</strong>. Trading in financial markets involves substantial risk of financial loss.
         </div>
-      </div>
-    </section>
+        <p>Please carefully review the following risk considerations:</p>
+        <ul>
+          <li><strong>No Guarantees:</strong> Algorithmic signals, trend ribbons, support and resistance levels, VWAP, CPR, and market telemetry are mathematical calculations based on historical price data. <strong>Signals do NOT guarantee profits, future performance, or the prevention of trading losses.</strong></li>
+          <li><strong>Market Volatility:</strong> Financial markets—including stocks, indices, commodities, forex, and cryptocurrencies—are subject to rapid, unpredictable price swings. You may lose some or all of your invested capital.</li>
+          <li><strong>Independent Decision-Making:</strong> You are solely and independently responsible for your trading decisions, risk management strategies, and order executions. Always conduct independent research and consult a licensed financial advisor if necessary.</li>
+        </ul>
+      </section>
 
-    <!-- ========================================================================
-         3. POLICY CONTENT CARD (Restored to Original Modal Card Design)
-         ======================================================================== -->
-    <div class="content-container">
-      <article class="policy-page-dialog">
+      <!-- 8. Limitations of Liability -->
+      <section class="policy-section">
+        <h2>8. Limitations of Liability</h2>
+        <p>To the maximum extent permitted by applicable law, Confluenc Quant, its developers, operators, and affiliates shall not be liable for any direct, indirect, incidental, consequential, special, or exemplary damages—including but not limited to trading losses, capital loss, lost profits, loss of data, business interruption, or system downtime—arising out of or related to your use of or inability to use the indicator, website, or documentation.</p>
+      </section>
 
-        <header class="modal-header">
-          <h2 class="modal-title">Terms &amp; Conditions</h2>
-          <a href="/" class="modal-close-btn" aria-label="Back to Homepage" title="Back to Homepage">&times;</a>
-        </header>
+      <!-- 9. Applicable Consumer Rights & Dispute Handling -->
+      <section class="policy-section">
+        <h2>9. Applicable Consumer Rights &amp; Dispute Handling</h2>
+        <p>Nothing in these Terms &amp; Conditions shall exclude, limit, or restrict any non-waivable statutory consumer rights, mandatory legal remedies, or warranties that cannot be lawfully excluded under the consumer protection laws applicable in your jurisdiction.</p>
+        <p><strong>Dispute Resolution:</strong> If you have any questions, concerns, or access issues regarding Confluenc Quant Indicator [v6.1.12], we encourage you to contact our support team through the official SuperProfile order and checkout channel (<a href="https://superprofile.bio/vp/confluenc-quant-indicator--v6-1-12----smart-range---target-analysis-tool-38" class="policy-link" target="_blank" rel="noopener noreferrer">SuperProfile Support</a>) with your transaction details so we can work with you to resolve the matter amicably.</p>
+      </section>
 
-        <div class="modal-body">
-          <h4>1. Digital Product License</h4>
-          <p>By purchasing Confluenc Quant Indicator [v6.1.12], you are granted a non-transferable, single-user invite-only license to use the indicator on TradingView for personal technical analysis and educational purposes.</p>
-          <ul>
-            <li><strong>Single-User License:</strong> Each license authorizes indicator access for one individual TradingView username. Sharing, distributing, or leasing access credentials is strictly prohibited.</li>
-            <li><strong>Delivery Mechanism:</strong> Access is provisioned via TradingView's native "Invite-Only Scripts" system. No local executable file installation is required or provided.</li>
-          </ul>
+      <!-- 10. Modifications to Terms -->
+      <section class="policy-section">
+        <h2>10. Modifications to Terms</h2>
+        <p>We reserve the right to revise or update these Terms &amp; Conditions at any time. Any revisions will become effective immediately upon posting to this page with an updated effective date. Your continued access to the website or indicator constitutes acceptance of any modified terms.</p>
+      </section>
 
-          <h4>2. Intellectual Property</h4>
-          <p>All PineScript code, algorithms, visual styles, and documentation remain the exclusive intellectual property of Confluenc Quant. Reverse engineering, redistribution, reselling, or public sharing of the script is strictly prohibited.</p>
-          <ul>
-            <li>You agree not to decompile, disassemble, reverse engineer, or attempt to derive the underlying PineScript source code of the indicator.</li>
-            <li>You agree not to resell, sublicense, lease, redistribute, broadcast, or publicly share the script or its proprietary indicators.</li>
-            <li>You agree not to re-package, re-brand, or create derivative commercial indicator products based on Confluenc Quant algorithms.</li>
-          </ul>
-
-          <h4>3. Platform Dependencies</h4>
-          <p>The indicator operates on the TradingView platform. Access requires an active TradingView account. We are not affiliated with or endorsed by TradingView, Inc.</p>
-          <ul>
-            <li>You must hold an active account with TradingView (a free Basic account is fully sufficient; paid TradingView tiers are not required to run Confluenc Quant).</li>
-            <li>We do not control TradingView's server uptime, market feed latency, platform maintenance downtime, or modifications TradingView may make to their terms of service.</li>
-          </ul>
-
-          <h4>4. Pricing, Payments &amp; Special Offers</h4>
-          <p>The standard regular price of Confluenc Quant Indicator [v6.1.12] is <strong>₹2,900</strong>. As part of our current promotional campaign, access is available at the discounted special offer price of <strong>₹399</strong> (inclusive of all applicable digital access authorizations).</p>
-          <ul>
-            <li><strong>One-Time Payment:</strong> The purchase price is a one-time fee granting lifetime script access to version 6.1.12 and included algorithmic updates. There are no mandatory monthly subscriptions or hidden maintenance charges.</li>
-            <li><strong>Checkout Processing:</strong> All orders are securely processed through our certified checkout partner <em>Superprofile</em>. You agree to provide accurate, valid billing and contact information during checkout.</li>
-          </ul>
-
-          <h4>5. Digital Provisioning &amp; Installation Requirements</h4>
-          <p>To receive your indicator access, you must provide your active public TradingView username during or immediately following checkout. Access is typically provisioned within a few hours of username verification, and no later than 24 business hours following checkout. Our installation support team assists you with setup until configured.</p>
-
-          <h4>6. Financial &amp; Trading Risk Disclosures</h4>
-          <p><strong>IMPORTANT RISK WARNING:</strong> Trading in financial instruments, equities, futures, options, forex, and cryptocurrencies carries a high level of risk and may not be suitable for all investors. Substantial capital loss is possible. Past performance of any indicator, system, or strategy does not guarantee future results.</p>
-          <ul>
-            <li><strong>Educational Tool Only:</strong> Confluenc Quant Indicator [v6.1.12] is an analytical and educational software tool. It is <strong>NOT financial, investment, or trading advice</strong>.</li>
-            <li><strong>No Guarantees:</strong> The indicator does NOT guarantee profitable trades, signal accuracy, or financial success. Algorithmic Buy/Sell signals and support/resistance zones are mathematical reference aids designed to assist in structured technical chart review.</li>
-            <li><strong>Sole Responsibility:</strong> You assume 100% full, independent responsibility for every trade, order, and investment decision executed on your trading accounts.</li>
-          </ul>
-
-          <h4>7. Limitation of Liability</h4>
-          <p>To the maximum extent permitted by applicable law, Confluenc Quant, its developers, and affiliates shall not be liable for any direct, indirect, incidental, consequential, special, or exemplary damages—including but not limited to trading losses, lost profits, capital reduction, or business interruption—arising out of the use or inability to use the indicator. In no event shall our total aggregate liability exceed the purchase price actually paid by you (₹399).</p>
-
-          <h4>8. Governing Law &amp; Dispute Resolution</h4>
-          <p>These Terms and Conditions shall be governed by and construed in accordance with the laws of India. Any disputes or claims arising under these Terms shall be subject to the exclusive jurisdiction of the competent courts in India.</p>
-
-          <h4>9. Contact &amp; Licensing Inquiries</h4>
-          <p>If you have any questions or require clarification regarding these Terms and Conditions, please contact us:</p>
-          <p>
-            <strong>Confluenc Quant Legal &amp; Licensing Desk:</strong><br>
-            Product: Confluenc Quant Indicator [v6.1.12]<br>
-            Official Checkout: <a href="https://superprofile.bio/vp/confluenc-quant-indicator--v6-1-12----smart-range---target-analysis-tool" target="_blank" rel="noopener noreferrer" style="color: var(--neon-green);">Superprofile Official Page</a><br>
-            Support Email: <a href="mailto:support@confluencquant.com" style="color: var(--neon-green);">support@confluencquant.com</a>
-          </p>
-        </div>
-
-      </article>
-    </div>
+    </article>
   </main>
 
-  <!-- ========================================================================
-       4. FOOTER
-       ======================================================================== -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-top">
-        <a href="/" class="nav-brand" style="border: none; padding: 0; text-decoration: none;">
-          <div class="brand-icon-wrapper" aria-hidden="true">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00F59B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
-              <polyline points="16 7 22 7 22 13"></polyline>
-            </svg>
-          </div>
-          <span class="brand-name">CONFLUENC QUANT</span>
-          <span class="brand-version">v6.1.12</span>
-        </a>
-
-        <div class="footer-links">
-          <a href="/about-us" class="footer-link-btn">About Us</a>
-          <a href="/privacy-policy" class="footer-link-btn">Privacy Policy</a>
-          <a href="/terms-and-conditions" class="footer-link-btn" style="color: var(--neon-green);">Terms &amp; Conditions</a>
-          <a href="/refund-policy" class="footer-link-btn">Refund Policy</a>
-          <button type="button" class="footer-link-btn" data-modal-target="modal-disclaimer" aria-haspopup="dialog">Risk Disclaimer</button>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <div>&copy; 2026 Confluenc Quant. All rights reserved. TradingView is a registered trademark of TradingView, Inc.</div>
-        <div>Educational &amp; Technical Analysis Software Tool.</div>
-      </div>
-    </div>
+  <!-- Footer Policy Links -->
+  <footer class="landing-footer" role="contentinfo">
+    <ul class="landing-footer-links">
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><span class="landing-footer-sep" aria-hidden="true">·</span></li>
+      <li><a href="/refund-policy">Refund Policy</a></li>
+      <li><span class="landing-footer-sep" aria-hidden="true">·</span></li>
+      <li><a href="/terms-and-conditions" class="active">Terms &amp; Conditions</a></li>
+    </ul>
+    <p class="landing-footer-copy">&copy; 2026 Confluenc Quant. All rights reserved.</p>
   </footer>
 
-  <!-- ========================================================================
-       5. STICKY MOBILE CTA BAR
-       ======================================================================== -->
-  <aside class="sticky-mobile-cta visible" id="sticky-mobile-cta" aria-label="Quick Purchase Bar">
-    <div class="sticky-info">
-      <span class="sticky-product-name">Confluenc Quant [v6.1.12]</span>
-      <div class="sticky-price-row">
-        <span class="sticky-price-reg">₹2,900</span>
-        <span class="sticky-price-cur">₹399</span>
-      </div>
-    </div>
-    <a href="https://superprofile.bio/vp/confluenc-quant-indicator--v6-1-12----smart-range---target-analysis-tool" 
-       class="btn-primary sticky-cta-btn" 
-       data-cta-checkout="true"
-       data-cta-location="terms-sticky"
-       id="sticky-mobile-button">
-      <span>GET ACCESS — ₹399</span>
-    </a>
-  </aside>
-
-  <!-- Risk Disclaimer Modal -->
-  <div class="modal-overlay" id="modal-disclaimer" role="dialog" aria-modal="true" aria-labelledby="disclaimer-heading">
-    <div class="modal-dialog" tabindex="-1">
-      <div class="modal-header">
-        <h3 class="modal-title" id="disclaimer-heading">Risk Disclaimer</h3>
-        <button type="button" class="modal-close-btn" aria-label="Close Modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <h4>Educational Tool Notice</h4>
-        <p>Confluenc Quant Indicator [v6.1.12] is provided for educational and informational purposes only and does not constitute financial or investment advice. It does not guarantee profitable trades, signal accuracy, or financial returns.</p>
-        <h4>Market Risk Disclosure</h4>
-        <p>Trading in financial markets, equities, futures, options, forex, and cryptocurrencies involves significant financial risk and may not be suitable for all investors. Past performance does not guarantee future results. Users are responsible for their own trading decisions and should conduct independent research.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Scripts -->
-  <script src="/js/config.js" defer></script>
-  <script src="/js/tracking.js" defer></script>
-  <script src="/js/app.js" defer></script>
 </body>
 </html>

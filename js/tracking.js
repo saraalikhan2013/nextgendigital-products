@@ -91,15 +91,22 @@
       }
     },
 
-    trackInitiateCheckout: function (ctaLocation) {
+    trackDownloadClick: function () {
       if (typeof window.fbq !== 'function') return;
 
-      // Rate limit / deduplicate clicks within 1.5 seconds from a single user click
-      const now = Date.now();
-      if (this.lastCtaClick && now - this.lastCtaClick < 1500) {
-        return;
+      try {
+        window.fbq('trackCustom', 'DownloadClick');
+
+        if (window.CONFLUENC_CONFIG?.tracking?.debug) {
+          console.log('[Tracking] Fired DownloadClick');
+        }
+      } catch (err) {
+        // Never let tracking errors interfere with user navigation
       }
-      this.lastCtaClick = now;
+    },
+
+    trackInitiateCheckout: function (ctaLocation) {
+      if (typeof window.fbq !== 'function') return;
 
       try {
         const product = window.CONFLUENC_CONFIG?.product || {};
@@ -124,11 +131,33 @@
     bindCtaListeners: function () {
       document.addEventListener('click', (e) => {
         const ctaBtn = e.target.closest('[data-cta-checkout="true"], a[href*="superprofile.bio"]');
-        if (ctaBtn) {
-          const location = ctaBtn.getAttribute('data-cta-location') || 'checkout-button';
-          this.trackInitiateCheckout(location);
+        if (!ctaBtn) return;
+
+        // Rate limit / deduplicate clicks within 1.5 seconds
+        const now = Date.now();
+        if (this.lastCtaClick && now - this.lastCtaClick < 1500) {
+          return;
         }
-      }, { passive: true });
+        this.lastCtaClick = now;
+
+        // Fire both DownloadClick and InitiateCheckout events
+        const location = ctaBtn.getAttribute('data-cta-location') || 'checkout-button';
+        this.trackDownloadClick();
+        this.trackInitiateCheckout(location);
+
+        // Give pixel events a brief window to transmit before navigation.
+        // Only intercept if the link navigates the current tab (not target="_blank").
+        const href = ctaBtn.getAttribute('href');
+        const opensNewTab = ctaBtn.target === '_blank';
+        if (href && !opensNewTab) {
+          e.preventDefault();
+          setTimeout(function () {
+            window.location.href = href;
+          }, 150);
+        }
+        // If target="_blank", the browser opens a new tab and the current page
+        // stays alive — pixel events transmit without any delay needed.
+      }, { passive: false });
     },
   };
 

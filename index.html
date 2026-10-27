@@ -113,6 +113,7 @@
       background: var(--bg-deep);
       color: var(--text-primary);
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       overflow-x: hidden;
@@ -592,6 +593,66 @@
         transition-duration: 0.01ms !important;
       }
     }
+
+    /* ---- Footer Policy Links ---- */
+    .landing-footer {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: 24px 20px 28px;
+      text-align: center;
+      border-top: 1px solid var(--border-subtle);
+      margin-top: auto;
+    }
+
+    .landing-footer-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+
+    .landing-footer-links li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .landing-footer-links a {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s ease;
+    }
+
+    .landing-footer-links a:hover {
+      color: var(--neon-green);
+    }
+
+    .landing-footer-links a:focus-visible {
+      outline: 2px solid rgba(0, 245, 155, 0.5);
+      outline-offset: 3px;
+      border-radius: 3px;
+    }
+
+    .landing-footer-sep {
+      color: var(--border-green);
+      font-size: 0.65rem;
+      user-select: none;
+    }
+
+    .landing-footer-copy {
+      margin-top: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: rgba(240, 246, 243, 0.3);
+      letter-spacing: 0.03em;
+    }
   </style>
 </head>
 <body>
@@ -686,6 +747,18 @@
     </aside>
 
   </main>
+
+  <!-- Footer Policy Links -->
+  <footer class="landing-footer" role="contentinfo">
+    <ul class="landing-footer-links">
+      <li><a href="/privacy-policy">Privacy Policy</a></li>
+      <li><span class="landing-footer-sep" aria-hidden="true">·</span></li>
+      <li><a href="/refund-policy">Refund Policy</a></li>
+      <li><span class="landing-footer-sep" aria-hidden="true">·</span></li>
+      <li><a href="/terms-and-conditions">Terms &amp; Conditions</a></li>
+    </ul>
+    <p class="landing-footer-copy">&copy; 2026 Confluenc Quant. All rights reserved.</p>
+  </footer>
 
   <!-- Tracking (preserves existing Meta Pixel integration & InitiateCheckout events) -->
   <script src="js/tracking.js" defer></script>
