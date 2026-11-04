@@ -584,62 +584,272 @@
     }
 
     /* ================================================================
-       BUNDLE VALUE SECTION
+       BUNDLE VALUE BREAKDOWN SECTION
+       💰 UNLOCK ₹50,000+ WORTH OF RESOURCES!
        ================================================================ */
     .value-section {
       position: relative;
       z-index: 1;
-      padding: 60px 0;
+      padding: 70px 0;
     }
 
-    .value-banner {
-      background: linear-gradient(135deg, rgba(79, 125, 245, 0.1) 0%, rgba(139, 92, 246, 0.08) 100%);
-      border: 1px solid rgba(79, 125, 245, 0.28);
-      border-radius: 20px;
-      padding: 56px 40px;
-      text-align: center;
+    .value-breakdown-card {
+      background: linear-gradient(180deg, rgba(14, 20, 52, 0.95) 0%, rgba(10, 14, 38, 0.98) 100%);
+      border: 1px solid rgba(79, 125, 245, 0.32);
+      border-radius: 24px;
+      padding: 48px 44px;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 35px rgba(79, 125, 245, 0.12);
+      max-width: 920px;
+      margin: 0 auto;
     }
 
-    .value-banner::before {
+    .value-breakdown-card::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       height: 3px;
-      background: var(--gradient-cta);
+      background: linear-gradient(90deg, #4f7df5 0%, #8b5cf6 50%, #f5a623 100%);
     }
 
-    .value-amount {
+    .value-card-header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .value-main-heading {
       font-family: var(--font-display);
       font-weight: 900;
-      font-size: clamp(2.8rem, 6vw, 4.4rem);
-      letter-spacing: -0.03em;
+      font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+      margin-top: 12px;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+
+    .gold-gradient {
       background: linear-gradient(135deg, #fbbf24 0%, #f5a623 50%, #d97706 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      margin-bottom: 8px;
     }
 
-    .value-label {
+    .value-lead-text {
+      font-family: var(--font-body);
+      font-size: 0.96rem;
+      color: var(--text-secondary);
+      max-width: 660px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    .value-table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      margin-bottom: 32px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(10, 14, 38, 0.6);
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .value-breakdown-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .value-breakdown-table thead tr {
+      background: rgba(79, 125, 245, 0.12);
+      border-bottom: 1px solid rgba(79, 125, 245, 0.25);
+    }
+
+    .value-breakdown-table th {
+      padding: 16px 22px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-accent);
+    }
+
+    .value-breakdown-table th.th-val {
+      text-align: right;
+    }
+
+    .value-row {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      transition: background 0.2s ease;
+    }
+
+    .value-row:hover {
+      background: rgba(79, 125, 245, 0.06);
+    }
+
+    .value-breakdown-table td {
+      padding: 16px 22px;
+      vertical-align: middle;
+    }
+
+    .td-name {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .value-cat-icon {
+      font-size: 1.35rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(79, 125, 245, 0.12);
+      border: 1px solid rgba(79, 125, 245, 0.2);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .value-cat-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .value-cat-title {
       font-family: var(--font-display);
-      font-weight: 800;
-      font-size: clamp(1.2rem, 2.4vw, 1.7rem);
+      font-weight: 700;
+      font-size: 1.02rem;
       color: var(--text-primary);
-      margin-bottom: 14px;
     }
 
-    .value-description {
+    .value-cat-subtitle {
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .td-val {
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .value-price-tag {
+      font-family: var(--font-mono);
+      font-weight: 700;
+      font-size: 1.08rem;
+      color: #93c5fd;
+      background: rgba(79, 125, 245, 0.12);
+      border: 1px solid rgba(79, 125, 245, 0.25);
+      padding: 6px 14px;
+      border-radius: 8px;
+      display: inline-block;
+    }
+
+    /* TOTAL VALUE ROW */
+    .value-total-row {
+      background: linear-gradient(90deg, rgba(34, 197, 94, 0.16) 0%, rgba(245, 166, 35, 0.16) 100%);
+      border-top: 2px solid rgba(34, 197, 94, 0.6);
+    }
+
+    .value-total-row td {
+      padding: 20px 22px;
+    }
+
+    .value-total-icon {
+      background: rgba(34, 197, 94, 0.2);
+      border-color: rgba(34, 197, 94, 0.4);
+    }
+
+    .value-total-title {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1.15rem;
+      letter-spacing: 0.04em;
+      color: #ffffff;
+      text-transform: uppercase;
+    }
+
+    .value-total-amount {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+      letter-spacing: -0.02em;
+      color: #4ade80;
+      text-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+      display: inline-block;
+    }
+
+    /* Footer Box inside Card */
+    .value-card-footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      text-align: center;
+    }
+
+    .value-deal-callout {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      border-radius: 50px;
+      padding: 10px 22px;
+    }
+
+    .deal-icon {
+      font-size: 1.1rem;
+    }
+
+    .deal-text {
       font-family: var(--font-body);
       font-size: 0.98rem;
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .deal-highlight-price {
+      font-family: var(--font-display);
+      font-weight: 900;
+      color: #4ade80;
+      font-size: 1.18rem;
+    }
+
+    .value-pricing-clarity {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
       color: var(--text-secondary);
-      max-width: 620px;
-      margin: 0 auto;
-      line-height: 1.7;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .value-pricing-clarity del {
+      color: #94a3b8;
+    }
+
+    .clarity-badge {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      background: rgba(245, 166, 35, 0.12);
+      border: 1px solid rgba(245, 166, 35, 0.28);
+      border-radius: 6px;
+      padding: 3px 8px;
+    }
+
+    .clarity-bullet {
+      color: rgba(255, 255, 255, 0.2);
     }
 
     /* ================================================================
@@ -1034,39 +1244,39 @@
 
     /* ================================================================
        LIVE VERIFIED PURCHASE NOTIFICATION POPUP
-       Displays verified customer orders sequentially (Ashish just purchased • Delhi)
+       Displays verified customer orders periodically
        ================================================================ */
     .purchase-notification {
       position: fixed;
       bottom: 24px;
       left: 24px;
       z-index: 999;
-      background: rgba(14, 20, 52, 0.96);
+      background: rgba(11, 17, 43, 0.96);
       border: 1px solid rgba(79, 125, 245, 0.35);
-      border-radius: 50px;
-      padding: 10px 18px 10px 10px;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55), 0 0 25px rgba(79, 125, 245, 0.1);
+      border-radius: 14px;
+      padding: 10px 14px;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(79, 125, 245, 0.15);
       display: flex;
       align-items: center;
       gap: 12px;
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      transform: translateY(120px) scale(0.95);
+      transform: translateY(24px);
       opacity: 0;
       pointer-events: none;
-      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
       max-width: 360px;
     }
 
     .purchase-notification.visible {
-      transform: translateY(0) scale(1);
+      transform: translateY(0);
       opacity: 1;
       pointer-events: auto;
     }
 
     .notif-avatar-circle {
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       background: #4f7df5;
       display: flex;
@@ -1075,28 +1285,29 @@
       color: #fff;
       font-family: var(--font-display);
       font-weight: 800;
-      font-size: 0.95rem;
+      font-size: 0.98rem;
       flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
     }
 
     .notif-details {
       display: flex;
       flex-direction: column;
-      gap: 1px;
-      min-width: 140px;
+      gap: 2px;
+      min-width: 155px;
     }
 
     .notif-line-1 {
       font-family: var(--font-body);
-      font-size: 0.84rem;
+      font-size: 0.86rem;
       color: var(--text-primary);
       font-weight: 500;
+      line-height: 1.3;
     }
 
     .notif-line-1 strong {
       font-weight: 700;
-      color: #fff;
+      color: #ffffff;
     }
 
     .notif-line-2 {
@@ -1105,7 +1316,17 @@
       color: var(--text-secondary);
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 5px;
+      line-height: 1.3;
+    }
+
+    .notif-action-text {
+      color: #94a3b8;
+    }
+
+    .notif-sep {
+      color: #64748b;
+      font-size: 0.65rem;
     }
 
     .notif-verified-badge {
@@ -1118,7 +1339,7 @@
       justify-content: center;
       color: #fff;
       flex-shrink: 0;
-      box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.45);
     }
 
     .notif-verified-badge svg {
@@ -1339,12 +1560,61 @@
       }
 
       .value-section {
-        padding: 40px 0;
+        padding: 45px 0;
       }
 
-      .value-banner {
-        padding: 36px 20px;
+      .value-breakdown-card {
+        padding: 28px 16px;
+        border-radius: 18px;
+      }
+
+      .value-main-heading {
+        font-size: 1.35rem;
+      }
+
+      .value-breakdown-table th,
+      .value-breakdown-table td {
+        padding: 12px 10px;
+      }
+
+      .td-name {
+        gap: 10px;
+      }
+
+      .value-cat-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 1.05rem;
+      }
+
+      .value-cat-title {
+        font-size: 0.9rem;
+      }
+
+      .value-cat-subtitle {
+        font-size: 0.72rem;
+      }
+
+      .value-price-tag {
+        font-size: 0.9rem;
+        padding: 4px 8px;
+      }
+
+      .value-total-title {
+        font-size: 0.95rem;
+      }
+
+      .value-total-amount {
+        font-size: 1.35rem;
+      }
+
+      .value-deal-callout {
         border-radius: 16px;
+        padding: 10px 14px;
+      }
+
+      .deal-text {
+        font-size: 0.88rem;
       }
 
       .guarantee-section {
@@ -1408,24 +1678,29 @@
         padding: 18px 24px;
       }
 
-      /* Purchase notification on mobile: sits neatly above bottom */
+      /* Purchase notification on mobile: sits neatly in bottom-left */
       .purchase-notification {
-        bottom: 12px;
-        left: 12px;
-        right: 12px;
-        max-width: calc(100% - 24px);
-        padding: 8px 14px 8px 8px;
-        border-radius: 30px;
+        bottom: 14px;
+        left: 14px;
+        right: auto;
+        max-width: calc(100vw - 28px);
+        padding: 9px 12px;
+        border-radius: 12px;
+        gap: 10px;
       }
 
       .notif-avatar-circle {
-        width: 32px;
-        height: 32px;
-        font-size: 0.85rem;
+        width: 34px;
+        height: 34px;
+        font-size: 0.88rem;
+      }
+
+      .notif-details {
+        min-width: 0;
       }
 
       .notif-line-1 {
-        font-size: 0.78rem;
+        font-size: 0.8rem;
       }
 
       .notif-line-2 {
@@ -1654,16 +1929,119 @@
   </section>
 
   <!-- ============================================================
-       BUNDLE VALUE SECTION
+       BUNDLE VALUE BREAKDOWN SECTION
+       💰 UNLOCK ₹50,000+ WORTH OF RESOURCES!
        ============================================================ -->
-  <section class="value-section" aria-label="Bundle value">
+  <section class="value-section" id="value-breakdown" aria-label="Bundle value breakdown">
     <div class="section-container">
-      <div class="value-banner">
-        <div class="value-amount">₹50,000+</div>
-        <div class="value-label">Combined Value of All Included Resources</div>
-        <p class="value-description">
-          Purchasing these 100+ indicators, strategies, price action manuals, and trading templates individually would cost over ₹50,000. Now you can access the entire institutional toolkit together in one mega bundle at a tiny fraction of the original value.
-        </p>
+      <div class="value-breakdown-card">
+        <div class="value-card-header">
+          <span class="section-label section-label--gold">Combined Value Breakdown</span>
+          <h2 class="value-main-heading">
+            💰 UNLOCK <span class="gold-gradient">₹50,000+</span> WORTH OF RESOURCES!
+          </h2>
+          <p class="value-lead-text">
+            If purchased separately from professional course creators, indicator vendors, and trading desks, these individual materials would cost over ₹50,000.
+          </p>
+        </div>
+
+        <div class="value-table-wrapper">
+          <table class="value-breakdown-table" role="table" aria-label="Trading resources estimated value breakdown">
+            <thead>
+              <tr>
+                <th scope="col" class="th-name">Resource Collection</th>
+                <th scope="col" class="th-val">Estimated Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="value-row">
+                <td class="td-name">
+                  <span class="value-cat-icon" aria-hidden="true">🎓</span>
+                  <div class="value-cat-meta">
+                    <span class="value-cat-title">20+ Premium Courses</span>
+                    <span class="value-cat-subtitle">Complete foundation to advanced market mastery masterclasses</span>
+                  </div>
+                </td>
+                <td class="td-val">
+                  <span class="value-price-tag">₹15,000+</span>
+                </td>
+              </tr>
+              <tr class="value-row">
+                <td class="td-name">
+                  <span class="value-cat-icon" aria-hidden="true">📊</span>
+                  <div class="value-cat-meta">
+                    <span class="value-cat-title">Premium Indicators</span>
+                    <span class="value-cat-subtitle">Institutional trend, market structure &amp; liquidity charting tools</span>
+                  </div>
+                </td>
+                <td class="td-val">
+                  <span class="value-price-tag">₹12,000+</span>
+                </td>
+              </tr>
+              <tr class="value-row">
+                <td class="td-name">
+                  <span class="value-cat-icon" aria-hidden="true">🤖</span>
+                  <div class="value-cat-meta">
+                    <span class="value-cat-title">MT4/MT5 Bots &amp; EAs</span>
+                    <span class="value-cat-subtitle">Algorithmic execution scripts, automated bots &amp; setup files</span>
+                  </div>
+                </td>
+                <td class="td-val">
+                  <span class="value-price-tag">₹10,000+</span>
+                </td>
+              </tr>
+              <tr class="value-row">
+                <td class="td-name">
+                  <span class="value-cat-icon" aria-hidden="true">🎯</span>
+                  <div class="value-cat-meta">
+                    <span class="value-cat-title">Trading Strategies</span>
+                    <span class="value-cat-subtitle">Intraday scalping, swing trading, momentum &amp; breakout setups</span>
+                  </div>
+                </td>
+                <td class="td-val">
+                  <span class="value-price-tag">₹8,000+</span>
+                </td>
+              </tr>
+              <tr class="value-row">
+                <td class="td-name">
+                  <span class="value-cat-icon" aria-hidden="true">📑</span>
+                  <div class="value-cat-meta">
+                    <span class="value-cat-title">Guides &amp; Bonus Materials</span>
+                    <span class="value-cat-subtitle">Risk sizing spreadsheets, trading journals, checklists &amp; SOPs</span>
+                  </div>
+                </td>
+                <td class="td-val">
+                  <span class="value-price-tag">₹5,000+</span>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr class="value-total-row">
+                <td class="td-name">
+                  <span class="value-cat-icon value-total-icon" aria-hidden="true">💎</span>
+                  <div class="value-total-title">TOTAL VALUE</div>
+                </td>
+                <td class="td-val">
+                  <span class="value-total-amount">₹50,000+</span>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <div class="value-card-footer">
+          <div class="value-deal-callout">
+            <span class="deal-icon" aria-hidden="true">🚀</span>
+            <p class="deal-text">
+              Get access to all these resources in one complete bundle for just <strong class="deal-highlight-price">₹497</strong>.
+            </p>
+          </div>
+          <div class="value-pricing-clarity">
+            <span class="clarity-item">Original Regular Price: <del>₹7,999</del></span>
+            <span class="clarity-bullet" aria-hidden="true">•</span>
+            <span class="clarity-badge">You Save ₹7,502 Today (93% OFF)</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1822,7 +2200,7 @@
 
   <!-- ============================================================
        LIVE VERIFIED PURCHASE NOTIFICATION POPUP
-       Displays verified customer orders sequentially (Ashish just purchased • Delhi)
+       Displays verified customer orders periodically
        ============================================================ -->
   <div class="purchase-notification" id="purchase-notification" role="status" aria-live="polite" aria-hidden="true">
     <div class="notif-avatar-circle" id="notif-avatar-box">
@@ -1831,12 +2209,11 @@
 
     <div class="notif-details">
       <div class="notif-line-1">
-        <strong id="notif-name">Ashish</strong> just purchased
+        <strong id="notif-name">Ashish</strong> from <span id="notif-city">Delhi</span>
       </div>
       <div class="notif-line-2">
-        <span aria-hidden="true">📍</span>
-        <span id="notif-city">Delhi</span>
-        <span>•</span>
+        <span class="notif-action-text">Just purchased the bundle</span>
+        <span class="notif-sep" aria-hidden="true">•</span>
         <span id="notif-time">3 min ago</span>
       </div>
     </div>
