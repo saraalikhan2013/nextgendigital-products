@@ -1,0 +1,19 @@
+{
+  "name": "100+ Premium Trading Resources Mega Bundle 2026",
+  "short_name": "Trading Mega Bundle",
+  "icons": [
+    {
+      "src": "/assets/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#060814",
+  "background_color": "#060814",
+  "display": "standalone"
+}
