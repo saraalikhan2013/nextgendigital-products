@@ -378,12 +378,13 @@
       padding: 6px 12px;
     }
 
-    /* ---- Hero Visual / Product Mockup ---- */
+    /* ---- Hero Visual / Product Mockup & Video Stack ---- */
     .hero-visual {
       position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
+      width: 100%;
     }
 
     .mockup-glow {
@@ -391,18 +392,27 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 125%;
-      height: 125%;
-      background: radial-gradient(ellipse at center, rgba(79, 125, 245, 0.15) 0%, rgba(139, 92, 246, 0.08) 45%, transparent 70%);
+      width: 130%;
+      height: 130%;
+      background: radial-gradient(ellipse at center, rgba(79, 125, 245, 0.16) 0%, rgba(139, 92, 246, 0.08) 50%, transparent 70%);
       pointer-events: none;
       z-index: 0;
     }
 
-    .product-mockup-container {
+    .hero-visual-stack {
       position: relative;
       z-index: 1;
       width: 100%;
       max-width: 540px;
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+    }
+
+    .product-mockup-container {
+      position: relative;
+      z-index: 2;
+      width: 100%;
     }
 
     /* Product Frame */
@@ -435,6 +445,49 @@
       height: auto;
       border-radius: 12px;
       object-fit: cover;
+    }
+
+    /* YouTube Video Container & Frame directly below Product Mockup */
+    .hero-video-container {
+      position: relative;
+      width: 100%;
+      z-index: 1;
+    }
+
+    .hero-video-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: 
+        linear-gradient(#080c1e, #080c1e) padding-box,
+        linear-gradient(135deg, rgba(79, 125, 245, 0.6) 0%, rgba(139, 92, 246, 0.6) 100%) border-box;
+      border: 1px solid transparent;
+      border-radius: 16px;
+      padding: 4px;
+      box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.65),
+        0 0 35px rgba(79, 125, 245, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    @media (hover: hover) {
+      .hero-video-frame:hover {
+        transform: translateY(-2px);
+        box-shadow:
+          0 24px 55px rgba(0, 0, 0, 0.75),
+          0 0 45px rgba(139, 92, 246, 0.28);
+      }
+    }
+
+    .hero-video-frame iframe {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 12px;
+      background: #080c1e;
     }
 
     /* Floating Badges inspired by reference screenshot */
@@ -1459,6 +1512,7 @@
         justify-content: center;
       }
 
+      .hero-visual-stack,
       .product-mockup-container {
         max-width: 500px;
       }
@@ -1517,8 +1571,22 @@
         font-size: 0.94rem;
       }
 
+      .hero-visual-stack,
       .product-mockup-container {
         max-width: 100%;
+      }
+
+      .hero-visual-stack {
+        gap: 20px;
+      }
+
+      .hero-video-frame {
+        border-radius: 14px;
+        padding: 3px;
+      }
+
+      .hero-video-frame iframe {
+        border-radius: 10px;
       }
 
       /* Keep floating badges clean on small screens */
@@ -1840,38 +1908,57 @@
       </div>
     </section>
 
-    <!-- Right Column: 3D Product Mockup with Floating Badges (Reference Screenshot Style) -->
-    <aside class="hero-visual" aria-label="100+ Premium Trading Resources Mega Bundle 2026 Product Mockup">
+    <!-- Right Column: 3D Product Mockup & YouTube Video (Stacked) -->
+    <aside class="hero-visual" aria-label="100+ Premium Trading Resources Mega Bundle 2026 Product Mockup and Video">
       <div class="mockup-glow" aria-hidden="true"></div>
 
-      <div class="product-mockup-container">
-        <!-- Floating Badge: Instant Access (Top-Left) -->
-        <div class="floating-badge floating-badge--top-left">
-          <span class="badge-icon">⚡</span> Instant Access
+      <div class="hero-visual-stack">
+        <!-- 1. Product Mockup Container with Floating Badges -->
+        <div class="product-mockup-container">
+          <!-- Floating Badge: Instant Access (Top-Left) -->
+          <div class="floating-badge floating-badge--top-left">
+            <span class="badge-icon">⚡</span> Instant Access
+          </div>
+
+          <!-- Floating Badge: Secure Payment (Top-Right) -->
+          <div class="floating-badge floating-badge--top-right">
+            <span class="badge-icon">🔒</span> Secure Payment
+          </div>
+
+          <!-- Floating Badge: Bonus Included (Bottom-Left) -->
+          <div class="floating-badge floating-badge--bottom-left">
+            <span class="badge-icon">🎁</span> Bonus Included
+          </div>
+
+          <!-- Product Image Frame -->
+          <div class="product-frame">
+            <picture>
+              <img 
+                class="product-image" 
+                src="assets/hero-bundle-mockup.jpg" 
+                alt="100+ Premium Trading Resources Mega Bundle 2026 — 3D Box, Laptop Trading Charts, Strategy Books and Materials"
+                width="600"
+                height="338"
+                loading="eager"
+              >
+            </picture>
+          </div>
         </div>
 
-        <!-- Floating Badge: Secure Payment (Top-Right) -->
-        <div class="floating-badge floating-badge--top-right">
-          <span class="badge-icon">🔒</span> Secure Payment
-        </div>
-
-        <!-- Floating Badge: Bonus Included (Bottom-Left) -->
-        <div class="floating-badge floating-badge--bottom-left">
-          <span class="badge-icon">🎁</span> Bonus Included
-        </div>
-
-        <!-- Product Image Frame -->
-        <div class="product-frame">
-          <picture>
-            <img 
-              class="product-image" 
-              src="assets/hero-bundle-mockup.jpg" 
-              alt="100+ Premium Trading Resources Mega Bundle 2026 — 3D Box, Laptop Trading Charts, Strategy Books and Materials"
-              width="600"
-              height="338"
-              loading="eager"
-            >
-          </picture>
+        <!-- 2. YouTube Video directly below Product Mockup in Premium Outlined Rectangular Frame -->
+        <div class="hero-video-container">
+          <div class="hero-video-frame">
+            <iframe 
+              width="560" 
+              height="315" 
+              src="https://www.youtube.com/embed/sIIEnLWDT_Y?si=a2dixx5ML9qSjpYk" 
+              title="YouTube video player" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerpolicy="strict-origin-when-cross-origin" 
+              allowfullscreen
+            ></iframe>
+          </div>
         </div>
       </div>
     </aside>
