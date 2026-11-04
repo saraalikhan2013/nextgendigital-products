@@ -5,9 +5,9 @@
  * - Pixel ID: 1779276967537882
  * - Recognizes existing Pixel base code in <head> to prevent duplicate initialization
  * - Standard PageView is fired once on initial page load (deduplicated)
- * - Fires custom 'DownloadClick' event when the DOWNLOAD ALL button is clicked
+ * - Fires custom 'DownloadClick' event when either DOWNLOAD ALL button is clicked
  * - DownloadClick fires BEFORE redirect to SuperProfile checkout
- * - NEVER fires 'Purchase' event (Purchase is handled by SuperProfile after payment)
+ * - NEVER fires 'Purchase' event on the landing page (Purchase is handled by SuperProfile after payment)
  * - Live Purchase Notification Engine displaying verified customer purchases
  */
 
@@ -28,21 +28,23 @@
         this.firedEvents['PageView'] = true;
       }
 
-      // 2. Bind the DOWNLOAD ALL button click listener
+      // 2. Bind the DOWNLOAD ALL buttons click listener
       this.bindCtaListeners();
 
       // 3. Initialize Live Verified Purchase Notifications Popup
       this.initPurchaseNotifications();
     },
 
-    trackDownloadClick: function () {
+    trackDownloadClick: function (ctaLocation) {
       if (typeof window.fbq !== 'function') return;
 
       try {
         window.fbq('trackCustom', 'DownloadClick', {
           content_name: '100+ Premium Trading Resources Mega Bundle 2026',
           content_category: 'Trading Resources Bundle',
-          cta_location: 'pricing-download-button'
+          value: 497,
+          currency: 'INR',
+          cta_location: ctaLocation || 'download-button'
         });
       } catch (err) {
         // Never let tracking errors interfere with user navigation
@@ -61,8 +63,11 @@
         }
         Tracking.lastCtaClick = now;
 
+        // Determine click location (hero-download-button or pricing-download-button)
+        var location = ctaBtn.getAttribute('data-cta-location') || 'download-button';
+
         // Fire DownloadClick event BEFORE redirect
-        Tracking.trackDownloadClick();
+        Tracking.trackDownloadClick(location);
 
         // Give pixel events a brief window to transmit before navigation
         var href = ctaBtn.getAttribute('href');
