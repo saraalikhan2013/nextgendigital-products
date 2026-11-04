@@ -3,7 +3,9 @@
   "rewrites": [
     { "source": "/privacy-policy", "destination": "/privacy-policy.html" },
     { "source": "/refund-policy", "destination": "/refund-policy.html" },
-    { "source": "/terms-and-conditions", "destination": "/terms-and-conditions.html" }
+    { "source": "/terms-and-conditions", "destination": "/terms-and-conditions.html" },
+    { "source": "/disclaimer", "destination": "/disclaimer.html" },
+    { "source": "/about-us", "destination": "/about-us.html" }
   ],
   "headers": [
     {

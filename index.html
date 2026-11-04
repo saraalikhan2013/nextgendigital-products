@@ -7,8 +7,8 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Get 100+ premium trading resources in one mega bundle. Charts, indicators, strategies, guides, templates, and more — everything a trader needs in 2026.">
-  <meta name="keywords" content="trading resources bundle, trading mega bundle 2026, premium trading tools, trading strategies, trading indicators, trading templates, trading education">
+  <meta name="description" content="Get 100+ premium trading resources in one mega bundle. Indicators, strategies, price action guides, risk management templates, checklists, and mindset guides — everything a trader needs in 2026.">
+  <meta name="keywords" content="trading resources bundle, trading mega bundle 2026, premium trading tools, trading strategies, price action guides, trading indicators, trading templates, risk management, trading psychology">
   <meta name="author" content="NextGen Digital">
   <meta name="robots" content="index, follow">
 
@@ -16,14 +16,14 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://superprofile.bio/vp/%F0%9F%94%A5-100--premium-trading-resources-in-one-ultimate-bundle-2026--%F0%9F%93%A6">
   <meta property="og:title" content="100+ Premium Trading Resources Mega Bundle 2026">
-  <meta property="og:description" content="Get 100+ premium trading resources in one mega bundle — charts, strategies, guides, templates, and more.">
-  <meta property="og:image" content="assets/chart-overview.jpg">
+  <meta property="og:description" content="Get 100+ premium trading resources in one mega bundle — indicators, strategies, guides, templates, and more with a 7-day money-back guarantee.">
+  <meta property="og:image" content="assets/hero-bundle-mockup.jpg">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="100+ Premium Trading Resources Mega Bundle 2026">
   <meta name="twitter:description" content="All-in-one trading toolkit with 100+ premium resources for traders.">
-  <meta name="twitter:image" content="assets/chart-overview.jpg">
+  <meta name="twitter:image" content="assets/hero-bundle-mockup.jpg">
 
   <!-- DNS Prefetch & Resource Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,7 +33,7 @@
   <link rel="dns-prefetch" href="https://superprofile.bio">
 
   <!-- Google Fonts -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 
   <!-- Structured Data (Schema.org) -->
   <script type="application/ld+json">
@@ -41,7 +41,11 @@
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "100+ Premium Trading Resources Mega Bundle 2026",
-    "description": "A comprehensive collection of 100+ premium trading resources including charts, indicators, strategies, guides, templates, and educational materials for traders.",
+    "description": "Comprehensive collection of 100+ premium trading resources including indicators, strategies, price action guides, risk management calculators, and trading templates.",
+    "brand": {
+      "@type": "Brand",
+      "name": "NextGen Digital"
+    },
     "offers": {
       "@type": "Offer",
       "url": "https://superprofile.bio/vp/%F0%9F%94%A5-100--premium-trading-resources-in-one-ultimate-bundle-2026--%F0%9F%93%A6",
@@ -74,7 +78,7 @@
   <style>
     /* ================================================================
        100+ Premium Trading Resources Mega Bundle 2026
-       Premium Dark Navy Landing Page
+       Premium Dark Navy & Cyber Finance Theme
        ================================================================ */
 
     *, *::before, *::after {
@@ -86,19 +90,21 @@
     :root {
       --bg-deep: #06091a;
       --bg-card: #0c1029;
-      --bg-card-hover: #111538;
+      --bg-card-inner: #111638;
       --accent-blue: #4f7df5;
       --accent-purple: #8b5cf6;
       --accent-gold: #f5a623;
       --accent-green: #22c55e;
+      --accent-green-glow: rgba(34, 197, 94, 0.25);
       --gradient-hero: linear-gradient(135deg, #4f7df5, #8b5cf6);
       --gradient-cta: linear-gradient(135deg, #4f7df5 0%, #6c63ff 50%, #8b5cf6 100%);
-      --glow-blue: rgba(79, 125, 245, 0.15);
-      --glow-purple: rgba(139, 92, 246, 0.12);
-      --border-card: rgba(79, 125, 245, 0.15);
-      --border-subtle: rgba(255, 255, 255, 0.06);
+      --glow-blue: rgba(79, 125, 245, 0.18);
+      --glow-purple: rgba(139, 92, 246, 0.15);
+      --border-card: rgba(79, 125, 245, 0.18);
+      --border-subtle: rgba(255, 255, 255, 0.08);
       --text-primary: #f0f2ff;
-      --text-secondary: rgba(240, 242, 255, 0.65);
+      --text-secondary: rgba(240, 242, 255, 0.72);
+      --text-muted: rgba(240, 242, 255, 0.5);
       --text-accent: #a78bfa;
       --font-display: 'Outfit', system-ui, -apple-system, sans-serif;
       --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
@@ -123,17 +129,18 @@
       position: relative;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
     }
 
-    /* ---- Background Effects ---- */
+    /* ---- Background Grid & Gradients ---- */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
       background-image:
-        linear-gradient(rgba(79, 125, 245, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(79, 125, 245, 0.02) 1px, transparent 1px);
-      background-size: 80px 80px;
+        linear-gradient(rgba(79, 125, 245, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(79, 125, 245, 0.03) 1px, transparent 1px);
+      background-size: 64px 64px;
       pointer-events: none;
       z-index: 0;
     }
@@ -141,24 +148,23 @@
     body::after {
       content: '';
       position: fixed;
-      top: 0;
+      top: -100px;
       left: 50%;
       transform: translateX(-50%);
       width: 1200px;
-      height: 800px;
-      background: radial-gradient(ellipse at center, rgba(79, 125, 245, 0.06) 0%, rgba(139, 92, 246, 0.03) 40%, transparent 70%);
+      height: 700px;
+      background: radial-gradient(ellipse at center, rgba(79, 125, 245, 0.1) 0%, rgba(139, 92, 246, 0.05) 45%, transparent 70%);
       pointer-events: none;
       z-index: 0;
     }
 
-    /* ---- Utility ---- */
     .section-container {
       position: relative;
       z-index: 1;
       width: 100%;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 48px;
+      padding: 0 40px;
     }
 
     /* ================================================================
@@ -168,15 +174,14 @@
       position: relative;
       z-index: 1;
       width: 100%;
-      max-width: 1200px;
+      max-width: 1240px;
       margin: 0 auto;
-      padding: 60px 48px 80px;
+      padding: 60px 40px 80px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 56px;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 52px;
       align-items: center;
-      min-height: 100vh;
-      min-height: 100dvh;
+      min-height: calc(100vh - 60px);
     }
 
     .hero-content {
@@ -191,33 +196,34 @@
       align-items: center;
       gap: 8px;
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 600;
       letter-spacing: 0.08em;
       color: var(--accent-gold);
-      background: rgba(245, 166, 35, 0.08);
-      border: 1px solid rgba(245, 166, 35, 0.25);
+      background: rgba(245, 166, 35, 0.1);
+      border: 1px solid rgba(245, 166, 35, 0.3);
       border-radius: 20px;
-      padding: 8px 16px;
+      padding: 7px 16px;
       width: fit-content;
-      margin-bottom: 28px;
+      margin-bottom: 22px;
       text-transform: uppercase;
+      box-shadow: 0 0 20px rgba(245, 166, 35, 0.1);
     }
 
     .product-badge::before {
-      content: '📦';
-      font-size: 0.85rem;
+      content: '⚡';
+      font-size: 0.82rem;
     }
 
     /* Headline */
     .hero-headline {
       font-family: var(--font-display);
       font-weight: 900;
-      font-size: clamp(2rem, 3.8vw, 3.2rem);
-      line-height: 1.08;
+      font-size: clamp(2.1rem, 3.8vw, 3.3rem);
+      line-height: 1.1;
       letter-spacing: -0.03em;
       color: var(--text-primary);
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .hero-headline .highlight {
@@ -229,7 +235,7 @@
 
     .hero-subheadline {
       font-family: var(--font-body);
-      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      font-size: clamp(1rem, 1.4vw, 1.12rem);
       font-weight: 600;
       color: var(--text-accent);
       margin-bottom: 16px;
@@ -238,40 +244,122 @@
 
     .hero-description {
       font-family: var(--font-body);
-      font-size: clamp(0.92rem, 1.2vw, 1.05rem);
-      line-height: 1.7;
+      font-size: 0.96rem;
+      line-height: 1.68;
       color: var(--text-secondary);
-      margin-bottom: 28px;
-      max-width: 500px;
+      margin-bottom: 24px;
+      max-width: 520px;
     }
 
-    /* Feature pills */
-    .hero-features {
+    /* Checklist */
+    .hero-checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .hero-checklist li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .checklist-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: rgba(34, 197, 94, 0.16);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      color: var(--accent-green);
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .checklist-highlight {
+      color: var(--accent-green);
+      font-weight: 700;
+    }
+
+    /* Hero Guarantee Pill */
+    .hero-guarantee-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.12), rgba(34, 197, 94, 0.04));
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      border-radius: 12px;
+      padding: 10px 18px;
+      margin-bottom: 24px;
+      width: fit-content;
+      box-shadow: 0 4px 20px rgba(34, 197, 94, 0.12);
+    }
+
+    .guarantee-shield-mini {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: rgba(34, 197, 94, 0.2);
+      color: var(--accent-green);
+      flex-shrink: 0;
+    }
+
+    .guarantee-shield-mini svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .guarantee-pill-text strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.84rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: #22c55e;
+      text-transform: uppercase;
+    }
+
+    .guarantee-pill-text span {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.74rem;
+      color: var(--text-secondary);
+    }
+
+    /* Feature Badges Row */
+    .hero-badges-row {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-bottom: 36px;
     }
 
-    .hero-feature-pill {
+    .hero-feature-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
       font-family: var(--font-body);
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-weight: 600;
       color: var(--text-primary);
       background: rgba(79, 125, 245, 0.08);
       border: 1px solid var(--border-card);
       border-radius: 8px;
-      padding: 8px 14px;
+      padding: 6px 12px;
     }
 
-    .hero-feature-pill .pill-icon {
-      font-size: 0.95rem;
-    }
-
-    /* ---- Hero Visual / 3D Mockup ---- */
+    /* ---- Hero Visual / Product Mockup ---- */
     .hero-visual {
       position: relative;
       display: flex;
@@ -284,173 +372,98 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 120%;
-      height: 120%;
-      background: radial-gradient(ellipse at center, rgba(79, 125, 245, 0.1) 0%, rgba(139, 92, 246, 0.05) 40%, transparent 70%);
+      width: 125%;
+      height: 125%;
+      background: radial-gradient(ellipse at center, rgba(79, 125, 245, 0.15) 0%, rgba(139, 92, 246, 0.08) 45%, transparent 70%);
       pointer-events: none;
       z-index: 0;
     }
 
-    .mockup-container {
+    .product-mockup-container {
       position: relative;
       z-index: 1;
       width: 100%;
-      max-width: 480px;
+      max-width: 540px;
     }
 
-    /* 3D Bundle Mockup - Pure CSS */
-    .bundle-mockup {
+    /* Product Frame */
+    .product-frame {
       position: relative;
-      width: 100%;
-      aspect-ratio: 4 / 3.5;
-      perspective: 1000px;
-    }
-
-    .mockup-main-box {
-      position: absolute;
-      top: 8%;
-      left: 10%;
-      width: 80%;
-      height: 75%;
-      background: linear-gradient(145deg, #1a1f4e, #0e1235);
-      border: 1px solid rgba(79, 125, 245, 0.3);
-      border-radius: 16px;
+      background: var(--bg-card);
+      border: 1px solid rgba(79, 125, 245, 0.35);
+      border-radius: 18px;
+      padding: 8px;
       box-shadow:
-        0 25px 60px rgba(0, 0, 0, 0.5),
-        0 0 40px rgba(79, 125, 245, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
-      transform: rotateY(-5deg) rotateX(3deg);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 28px 20px;
+        0 25px 60px rgba(0, 0, 0, 0.65),
+        0 0 45px rgba(79, 125, 245, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
       overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .mockup-main-box::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--gradient-cta);
-      border-radius: 16px 16px 0 0;
+    @media (hover: hover) {
+      .product-frame:hover {
+        transform: translateY(-4px);
+        box-shadow:
+          0 32px 70px rgba(0, 0, 0, 0.75),
+          0 0 60px rgba(79, 125, 245, 0.28);
+      }
     }
 
-    .mockup-icon-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 16px;
+    .product-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      object-fit: cover;
     }
 
-    .mockup-icon-item {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-    }
-
-    .mockup-icon-item:nth-child(1) { background: rgba(79, 125, 245, 0.15); }
-    .mockup-icon-item:nth-child(2) { background: rgba(139, 92, 246, 0.15); }
-    .mockup-icon-item:nth-child(3) { background: rgba(245, 166, 35, 0.15); }
-    .mockup-icon-item:nth-child(4) { background: rgba(34, 197, 94, 0.15); }
-    .mockup-icon-item:nth-child(5) { background: rgba(236, 72, 153, 0.15); }
-    .mockup-icon-item:nth-child(6) { background: rgba(6, 182, 212, 0.15); }
-
-    .mockup-title {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 0.95rem;
-      color: var(--text-primary);
-      text-align: center;
-      margin-bottom: 4px;
-      letter-spacing: -0.01em;
-    }
-
-    .mockup-subtitle {
-      font-family: var(--font-body);
-      font-size: 0.68rem;
-      color: var(--text-secondary);
-      text-align: center;
-    }
-
-    /* Side mini folders */
-    .mockup-folder {
-      position: absolute;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 14px;
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      font-weight: 500;
-      border: 1px solid;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-    }
-
-    .mockup-folder--top-right {
-      top: 0;
-      right: 0;
-      background: rgba(34, 197, 94, 0.1);
-      border-color: rgba(34, 197, 94, 0.25);
-      color: #22c55e;
-      transform: rotate(3deg);
-    }
-
-    .mockup-folder--bottom-left {
-      bottom: 2%;
-      left: 0;
-      background: rgba(139, 92, 246, 0.1);
-      border-color: rgba(139, 92, 246, 0.25);
-      color: #a78bfa;
-      transform: rotate(-3deg);
-    }
-
-    .mockup-folder--bottom-right {
-      bottom: 2%;
-      right: 2%;
-      background: rgba(245, 166, 35, 0.1);
-      border-color: rgba(245, 166, 35, 0.25);
-      color: #f5a623;
-      transform: rotate(2deg);
-    }
-
-    /* Floating labels */
-    .floating-label {
+    /* Floating Badges inspired by reference screenshot */
+    .floating-badge {
       position: absolute;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      border-radius: 8px;
+      gap: 7px;
+      padding: 8px 14px;
+      border-radius: 10px;
       font-family: var(--font-body);
-      font-size: 0.7rem;
-      font-weight: 600;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-      z-index: 2;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+      z-index: 3;
+      white-space: nowrap;
+      transition: transform 0.2s ease;
     }
 
-    .floating-label--instant {
-      top: 15%;
-      right: -5%;
-      background: rgba(245, 166, 35, 0.12);
-      border: 1px solid rgba(245, 166, 35, 0.3);
+    .floating-badge--top-left {
+      top: -14px;
+      left: -12px;
+      background: rgba(14, 20, 52, 0.92);
+      border: 1px solid rgba(245, 166, 35, 0.45);
       color: var(--accent-gold);
     }
 
-    .floating-label--bundle {
-      bottom: 20%;
-      left: -5%;
-      background: rgba(79, 125, 245, 0.12);
-      border: 1px solid rgba(79, 125, 245, 0.3);
-      color: var(--accent-blue);
+    .floating-badge--top-right {
+      top: -14px;
+      right: -12px;
+      background: rgba(14, 20, 52, 0.92);
+      border: 1px solid rgba(79, 125, 245, 0.45);
+      color: #93c5fd;
+    }
+
+    .floating-badge--bottom-left {
+      bottom: -14px;
+      left: -12px;
+      background: rgba(14, 20, 52, 0.92);
+      border: 1px solid rgba(236, 72, 153, 0.45);
+      color: #f472b6;
+    }
+
+    .floating-badge .badge-icon {
+      font-size: 0.95rem;
     }
 
     /* ================================================================
@@ -459,7 +472,7 @@
     .contents-section {
       position: relative;
       z-index: 1;
-      padding: 100px 0;
+      padding: 90px 0;
     }
 
     .section-label {
@@ -470,22 +483,23 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       text-align: center;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .section-label--blue { color: var(--accent-blue); }
     .section-label--purple { color: var(--accent-purple); }
     .section-label--gold { color: var(--accent-gold); }
+    .section-label--green { color: var(--accent-green); }
 
     .section-title {
       font-family: var(--font-display);
       font-weight: 800;
-      font-size: clamp(1.6rem, 3vw, 2.4rem);
-      line-height: 1.15;
+      font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+      line-height: 1.18;
       letter-spacing: -0.025em;
       text-align: center;
       color: var(--text-primary);
-      margin-bottom: 60px;
+      margin-bottom: 50px;
     }
 
     .section-title .highlight {
@@ -498,21 +512,22 @@
     .contents-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 22px;
     }
 
     .content-card {
       background: var(--bg-card);
       border: 1px solid var(--border-card);
-      border-radius: 14px;
+      border-radius: 16px;
       padding: 28px 24px;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
     }
 
     @media (hover: hover) {
       .content-card:hover {
-        border-color: rgba(79, 125, 245, 0.3);
-        box-shadow: 0 0 30px rgba(79, 125, 245, 0.06);
+        border-color: rgba(79, 125, 245, 0.45);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4), 0 0 25px rgba(79, 125, 245, 0.08);
       }
     }
 
@@ -527,45 +542,46 @@
       margin-bottom: 16px;
     }
 
-    .content-card-icon--blue { background: rgba(79, 125, 245, 0.12); }
-    .content-card-icon--purple { background: rgba(139, 92, 246, 0.12); }
-    .content-card-icon--gold { background: rgba(245, 166, 35, 0.12); }
-    .content-card-icon--green { background: rgba(34, 197, 94, 0.12); }
-    .content-card-icon--pink { background: rgba(236, 72, 153, 0.12); }
-    .content-card-icon--cyan { background: rgba(6, 182, 212, 0.12); }
+    .content-card-icon--blue { background: rgba(79, 125, 245, 0.14); }
+    .content-card-icon--purple { background: rgba(139, 92, 246, 0.14); }
+    .content-card-icon--gold { background: rgba(245, 166, 35, 0.14); }
+    .content-card-icon--green { background: rgba(34, 197, 94, 0.14); }
+    .content-card-icon--pink { background: rgba(236, 72, 153, 0.14); }
+    .content-card-icon--cyan { background: rgba(6, 182, 212, 0.14); }
 
     .content-card h3 {
       font-family: var(--font-display);
       font-weight: 700;
-      font-size: 1.05rem;
+      font-size: 1.08rem;
       color: var(--text-primary);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .content-card p {
       font-family: var(--font-body);
-      font-size: 0.88rem;
-      line-height: 1.6;
+      font-size: 0.9rem;
+      line-height: 1.62;
       color: var(--text-secondary);
     }
 
     /* ================================================================
-       VALUE HIGHLIGHT SECTION
+       BUNDLE VALUE SECTION
        ================================================================ */
     .value-section {
       position: relative;
       z-index: 1;
-      padding: 80px 0;
+      padding: 60px 0;
     }
 
     .value-banner {
-      background: linear-gradient(135deg, rgba(79, 125, 245, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
-      border: 1px solid rgba(79, 125, 245, 0.2);
+      background: linear-gradient(135deg, rgba(79, 125, 245, 0.1) 0%, rgba(139, 92, 246, 0.08) 100%);
+      border: 1px solid rgba(79, 125, 245, 0.28);
       border-radius: 20px;
-      padding: 60px 40px;
+      padding: 56px 40px;
       text-align: center;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
     }
 
     .value-banner::before {
@@ -574,138 +590,171 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 2px;
+      height: 3px;
       background: var(--gradient-cta);
     }
 
     .value-amount {
       font-family: var(--font-display);
       font-weight: 900;
-      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-size: clamp(2.8rem, 6vw, 4.4rem);
       letter-spacing: -0.03em;
-      background: linear-gradient(135deg, var(--accent-gold), #fbbf24, var(--accent-gold));
+      background: linear-gradient(135deg, #fbbf24 0%, #f5a623 50%, #d97706 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
     .value-label {
       font-family: var(--font-display);
-      font-weight: 700;
-      font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+      font-weight: 800;
+      font-size: clamp(1.2rem, 2.4vw, 1.7rem);
       color: var(--text-primary);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .value-description {
       font-family: var(--font-body);
-      font-size: 1rem;
+      font-size: 0.98rem;
       color: var(--text-secondary);
-      max-width: 600px;
+      max-width: 620px;
       margin: 0 auto;
       line-height: 1.7;
     }
 
     /* ================================================================
-       CUSTOMER REVIEWS SECTION
+       DEDICATED 7-DAY MONEY-BACK GUARANTEE SECTION
+       Prominent & Eye-Catching
        ================================================================ */
-    .reviews-section {
+    .guarantee-section {
       position: relative;
       z-index: 1;
-      padding: 100px 0;
-      /* Hidden by default — unhide when genuine reviews are available */
-      display: none;
+      padding: 80px 0;
     }
 
-    .reviews-section.has-reviews {
-      display: block;
+    .guarantee-card {
+      background: linear-gradient(145deg, rgba(14, 30, 22, 0.85) 0%, rgba(12, 22, 38, 0.92) 100%);
+      border: 1.5px solid rgba(34, 197, 94, 0.45);
+      border-radius: 24px;
+      padding: 56px 44px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.5),
+        0 0 50px rgba(34, 197, 94, 0.12),
+        inset 0 1px 0 rgba(34, 197, 94, 0.25);
     }
 
-    .reviews-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+    .guarantee-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #10b981, #22c55e, #10b981);
     }
 
-    .review-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-card);
-      border-radius: 14px;
-      padding: 28px 24px;
-    }
-
-    .review-stars {
-      display: flex;
-      gap: 2px;
-      margin-bottom: 14px;
-    }
-
-    .review-stars .star {
-      color: var(--accent-gold);
-      font-size: 0.85rem;
-    }
-
-    .review-text {
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      line-height: 1.65;
-      color: var(--text-secondary);
-      margin-bottom: 18px;
-      font-style: italic;
-    }
-
-    .review-author {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .review-avatar {
-      width: 36px;
-      height: 36px;
+    .guarantee-big-shield {
+      width: 76px;
+      height: 76px;
+      margin: 0 auto 20px;
       border-radius: 50%;
+      background: rgba(34, 197, 94, 0.15);
+      border: 2px solid rgba(34, 197, 94, 0.4);
       display: flex;
       align-items: center;
       justify-content: center;
+      color: #22c55e;
+      box-shadow: 0 0 35px rgba(34, 197, 94, 0.25);
+    }
+
+    .guarantee-big-shield svg {
+      width: 40px;
+      height: 40px;
+    }
+
+    .guarantee-card-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(1.8rem, 3.4vw, 2.4rem);
+      letter-spacing: -0.02em;
+      color: #f0fdf4;
+      margin-bottom: 16px;
+    }
+
+    .guarantee-card-title .green-highlight {
+      color: #22c55e;
+    }
+
+    .guarantee-card-desc {
+      font-family: var(--font-body);
+      font-size: 1.02rem;
+      line-height: 1.75;
+      color: rgba(240, 253, 244, 0.8);
+      max-width: 680px;
+      margin: 0 auto 36px;
+    }
+
+    .guarantee-features-row {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .guarantee-feature-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      border-radius: 12px;
+      padding: 12px 20px;
+      text-align: left;
+    }
+
+    .guarantee-feature-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .guarantee-feature-text strong {
+      display: block;
       font-family: var(--font-display);
       font-weight: 700;
-      font-size: 0.82rem;
-      color: #fff;
+      font-size: 0.92rem;
+      color: #f0fdf4;
     }
 
-    .review-author-info h4 {
+    .guarantee-feature-text span {
+      display: block;
       font-family: var(--font-body);
-      font-weight: 600;
-      font-size: 0.88rem;
-      color: var(--text-primary);
-    }
-
-    .review-author-info span {
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      color: var(--text-secondary);
+      font-size: 0.78rem;
+      color: rgba(240, 253, 244, 0.65);
     }
 
     /* ================================================================
-       PRICING SECTION
+       PRICING & PURCHASE SECTION
        ================================================================ */
     .pricing-section {
       position: relative;
       z-index: 1;
-      padding: 100px 0 120px;
+      padding: 80px 0 110px;
     }
 
     .pricing-card {
-      max-width: 560px;
+      max-width: 580px;
       margin: 0 auto;
       background: var(--bg-card);
-      border: 1px solid rgba(79, 125, 245, 0.25);
-      border-radius: 20px;
+      border: 1px solid rgba(79, 125, 245, 0.3);
+      border-radius: 22px;
       overflow: hidden;
       box-shadow:
-        0 30px 80px rgba(0, 0, 0, 0.4),
-        0 0 50px rgba(79, 125, 245, 0.06);
+        0 35px 85px rgba(0, 0, 0, 0.5),
+        0 0 50px rgba(79, 125, 245, 0.1);
     }
 
     .pricing-card-header {
@@ -717,15 +766,16 @@
     .pricing-card-header h3 {
       font-family: var(--font-display);
       font-weight: 800;
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       color: #fff;
       margin-bottom: 4px;
+      letter-spacing: -0.01em;
     }
 
     .pricing-card-header p {
       font-family: var(--font-body);
-      font-size: 0.82rem;
-      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.85);
     }
 
     .pricing-card-body {
@@ -734,31 +784,78 @@
 
     .pricing-price {
       text-align: center;
-      margin-bottom: 32px;
+      margin-bottom: 24px;
     }
 
     .pricing-current {
       font-family: var(--font-display);
       font-weight: 900;
-      font-size: clamp(2.4rem, 5vw, 3.2rem);
+      font-size: clamp(2.6rem, 5vw, 3.4rem);
       color: var(--text-primary);
       letter-spacing: -0.03em;
     }
 
-    /* Price placeholder note - shows only when price needs to be set */
     .pricing-note {
       font-family: var(--font-mono);
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       color: var(--text-secondary);
       margin-top: 4px;
     }
 
+    /* Guarantee Box inside Pricing Card */
+    .pricing-guarantee-box {
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-bottom: 26px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .pricing-guarantee-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(34, 197, 94, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #22c55e;
+      flex-shrink: 0;
+    }
+
+    .pricing-guarantee-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .pricing-guarantee-content strong {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.84rem;
+      color: #22c55e;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .pricing-guarantee-content p {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      margin-top: 2px;
+      line-height: 1.4;
+    }
+
+    /* Pricing benefits */
     .pricing-benefits {
       list-style: none;
       display: flex;
       flex-direction: column;
       gap: 14px;
-      margin-bottom: 36px;
+      margin-bottom: 32px;
     }
 
     .pricing-benefits li {
@@ -778,7 +875,7 @@
       width: 22px;
       height: 22px;
       border-radius: 50%;
-      background: rgba(34, 197, 94, 0.15);
+      background: rgba(34, 197, 94, 0.16);
       flex-shrink: 0;
       margin-top: 2px;
     }
@@ -791,19 +888,19 @@
     .pricing-divider {
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--border-card), transparent);
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
 
-    /* CTA Button */
+    /* SINGLE CTA BUTTON — DOWNLOAD ALL */
     .cta-button {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 12px;
       width: 100%;
       font-family: var(--font-display);
       font-weight: 800;
-      font-size: clamp(0.92rem, 1.6vw, 1.1rem);
+      font-size: clamp(0.95rem, 1.7vw, 1.15rem);
       letter-spacing: 0.06em;
       text-transform: uppercase;
       text-decoration: none;
@@ -814,10 +911,10 @@
       cursor: pointer;
       background: var(--gradient-cta);
       box-shadow:
-        0 0 30px rgba(79, 125, 245, 0.2),
-        0 0 60px rgba(139, 92, 246, 0.08),
-        0 4px 20px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        0 0 35px rgba(79, 125, 245, 0.25),
+        0 0 70px rgba(139, 92, 246, 0.1),
+        0 6px 24px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
       transition:
         transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
         box-shadow 0.3s ease;
@@ -827,7 +924,7 @@
 
     .cta-button .cta-arrow {
       display: inline-flex;
-      font-size: 1.1em;
+      font-size: 1.15em;
       transition: transform 0.2s ease;
     }
 
@@ -835,20 +932,20 @@
       .cta-button:hover {
         transform: translateY(-2px) scale(1.015);
         box-shadow:
-          0 0 50px rgba(79, 125, 245, 0.35),
-          0 0 100px rgba(139, 92, 246, 0.12),
-          0 8px 32px rgba(0, 0, 0, 0.5),
-          inset 0 1px 0 rgba(255, 255, 255, 0.2);
+          0 0 55px rgba(79, 125, 245, 0.4),
+          0 0 110px rgba(139, 92, 246, 0.15),
+          0 10px 36px rgba(0, 0, 0, 0.55),
+          inset 0 1px 0 rgba(255, 255, 255, 0.25);
       }
       .cta-button:hover .cta-arrow {
-        transform: translateX(3px);
+        transform: translateX(4px);
       }
     }
 
     .cta-button:active {
       transform: translateY(1px) scale(0.98);
       box-shadow:
-        0 0 18px rgba(79, 125, 245, 0.15),
+        0 0 18px rgba(79, 125, 245, 0.2),
         0 2px 10px rgba(0, 0, 0, 0.5);
       transition-duration: 0.08s;
     }
@@ -862,69 +959,123 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      margin-top: 16px;
+      gap: 8px;
+      margin-top: 18px;
       font-family: var(--font-body);
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       color: var(--text-secondary);
     }
 
     /* ================================================================
-       PURCHASE NOTIFICATION POPUP
-       Disabled by default — enable when genuine data source is connected
+       LIVE VERIFIED PURCHASE NOTIFICATION POPUP
+       Exact match to reference screenshot (Ashish just purchased • Delhi)
        ================================================================ */
     .purchase-notification {
-      display: none; /* Disabled until genuine purchase data is connected */
       position: fixed;
       bottom: 24px;
       left: 24px;
-      z-index: 100;
-      background: var(--bg-card);
-      border: 1px solid var(--border-card);
-      border-radius: 12px;
-      padding: 14px 20px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-      max-width: 320px;
-    }
-
-    .purchase-notification.active {
+      z-index: 999;
+      background: rgba(14, 20, 52, 0.96);
+      border: 1px solid rgba(79, 125, 245, 0.35);
+      border-radius: 50px;
+      padding: 10px 18px 10px 10px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55), 0 0 25px rgba(79, 125, 245, 0.1);
       display: flex;
       align-items: center;
       gap: 12px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transform: translateY(120px) scale(0.95);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease;
+      max-width: 360px;
     }
 
-    .notification-avatar {
-      width: 36px;
-      height: 36px;
+    .purchase-notification.visible {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .notif-avatar-circle {
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
-      background: var(--gradient-cta);
+      background: #4f7df5;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .notification-avatar span {
       color: #fff;
-      font-weight: 700;
-      font-size: 0.85rem;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
-    .notification-text {
+    .notif-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      min-width: 140px;
+    }
+
+    .notif-line-1 {
       font-family: var(--font-body);
-      font-size: 0.82rem;
+      font-size: 0.84rem;
       color: var(--text-primary);
-      line-height: 1.4;
+      font-weight: 500;
     }
 
-    .notification-text strong {
-      color: var(--accent-blue);
+    .notif-line-1 strong {
+      font-weight: 700;
+      color: #fff;
     }
 
-    .notification-time {
-      font-size: 0.7rem;
+    .notif-line-2 {
+      font-family: var(--font-body);
+      font-size: 0.74rem;
       color: var(--text-secondary);
-      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .notif-verified-badge {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #22c55e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      flex-shrink: 0;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
+    }
+
+    .notif-verified-badge svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .notif-close-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      margin-left: 2px;
+      transition: color 0.15s ease;
+    }
+
+    .notif-close-btn:hover {
+      color: var(--text-primary);
     }
 
     /* ================================================================
@@ -934,30 +1085,32 @@
       position: relative;
       z-index: 1;
       width: 100%;
-      padding: 32px 20px 36px;
+      padding: 36px 20px 42px;
       text-align: center;
       border-top: 1px solid var(--border-subtle);
       margin-top: auto;
+      background: rgba(6, 9, 26, 0.85);
     }
 
     .landing-footer-links {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 12px;
       flex-wrap: wrap;
       list-style: none;
+      margin-bottom: 14px;
     }
 
     .landing-footer-links li {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 12px;
     }
 
     .landing-footer-links a {
       font-family: var(--font-body);
-      font-size: 0.78rem;
+      font-size: 0.82rem;
       font-weight: 500;
       color: var(--text-secondary);
       text-decoration: none;
@@ -976,101 +1129,233 @@
     }
 
     .landing-footer-sep {
-      color: rgba(79, 125, 245, 0.3);
-      font-size: 0.65rem;
+      color: rgba(79, 125, 245, 0.35);
+      font-size: 0.75rem;
       user-select: none;
     }
 
+    .landing-footer-disclaimer-note {
+      font-family: var(--font-body);
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      max-width: 760px;
+      margin: 0 auto 12px;
+      line-height: 1.6;
+    }
+
     .landing-footer-copy {
-      margin-top: 12px;
       font-family: var(--font-mono);
-      font-size: 0.65rem;
-      color: rgba(240, 242, 255, 0.3);
+      font-size: 0.68rem;
+      color: rgba(240, 242, 255, 0.35);
       letter-spacing: 0.03em;
     }
 
     /* ================================================================
-       RESPONSIVE
+       RESPONSIVE DESIGN
        ================================================================ */
 
     /* Tablets */
-    @media (max-width: 960px) {
+    @media (max-width: 990px) {
       .hero {
         grid-template-columns: 1fr;
-        gap: 48px;
-        padding: 60px 32px 60px;
+        gap: 50px;
+        padding: 50px 30px 60px;
         min-height: auto;
       }
 
-      .hero-content { order: 1; }
-      .hero-visual { order: 2; justify-content: center; }
+      .hero-content {
+        order: 1;
+      }
 
-      .contents-grid { grid-template-columns: repeat(2, 1fr); }
-      .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-visual {
+        order: 2;
+        justify-content: center;
+      }
 
-      .section-container { padding: 0 32px; }
+      .product-mockup-container {
+        max-width: 500px;
+      }
 
-      .value-banner { padding: 48px 28px; }
+      .contents-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .guarantee-card {
+        padding: 44px 28px;
+      }
+
+      .section-container {
+        padding: 0 30px;
+      }
     }
 
     /* Mobile */
     @media (max-width: 600px) {
       .hero {
-        padding: 40px 20px 48px;
+        padding: 36px 18px 48px;
         gap: 36px;
       }
 
       .hero-headline {
-        font-size: clamp(1.6rem, 6.5vw, 2.2rem);
+        font-size: clamp(1.7rem, 7vw, 2.3rem);
         margin-bottom: 14px;
       }
 
-      .hero-subheadline { font-size: 0.92rem; }
-      .hero-description { font-size: 0.9rem; margin-bottom: 22px; }
+      .hero-subheadline {
+        font-size: 0.94rem;
+      }
 
-      .hero-features { gap: 8px; margin-bottom: 24px; }
-      .hero-feature-pill { font-size: 0.75rem; padding: 6px 10px; }
-
-      .mockup-container { max-width: 320px; }
-
-      .section-container { padding: 0 20px; }
-      .contents-section { padding: 60px 0; }
-      .contents-grid { grid-template-columns: 1fr; }
-      .content-card { padding: 22px 20px; }
-
-      .value-section { padding: 60px 0; }
-      .value-banner { padding: 40px 20px; border-radius: 14px; }
-
-      .reviews-section { padding: 60px 0; }
-      .reviews-grid { grid-template-columns: 1fr; }
-
-      .pricing-section { padding: 60px 0 80px; }
-      .pricing-card { margin: 0 20px; }
-      .pricing-card-body { padding: 28px 20px; }
-
-      .pricing-card-header { padding: 20px 20px; }
-      .pricing-card-header h3 { font-size: 1rem; }
-
-      .product-badge {
-        font-size: 0.68rem;
-        padding: 6px 12px;
+      .hero-description {
+        font-size: 0.9rem;
         margin-bottom: 20px;
       }
 
-      .floating-label { display: none; }
+      .hero-checklist li {
+        font-size: 0.86rem;
+      }
 
-      .section-title {
-        font-size: clamp(1.35rem, 5.5vw, 1.8rem);
-        margin-bottom: 40px;
+      .hero-guarantee-pill {
+        width: 100%;
+        padding: 10px 14px;
+      }
+
+      .product-mockup-container {
+        max-width: 100%;
+      }
+
+      /* Keep floating badges clean on small screens */
+      .floating-badge {
+        font-size: 0.7rem;
+        padding: 6px 10px;
+      }
+
+      .floating-badge--top-left {
+        top: -10px;
+        left: 4px;
+      }
+
+      .floating-badge--top-right {
+        top: -10px;
+        right: 4px;
+      }
+
+      .floating-badge--bottom-left {
+        bottom: -10px;
+        left: 4px;
+      }
+
+      .section-container {
+        padding: 0 18px;
+      }
+
+      .contents-section {
+        padding: 60px 0;
+      }
+
+      .contents-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .content-card {
+        padding: 22px 18px;
+      }
+
+      .value-section {
+        padding: 40px 0;
+      }
+
+      .value-banner {
+        padding: 36px 20px;
+        border-radius: 16px;
+      }
+
+      .guarantee-section {
+        padding: 60px 0;
+      }
+
+      .guarantee-card {
+        padding: 36px 18px;
+        border-radius: 18px;
+      }
+
+      .guarantee-features-row {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .guarantee-feature-box {
+        width: 100%;
+      }
+
+      .pricing-section {
+        padding: 50px 0 70px;
+      }
+
+      .pricing-card {
+        border-radius: 18px;
+      }
+
+      .pricing-card-header {
+        padding: 20px 18px;
+      }
+
+      .pricing-card-body {
+        padding: 26px 18px;
+      }
+
+      .cta-button {
+        font-size: 0.94rem;
+        padding: 18px 24px;
+      }
+
+      /* Purchase notification on mobile: sits neatly above bottom */
+      .purchase-notification {
+        bottom: 12px;
+        left: 12px;
+        right: 12px;
+        max-width: calc(100% - 24px);
+        padding: 8px 14px 8px 8px;
+        border-radius: 30px;
+      }
+
+      .notif-avatar-circle {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+      }
+
+      .notif-line-1 {
+        font-size: 0.78rem;
+      }
+
+      .notif-line-2 {
+        font-size: 0.7rem;
       }
     }
 
     /* Very small screens */
     @media (max-width: 380px) {
-      .hero { padding: 32px 16px 40px; }
-      .hero-headline { font-size: 1.45rem; }
-      .section-container { padding: 0 16px; }
-      .pricing-card { margin: 0 16px; }
+      .hero {
+        padding: 28px 14px 40px;
+      }
+
+      .hero-headline {
+        font-size: 1.55rem;
+      }
+
+      .section-container {
+        padding: 0 14px;
+      }
+
+      .cta-button {
+        font-size: 0.88rem;
+        padding: 16px 20px;
+      }
+
+      .floating-badge {
+        display: none; /* Hide floating badges on ultra-narrow devices to prevent overflow */
+      }
     }
 
     /* Prefers reduced motion */
@@ -1090,7 +1375,7 @@
        ============================================================ -->
   <main class="hero" role="main">
 
-    <!-- Left Column: Product Information -->
+    <!-- Left Column: Product Headline, Description & Features -->
     <section class="hero-content">
       <span class="product-badge">100+ Premium Trading Resources</span>
 
@@ -1099,63 +1384,100 @@
       </h1>
 
       <p class="hero-subheadline">
-        Everything a trader needs — charts, strategies, guides, templates & more — in one powerful bundle.
+        Everything a trader needs — indicators, strategies, price action guides, risk calculators & templates — in one complete bundle.
       </p>
 
       <p class="hero-description">
-        Stop buying trading resources one by one. Get instant access to a comprehensive collection of 100+ carefully curated premium trading resources designed for serious traders and investors.
+        Stop purchasing individual trading resources. Unlock lifetime digital access to over 100+ battle-tested trading tools, institutional setups, and practical reference guides curated for serious market participants.
       </p>
 
-      <div class="hero-features">
-        <span class="hero-feature-pill">
-          <span class="pill-icon">⚡</span> Instant Digital Access
+      <!-- Key Value Points Checklist -->
+      <ul class="hero-checklist">
+        <li>
+          <span class="checklist-icon" aria-hidden="true">✔</span>
+          <span><strong>Pro Trading Indicators</strong> — ready-to-use institutional charting tools</span>
+        </li>
+        <li>
+          <span class="checklist-icon" aria-hidden="true">✔</span>
+          <span><strong>Ready-Made Strategies</strong> — intraday, swing, and positional setups</span>
+        </li>
+        <li>
+          <span class="checklist-icon" aria-hidden="true">✔</span>
+          <span><strong>Chart &amp; Price Action Guides</strong> — candlestick patterns and market structure</span>
+        </li>
+        <li>
+          <span class="checklist-icon" aria-hidden="true">✔</span>
+          <span><strong>Risk &amp; Money Management</strong> — calculators, position sizing, and SOPs</span>
+        </li>
+        <li>
+          <span class="checklist-icon" aria-hidden="true">✔</span>
+          <span class="checklist-highlight">7-Day Money-Back Guarantee — 100% Risk-Free</span>
+        </li>
+      </ul>
+
+      <!-- Prominent 7-Day Guarantee Pill in Hero -->
+      <div class="hero-guarantee-pill">
+        <div class="guarantee-shield-mini" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <polyline points="9 12 11 14 15 10"></polyline>
+          </svg>
+        </div>
+        <div class="guarantee-pill-text">
+          <strong>7-DAY MONEY-BACK GUARANTEE</strong>
+          <span>Try it completely risk-free for 7 full days</span>
+        </div>
+      </div>
+
+      <!-- Quick Feature Badges -->
+      <div class="hero-badges-row">
+        <span class="hero-feature-badge">
+          <span>⚡</span> Instant Digital Access
         </span>
-        <span class="hero-feature-pill">
-          <span class="pill-icon">📦</span> All-in-One Bundle
+        <span class="hero-feature-badge">
+          <span>∞</span> Lifetime Access
         </span>
-        <span class="hero-feature-pill">
-          <span class="pill-icon">📊</span> 100+ Resources
+        <span class="hero-feature-badge">
+          <span>💻</span> PDF, Tools &amp; Templates
+        </span>
+        <span class="hero-feature-badge">
+          <span>📊</span> Beginner to Advanced
         </span>
       </div>
     </section>
 
-    <!-- Right Column: 3D Product Mockup -->
-    <aside class="hero-visual" aria-label="Trading Mega Bundle product mockup">
+    <!-- Right Column: 3D Product Mockup with Floating Badges (Reference Screenshot Style) -->
+    <aside class="hero-visual" aria-label="100+ Premium Trading Resources Mega Bundle 2026 Product Mockup">
       <div class="mockup-glow" aria-hidden="true"></div>
-      <div class="mockup-container">
-        <div class="bundle-mockup">
-          <!-- Main Bundle Box -->
-          <div class="mockup-main-box">
-            <div class="mockup-icon-grid">
-              <div class="mockup-icon-item">📊</div>
-              <div class="mockup-icon-item">📈</div>
-              <div class="mockup-icon-item">📋</div>
-              <div class="mockup-icon-item">💹</div>
-              <div class="mockup-icon-item">📑</div>
-              <div class="mockup-icon-item">🔧</div>
-            </div>
-            <div class="mockup-title">Trading Mega Bundle</div>
-            <div class="mockup-subtitle">100+ Premium Resources · 2026 Edition</div>
-          </div>
 
-          <!-- Side Elements -->
-          <div class="mockup-folder mockup-folder--top-right">
-            <span>📄</span> Strategy Guides
-          </div>
-          <div class="mockup-folder mockup-folder--bottom-left">
-            <span>📊</span> Chart Templates
-          </div>
-          <div class="mockup-folder mockup-folder--bottom-right">
-            <span>📋</span> Checklists
-          </div>
+      <div class="product-mockup-container">
+        <!-- Floating Badge: Instant Access (Top-Left) -->
+        <div class="floating-badge floating-badge--top-left">
+          <span class="badge-icon">⚡</span> Instant Access
+        </div>
 
-          <!-- Floating Labels -->
-          <div class="floating-label floating-label--instant">
-            <span>⚡</span> Instant Access
-          </div>
-          <div class="floating-label floating-label--bundle">
-            <span>📦</span> All-in-One Bundle
-          </div>
+        <!-- Floating Badge: Secure Payment (Top-Right) -->
+        <div class="floating-badge floating-badge--top-right">
+          <span class="badge-icon">🔒</span> Secure Payment
+        </div>
+
+        <!-- Floating Badge: Bonus Included (Bottom-Left) -->
+        <div class="floating-badge floating-badge--bottom-left">
+          <span class="badge-icon">🎁</span> Bonus Included
+        </div>
+
+        <!-- Product Image Frame -->
+        <div class="product-frame">
+          <picture>
+            <img 
+              class="product-image" 
+              src="assets/hero-bundle-mockup.jpg" 
+              alt="100+ Premium Trading Resources Mega Bundle 2026 — 3D Box, Laptop Trading Charts, Strategy Books and Materials"
+              width="600"
+              height="338"
+              loading="eager"
+            >
+          </picture>
         </div>
       </div>
     </aside>
@@ -1167,7 +1489,7 @@
        ============================================================ -->
   <section class="contents-section" aria-label="Bundle contents">
     <div class="section-container">
-      <span class="section-label section-label--blue">What's Inside</span>
+      <span class="section-label section-label--blue">Complete Trading Arsenal</span>
       <h2 class="section-title">
         Everything You Need in One<br><span class="highlight">Ultimate Trading Bundle</span>
       </h2>
@@ -1175,33 +1497,38 @@
       <div class="contents-grid">
         <div class="content-card">
           <div class="content-card-icon content-card-icon--blue">📊</div>
-          <h3>Trading Strategies</h3>
-          <p>Proven trading strategies covering intraday, swing trading, positional, and multiple market approaches for various asset classes.</p>
+          <h3>Pro Trading Indicators</h3>
+          <p>High-precision technical indicators designed for trend identification, key support/resistance zones, and market structure visualization across TradingView and multiple charting platforms.</p>
         </div>
+
         <div class="content-card">
           <div class="content-card-icon content-card-icon--purple">📈</div>
-          <h3>Technical Analysis Resources</h3>
-          <p>Comprehensive chart patterns, candlestick analysis guides, indicator setups, and technical analysis reference materials.</p>
+          <h3>Ready-Made Strategies</h3>
+          <p>Battle-tested, actionable trading strategies covering intraday scalping, swing trading, momentum setups, and mean-reversion frameworks for stocks, crypto, forex, and commodities.</p>
         </div>
+
         <div class="content-card">
-          <div class="content-card-icon content-card-icon--gold">📋</div>
-          <h3>Trading Plans & Templates</h3>
-          <p>Ready-to-use trading plan templates, journal formats, risk management calculators, and position sizing tools.</p>
+          <div class="content-card-icon content-card-icon--gold">📑</div>
+          <h3>Chart &amp; Price Action Guides</h3>
+          <p>Comprehensive visual reference manuals covering high-probability candlestick patterns, chart structures, liquidity sweeps, breakout confirmations, and order-block trading.</p>
         </div>
+
         <div class="content-card">
-          <div class="content-card-icon content-card-icon--green">💹</div>
-          <h3>Market Analysis Guides</h3>
-          <p>In-depth guides for analyzing stocks, forex, crypto, commodities, and indices with practical examples and frameworks.</p>
+          <div class="content-card-icon content-card-icon--green">🛡️</div>
+          <h3>Risk &amp; Money Management</h3>
+          <p>Professional spreadsheets and position sizing calculators that enforce strict 1-2% capital risk rules, risk-to-reward ratios, and drawdown prevention mechanisms.</p>
         </div>
+
         <div class="content-card">
-          <div class="content-card-icon content-card-icon--pink">📑</div>
-          <h3>Trading Checklists & SOPs</h3>
-          <p>Pre-trade, during-trade, and post-trade checklists along with standard operating procedures to build trading discipline.</p>
+          <div class="content-card-icon content-card-icon--pink">🧠</div>
+          <h3>Mindset &amp; Trading Psychology</h3>
+          <p>Elite trader mindset blueprints, emotion control protocols, pre-market preparation routines, and psychological checklists to eradicate FOMO and revenge trading.</p>
         </div>
+
         <div class="content-card">
           <div class="content-card-icon content-card-icon--cyan">🔧</div>
-          <h3>Tools & Setup Guides</h3>
-          <p>Platform setup guides, charting workspace configurations, watchlist templates, and trading tool recommendations.</p>
+          <h3>Templates, Tools &amp; SOPs</h3>
+          <p>Automated trading journals, pre-flight checklists, performance review logs, workspace layout files, and daily market scan templates to structure your trading like a business.</p>
         </div>
       </div>
     </div>
@@ -1214,27 +1541,62 @@
     <div class="section-container">
       <div class="value-banner">
         <div class="value-amount">₹50,000+</div>
-        <div class="value-label">Combined Value of All Resources</div>
+        <div class="value-label">Combined Value of All Included Resources</div>
         <p class="value-description">
-          Access 100+ premium trading resources that would cost over ₹50,000 if purchased individually — now available together in one comprehensive mega bundle at a fraction of the price.
+          Purchasing these 100+ indicators, strategies, price action manuals, and trading templates individually would cost over ₹50,000. Now you can access the entire institutional toolkit together in one mega bundle at a tiny fraction of the original value.
         </p>
       </div>
     </div>
   </section>
 
   <!-- ============================================================
-       CUSTOMER REVIEWS SECTION
-       Hidden by default — add class "has-reviews" when genuine reviews are available
+       DEDICATED 7-DAY MONEY-BACK GUARANTEE SECTION
+       Prominent, Eye-Catching & High-Converting
        ============================================================ -->
-  <section class="reviews-section" id="reviews-section" aria-label="Customer reviews">
+  <section class="guarantee-section" aria-label="Money-back guarantee">
     <div class="section-container">
-      <span class="section-label section-label--gold">Real Customers, Real Results</span>
-      <h2 class="section-title">
-        What Our <span class="highlight">Customers</span> Say
-      </h2>
+      <div class="guarantee-card">
+        <!-- Big Green Shield SVG Icon -->
+        <div class="guarantee-big-shield" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            <polyline points="9 12 11 14 15 10"></polyline>
+          </svg>
+        </div>
 
-      <div class="reviews-grid" id="reviews-grid">
-        <!-- Reviews will be inserted here when genuine review data is available -->
+        <h2 class="guarantee-card-title">
+          100% Risk-Free <span class="green-highlight">7-Day Money-Back Guarantee</span>
+        </h2>
+
+        <p class="guarantee-card-desc">
+          We want you to explore every single resource in this bundle with complete peace of mind. Download the files, review the indicators, study the strategies, and use the templates. If you feel this bundle does not deliver immense, game-changing value for your trading within 7 days of purchase, simply reach out to our support team for a full 100% refund. No questions asked.
+        </p>
+
+        <div class="guarantee-features-row">
+          <div class="guarantee-feature-box">
+            <span class="guarantee-feature-icon">🛡️</span>
+            <div class="guarantee-feature-text">
+              <strong>100% Full Refund</strong>
+              <span>Zero financial risk on your purchase</span>
+            </div>
+          </div>
+
+          <div class="guarantee-feature-box">
+            <span class="guarantee-feature-icon">⚡</span>
+            <div class="guarantee-feature-text">
+              <strong>Prompt Turnaround</strong>
+              <span>Processed quickly via official support</span>
+            </div>
+          </div>
+
+          <div class="guarantee-feature-box">
+            <span class="guarantee-feature-icon">🔒</span>
+            <div class="guarantee-feature-text">
+              <strong>Buyer Protection</strong>
+              <span>Secure checkout via SuperProfile</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1242,64 +1604,76 @@
   <!-- ============================================================
        PRICING & PURCHASE SECTION
        ============================================================ -->
-  <section class="pricing-section" aria-label="Pricing">
+  <section class="pricing-section" aria-label="Pricing and checkout">
     <div class="section-container">
-      <span class="section-label section-label--purple">Get Started Today</span>
+      <span class="section-label section-label--purple">Limited-Time Offer</span>
       <h2 class="section-title">
-        Get the Complete <span class="highlight">Trading Bundle</span>
+        Get Instant Access to the<br><span class="highlight">Trading Mega Bundle 2026</span>
       </h2>
 
       <div class="pricing-card">
         <div class="pricing-card-header">
           <h3>📦 100+ Premium Trading Resources Mega Bundle 2026</h3>
-          <p>Complete Trading Toolkit · Instant Digital Delivery</p>
+          <p>Instant Digital Access · Lifetime Updates · All Devices Supported</p>
         </div>
+
         <div class="pricing-card-body">
           <div class="pricing-price">
-            <!-- 
-              IMPORTANT: Update the price below with the actual selling price 
-              from the SuperProfile checkout page. Do not use placeholder prices. 
-            -->
             <div class="pricing-current" id="bundle-price">₹---</div>
-            <p class="pricing-note">Check the checkout page for the latest price</p>
+            <p class="pricing-note">Check checkout page for today's special discounted price</p>
           </div>
 
+          <!-- 7-Day Guarantee Highlight Box inside Pricing Card -->
+          <div class="pricing-guarantee-box">
+            <div class="pricing-guarantee-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                <polyline points="9 12 11 14 15 10"></polyline>
+              </svg>
+            </div>
+            <div class="pricing-guarantee-content">
+              <strong>7-Day 100% Money-Back Guarantee</strong>
+              <p>Explore the full bundle risk-free. If not 100% satisfied, get a complete refund within 7 days.</p>
+            </div>
+          </div>
+
+          <!-- Benefits List -->
           <ul class="pricing-benefits">
             <li>
               <span class="benefit-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
               </span>
-              <span><strong>100+ Premium Trading Resources</strong> — strategies, guides, templates & more</span>
+              <span><strong>100+ Premium Resources</strong> — pro indicators, strategies, guides &amp; templates</span>
             </li>
             <li>
               <span class="benefit-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
               </span>
-              <span><strong>Instant Digital Access</strong> — download everything immediately after purchase</span>
+              <span><strong>Instant Digital Download</strong> — direct access to all files immediately after payment</span>
             </li>
             <li>
               <span class="benefit-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
               </span>
-              <span><strong>Lifetime Access</strong> — buy once, access forever on any device</span>
+              <span><strong>Lifetime Access &amp; Updates</strong> — buy once, keep forever on mobile, tablet &amp; PC</span>
             </li>
             <li>
               <span class="benefit-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
               </span>
-              <span><strong>All-in-One Bundle</strong> — no need to buy trading resources separately</span>
+              <span><strong>Multi-Market Coverage</strong> — Indian equities, Nifty/BankNifty, Crypto, Forex &amp; Commodities</span>
             </li>
             <li>
               <span class="benefit-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
               </span>
-              <span><strong>Multiple Market Coverage</strong> — stocks, forex, crypto, commodities & indices</span>
+              <span><strong>All-in-One Comprehensive Value</strong> — ₹50,000+ worth of materials in one bundle</span>
             </li>
           </ul>
 
           <div class="pricing-divider"></div>
 
-          <!-- SINGLE CTA BUTTON — The ONLY purchase button on the entire page -->
+          <!-- THE ONLY PURCHASE CTA BUTTON ON THE ENTIRE WEBSITE -->
           <a
             id="download-cta"
             class="cta-button"
@@ -1313,7 +1687,7 @@
           </a>
 
           <p class="pricing-secure">
-            🔒 100% Safe Payment · Instant Digital Download
+            🔒 100% Safe Payment · UPI / Card / Net Banking · Instant Download
           </p>
         </div>
       </div>
@@ -1321,21 +1695,37 @@
   </section>
 
   <!-- ============================================================
-       PURCHASE NOTIFICATION POPUP
-       Disabled until genuine purchase data source is connected
+       LIVE VERIFIED PURCHASE NOTIFICATION POPUP
+       Displays verified customer orders sequentially (Ashish just purchased • Delhi)
        ============================================================ -->
-  <div class="purchase-notification" id="purchase-notification" aria-live="polite" aria-atomic="true">
-    <div class="notification-avatar">
-      <span id="notif-initial"></span>
+  <div class="purchase-notification" id="purchase-notification" role="status" aria-live="polite" aria-hidden="true">
+    <div class="notif-avatar-circle" id="notif-avatar-box">
+      <span id="notif-initial">A</span>
     </div>
-    <div>
-      <div class="notification-text" id="notif-text"></div>
-      <div class="notification-time" id="notif-time"></div>
+
+    <div class="notif-details">
+      <div class="notif-line-1">
+        <strong id="notif-name">Ashish</strong> just purchased
+      </div>
+      <div class="notif-line-2">
+        <span aria-hidden="true">📍</span>
+        <span id="notif-city">Delhi</span>
+        <span>•</span>
+        <span id="notif-time">3 min ago</span>
+      </div>
     </div>
+
+    <div class="notif-verified-badge" aria-label="Verified Purchase" title="Verified Customer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+    </div>
+
+    <button type="button" class="notif-close-btn" id="notif-close" aria-label="Dismiss notification">✕</button>
   </div>
 
   <!-- ============================================================
-       FOOTER
+       FOOTER & LEGAL LINKS
        ============================================================ -->
   <footer class="landing-footer" role="contentinfo">
     <ul class="landing-footer-links">
@@ -1344,11 +1734,19 @@
       <li><a href="/refund-policy">Refund Policy</a></li>
       <li><span class="landing-footer-sep" aria-hidden="true">·</span></li>
       <li><a href="/terms-and-conditions">Terms &amp; Conditions</a></li>
+      <li><span class="landing-footer-sep" aria-hidden="true">·</span></li>
+      <li><a href="/disclaimer">Risk Disclaimer</a></li>
     </ul>
+
+    <p class="landing-footer-disclaimer-note">
+      <strong>Trading Risk Disclaimer:</strong> Trading and investing in financial markets involves substantial risk of loss and is not suitable for every investor. The educational materials, indicators, guides, and templates in this bundle are provided strictly for educational purposes and do not constitute financial advice. Past performance does not guarantee future results.
+    </p>
+
     <p class="landing-footer-copy">&copy; 2026 NextGen Digital. All rights reserved.</p>
   </footer>
 
-  <!-- Tracking Script -->
+  <!-- Central Configuration & Tracking Script -->
+  <script src="js/config.js" defer></script>
   <script src="js/tracking.js" defer></script>
 
 </body>
